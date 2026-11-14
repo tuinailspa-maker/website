@@ -934,18 +934,23 @@
     </section>
 
     <!-- Contactez-nous -->
+    <!-- Contactez-nous -->
     <section id="contact" class="contact-section">
       <div class="contact-grid">
         <div class="contact-text">
           <h2>Contactez-nous</h2>
           <p>N'hésitez pas à nous écrire pour toute question concernant nos soins, disponibilités ou demandes spéciales.</p>
+          <p style="margin-top: 14px; font-weight: 500; color: var(--text-dark);">
+            Courriel direct : <a href="mailto:tuinailspa@gmail.com" style="color: var(--link-blue); text-decoration: none;">tuinailspa@gmail.com</a>
+          </p>
         </div>
 
-        <form class="contact-form" action="mailto:tuinailspa@gmail.com" method="post" enctype="text/plain">
-          <input type="text" name="Nom" placeholder="Nom complet" required>
-          <input type="email" name="Courriel" placeholder="Adresse courriel" required>
-          <textarea name="Message" placeholder="Votre message" required></textarea>
-          <button type="submit">Envoyer</button>
+        <form class="contact-form" onsubmit="sendContactEmail(event)">
+          <input type="text" id="contactName" name="Nom" placeholder="Nom complet" required>
+          <input type="email" id="contactEmail" name="Courriel" placeholder="Votre adresse courriel" required>
+          <textarea id="contactMessage" name="Message" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer à tuinailspa@gmail.com</button>
+          <p id="contactStatus" style="display:none; font-size: 13px; color: #2e6b3e; font-weight: 500; margin-top: 4px;"></p>
         </form>
       </div>
     </section>
