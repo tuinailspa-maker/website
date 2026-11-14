@@ -1825,6 +1825,27 @@
         openServicePage(hash);
       }
     });
+    function sendContactEmail(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      const subject = encodeURIComponent('Message site web - ' + name);
+      const body = encodeURIComponent(
+        'Nom : ' + name + '\n' +
+        'Courriel : ' + email + '\n\n' +
+        'Message :\n' + message
+      );
+
+      const status = document.getElementById('contactStatus');
+      if (status) {
+        status.textContent = 'Ouverture de votre messagerie vers tuinailspa@gmail.com...';
+        status.style.display = 'block';
+      }
+
+      window.location.href = 'mailto:tuinailspa@gmail.com?subject=' + subject + '&body=' + body;
+    }
   </script>
 </body>
 </html>
