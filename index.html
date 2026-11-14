@@ -944,6 +944,7 @@
         <form class="contact-form" onsubmit="envoyerFormulaireContact(event)">
           <input type="text" id="nomContact" name="Nom" placeholder="Nom complet" required>
           <input type="email" id="courrielContact" name="Courriel" placeholder="Courriel" required>
+          <input type="tel" id="telephoneContact" name="Téléphone" placeholder="Numéro de téléphone" required>
           <textarea id="messageContact" name="Message" placeholder="Message" required></textarea>
           <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.45; margin: 2px 0 4px;">
             Ce formulaire est protégé par reCAPTCHA ; la Politique de confidentialité et les Conditions d'utilisation de Google s'appliquent.
@@ -1830,6 +1831,7 @@
       const statut = document.getElementById('statutContact');
       const nom = document.getElementById('nomContact').value.trim();
       const courriel = document.getElementById('courrielContact').value.trim();
+      const telephone = document.getElementById('telephoneContact').value.trim();
       const message = document.getElementById('messageContact').value.trim();
 
       bouton.disabled = true;
@@ -1847,6 +1849,7 @@
             _subject: 'Nouveau message - Tui Nail Spa (' + nom + ')',
             Nom: nom,
             Courriel: courriel,
+            Téléphone: telephone,
             Message: message
           })
         });
