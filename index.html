@@ -17,6 +17,7 @@
       --border-color: #e5e0d8;
       --footer-navy: #2f3f50;
       --link-blue: #1a73e8;
+      --accent-warm: #8c5a3c;
     }
 
     * {
@@ -102,7 +103,7 @@
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 215px;
+      min-width: 235px;
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 6px;
@@ -159,7 +160,6 @@
       color: #ffffff;
     }
 
-    /* Mobile menu button */
     .mobile-menu-toggle {
       display: none;
       background: none;
@@ -597,7 +597,7 @@
 
     .menu-table tbody td.service-col {
       text-align: left;
-      width: 52%;
+      width: 54%;
     }
 
     .menu-table tbody td.price-col {
@@ -605,6 +605,22 @@
       font-weight: 700;
       font-size: 15px;
       color: var(--text-dark);
+      white-space: nowrap;
+    }
+
+    .menu-table tbody td.price-special {
+      text-align: right;
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--accent-warm);
+      white-space: nowrap;
+    }
+
+    .menu-table tbody td.price-old {
+      text-align: right;
+      color: #9c978e;
+      text-decoration: line-through;
+      font-weight: 400;
       white-space: nowrap;
     }
 
@@ -629,7 +645,6 @@
       line-height: 1.45;
     }
 
-    /* Khối thông tin cho trang Politiques & Carrières */
     .info-card {
       background: #ffffff;
       border: 1px solid #e6e1d8;
@@ -790,7 +805,8 @@
         padding: 11px 10px;
         font-size: 13px;
       }
-      .menu-table tbody td.price-col {
+      .menu-table tbody td.price-col,
+      .menu-table tbody td.price-special {
         font-size: 13.5px;
       }
       .footer-bottom {
@@ -815,8 +831,9 @@
       <ul class="nav-links">
         <li><a href="#" onclick="goHome()">Accueil</a></li>
         <li>
-          <a href="#pedicure" onclick="openServicePage('pedicure')">Services ▾</a>
+          <a href="#offres-speciales" onclick="openServicePage('offres-speciales')">Services ▾</a>
           <ul class="dropdown-menu">
+            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: #8c5a3c;">★ Offres Spéciales & Soins</a></li>
             <li><a href="#pedicure" onclick="openServicePage('pedicure')">Pédicure</a></li>
             <li><a href="#manucure" onclick="openServicePage('manucure')">Manucure</a></li>
             <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail enhancement</a></li>
@@ -842,6 +859,7 @@
       <a href="#" onclick="goHome(); toggleMobileMenu();">Accueil</a>
       <div style="padding: 8px 0 4px; font-weight: 600; font-size: 13px; color: var(--text-muted);">Services :</div>
       <div class="mobile-sub-links">
+        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: #8c5a3c;">★ Offres Spéciales & Soins</a>
         <a href="#pedicure" onclick="openServicePage('pedicure'); toggleMobileMenu();">Pédicure</a>
         <a href="#manucure" onclick="openServicePage('manucure'); toggleMobileMenu();">Manucure</a>
         <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement'); toggleMobileMenu();">Nail enhancement</a>
@@ -934,6 +952,153 @@
   </main>
 
   <!-- =========================================================
+       TRANG ĐẶC BIỆT: OFFRES SPÉCIALES & SOINS SPÉCIALISÉS
+       ========================================================= -->
+  <section id="page-offres-speciales" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill current" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Offres Spéciales & Soins Spécialisés</h2>
+      <p>6 ans d'expérience • Prix compétitifs • Service garanti • Réservation en ligne dès 8h</p>
+    </div>
+
+    <!-- 1. SOINS DES PIEDS SPÉCIALISÉS -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Soins des Pieds Spécialisés</h3>
+        <span>Experts en traitement des peaux sèches et crevasses</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Soin & Offre à durée limitée</th>
+            <th>Prix Régulier</th>
+            <th>Prix Spécial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pédicure Sans Vernis + Soin Réparateur</span>
+              <span class="item-desc">Offre à durée limitée : incluant le baume pieds réparateur « All Cracked Up ».</span>
+            </td>
+            <td class="price-old">65$</td>
+            <td class="price-special">55$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pédicure Vernis Régulier + Soin Réparateur</span>
+              <span class="item-desc">Offre à durée limitée : incluant le baume pieds réparateur « All Cracked Up ».</span>
+            </td>
+            <td class="price-old">70$</td>
+            <td class="price-special">60$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pédicure Vernis Gel + Soin Réparateur</span>
+              <span class="item-desc">Offre à durée limitée : incluant le baume pieds réparateur « All Cracked Up ».</span>
+            </td>
+            <td class="price-old">80$</td>
+            <td class="price-special">70$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. SOINS DES MAINS -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Soins des Mains</h3>
+        <span>Soin fortifiant pour ongles courts et fragiles</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Soin</th>
+            <th>Prix Régulier</th>
+            <th>Prix Spécial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manucure + Vernis Gel</span>
+            </td>
+            <td class="price-old">40$</td>
+            <td class="price-special">35$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manucure + Réparateur au Calcium + Vernis Gel</span>
+              <span class="item-desc">Base fortifiante au calcium conçue pour protéger et renforcer les ongles courts et fragiles.</span>
+            </td>
+            <td class="price-old">50$</td>
+            <td class="price-special">40$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. NAIL ENHANCEMENT — POSE D'ONGLES -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Nail Enhancement — Pose d'ongles</h3>
+        <span>Le meilleur prix pour un nouvel ensemble Acrylique, Gel & Gel-X</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Prix Régulier</th>
+            <th>Prix Spécial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pose complète avec capsules (New Set)</span>
+              <span class="item-desc">Acrylique ou Gel avec rallongement.</span>
+            </td>
+            <td class="price-old">60$</td>
+            <td class="price-special">55$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Remplissage / Entretien (Refill)</span>
+              <span class="item-desc">Entretien d'une pose complète ou d'un recouvrement existant.</span>
+            </td>
+            <td class="price-old">55$</td>
+            <td class="price-special">47$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pose complète Gel-X (3+ ans d'expertise en Gel-X)</span>
+              <span class="item-desc">Extensions souples, légères et naturelles réalisées par nos spécialistes certifiées.</span>
+            </td>
+            <td class="price-old">70$</td>
+            <td class="price-special">55$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous en ligne (dès 8h)</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
        6 TRANG CON DỊCH VỤ DẠNG TABLE MATRIX (BẢNG GIÁ 2026)
        ========================================================= -->
 
@@ -942,6 +1107,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill current" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1011,6 +1177,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill current" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1089,6 +1256,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill current" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1103,7 +1271,6 @@
       <p>Les prix indiqués sont hors taxes (avant taxes).</p>
     </div>
 
-    <!-- Bảng 1: Pose d'ongles -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Pose d'ongles</h3>
@@ -1147,7 +1314,6 @@
       </table>
     </div>
 
-    <!-- Bảng 2: Remplissages -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Remplissages</h3>
@@ -1185,7 +1351,6 @@
       </table>
     </div>
 
-    <!-- Bảng 3: Résine et Poudre -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Résine et Poudre</h3>
@@ -1224,6 +1389,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1284,6 +1450,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1298,7 +1465,6 @@
       <p>Les prix indiqués sont hors taxes (avant taxes).</p>
     </div>
 
-    <!-- Bảng Application de vernis -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Application de vernis</h3>
@@ -1330,7 +1496,6 @@
       </table>
     </div>
 
-    <!-- Bảng Soins complémentaires & Retraits -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Soins complémentaires, Retraits & Options</h3>
@@ -1394,6 +1559,7 @@
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
       <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Offres Spéciales</a>
         <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
         <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
         <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
@@ -1593,6 +1759,7 @@
 
   <script>
     const validPages = [
+      'offres-speciales',
       'pedicure',
       'manucure',
       'nail-enhancement',
