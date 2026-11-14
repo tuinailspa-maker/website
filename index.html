@@ -934,23 +934,22 @@
     </section>
 
     <!-- Contactez-nous -->
-    <!-- Contactez-nous -->
     <section id="contact" class="contact-section">
       <div class="contact-grid">
         <div class="contact-text">
           <h2>Contactez-nous</h2>
-          <p>N'hésitez pas à nous écrire pour toute question concernant nos soins, disponibilités ou demandes spéciales.</p>
-          <p style="margin-top: 14px; font-weight: 500; color: var(--text-dark);">
-            Courriel direct : <a href="mailto:tuinailspa@gmail.com" style="color: var(--link-blue); text-decoration: none;">tuinailspa@gmail.com</a>
-          </p>
+          <p>N'hésitez pas à nous écrire et à nous faire savoir si nous pouvons faire quoi que ce soit pour vous.</p>
         </div>
 
-        <form class="contact-form" onsubmit="sendContactEmail(event)">
-          <input type="text" id="contactName" name="Nom" placeholder="Nom complet" required>
-          <input type="email" id="contactEmail" name="Courriel" placeholder="Votre adresse courriel" required>
-          <textarea id="contactMessage" name="Message" placeholder="Votre message" required></textarea>
-          <button type="submit">Envoyer à tuinailspa@gmail.com</button>
-          <p id="contactStatus" style="display:none; font-size: 13px; color: #2e6b3e; font-weight: 500; margin-top: 4px;"></p>
+        <form class="contact-form" onsubmit="envoyerFormulaireContact(event)">
+          <input type="text" id="nomContact" name="Nom" placeholder="Nom complet" required>
+          <input type="email" id="courrielContact" name="Courriel" placeholder="Courriel" required>
+          <textarea id="messageContact" name="Message" placeholder="Message" required></textarea>
+          <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.45; margin: 2px 0 4px;">
+            Ce formulaire est protégé par reCAPTCHA ; la Politique de confidentialité et les Conditions d'utilisation de Google s'appliquent.
+          </p>
+          <button type="submit" id="boutonEnvoyerContact">Envoyer</button>
+          <p id="statutContact" style="display:none; font-size: 13.5px; font-weight: 500; margin-top: 6px;"></p>
         </form>
       </div>
     </section>
