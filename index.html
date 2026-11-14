@@ -2498,28 +2498,35 @@
     // Đổi thành false nếu bạn muốn TẮT pop-up tạm thời
     // =========================================================
     const AFFICHER_POPUP = true;
-    const THOI_GIAN_CHO_HIEN = 1200;    // Chờ 1.2 giây sau khi vào web mới hiện
+    const THOI_GIAN_CHO_HIEN = 1200;    // Chờ 1.2 giây sau khi mở trang/dịch vụ mới hiện
     const THOI_GIAN_TU_DONG_TAT = 10000; // Tự động tắt sau 10 giây
+    let tuiPopupShowTimer = null;
+    let tuiPopupHideTimer = null;
 
-    window.addEventListener('DOMContentLoaded', () => {
-      if (AFFICHER_POPUP && !sessionStorage.getItem('tui_popup_closed')) {
-        setTimeout(() => {
-          const popup = document.getElementById('tuiPromoPopup');
-          if (popup) {
-            popup.classList.add('show');
-            setTimeout(() => {
-              fermerTuiPopup();
-            }, THOI_GIAN_TU_DONG_TAT);
-          }
-        }, THOI_GIAN_CHO_HIEN);
-      }
-    });
+    function lancerTuiPopup() {
+      if (!AFFICHER_POPUP) return;
+      clearTimeout(tuiPopupShowTimer);
+      clearTimeout(tuiPopupHideTimer);
+
+      tuiPopupShowTimer = setTimeout(() => {
+        const popup = document.getElementById('tuiPromoPopup');
+        if (popup) {
+          popup.classList.add('show');
+          tuiPopupHideTimer = setTimeout(() => {
+            fermerTuiPopup();
+          }, THOI_GIAN_TU_DONG_TAT);
+        }
+      }, THOI_GIAN_CHO_HIEN);
+    }
 
     function fermerTuiPopup() {
+      clearTimeout(tuiPopupShowTimer);
+      clearTimeout(tuiPopupHideTimer);
       const popup = document.getElementById('tuiPromoPopup');
       if (popup) popup.classList.remove('show');
-      sessionStorage.setItem('tui_popup_closed', '1');
     }
+
+    window.addEventListener('DOMContentLoaded', lancerTuiPopup);
   </script>
 </body>
 </html>
