@@ -2340,6 +2340,174 @@
       const currentHash = window.location.hash || '';
       window.location.href = targetFile + currentHash;
     }
+  </script> 
+  <!-- =========================================================
+       PROMO / HOLIDAY POP-UP - ENGLISH VERSION
+       ========================================================= -->
+  <style>
+    .tui-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      animation: tuiFadeIn 0.3s ease;
+    }
+    .tui-popup-overlay.show {
+      display: flex;
+    }
+    .tui-popup-box {
+      position: relative;
+      background: linear-gradient(145deg, #161410 0%, #090909 100%);
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 14px;
+      max-width: 480px;
+      width: 100%;
+      padding: 38px 28px 32px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 28px rgba(212, 175, 55, 0.18);
+    }
+    .tui-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: transparent;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--gold-champagne);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tui-popup-close:hover {
+      background: var(--gold-primary);
+      color: #050505;
+    }
+    .tui-popup-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .tui-popup-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .tui-popup-box p {
+      font-size: 14.5px;
+      color: #d4d4d4;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .tui-popup-box p strong {
+      color: var(--gold-champagne);
+    }
+    .tui-popup-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tui-popup-btn-primary {
+      padding: 11px 26px;
+      background: var(--gold-primary);
+      color: #050505;
+      font-weight: 700;
+      font-size: 13.5px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--gold-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tui-popup-btn-primary:hover {
+      background: #e5c349;
+      transform: translateY(-1px);
+    }
+    .tui-popup-btn-secondary {
+      padding: 11px 22px;
+      background: transparent;
+      color: #e5e5e5;
+      font-weight: 500;
+      font-size: 13.5px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tui-popup-btn-secondary:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+    }
+    @keyframes tuiFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+
+  <div id="tuiPromoPopup" class="tui-popup-overlay" onclick="if(event.target === this) fermerTuiPopup()">
+    <div class="tui-popup-box">
+      <button class="tui-popup-close" onclick="fermerTuiPopup()" aria-label="Close">✕</button>
+      
+      <!-- 1. TOP BADGE -->
+      <span class="tui-popup-badge">★ Special Offer ★</span>
+      
+      <!-- 2. HEADING -->
+      <h3>Up to $15 OFF Selected Treatments!</h3>
+      
+      <!-- 3. MESSAGE -->
+      <p>
+        Enjoy our limited-time offers on <strong>Specialized Foot Care</strong>, <strong>Calcium Manicure</strong>, and <strong>Gel-X Full Sets ($55)</strong>.<br>
+        Online booking open from <strong>8:00 AM</strong>.
+      </p>
+
+      <!-- 4. BUTTONS -->
+      <div class="tui-popup-actions">
+        <a href="#offres-speciales" class="tui-popup-btn-primary" onclick="fermerTuiPopup(); openServicePage('offres-speciales');">
+          View Special Offers
+        </a>
+        <button type="button" class="tui-popup-btn-secondary" onclick="fermerTuiPopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set to false whenever you want to HIDE the pop-up
+    const AFFICHER_POPUP = true;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (AFFICHER_POPUP && !sessionStorage.getItem('tui_popup_closed')) {
+        setTimeout(() => {
+          const popup = document.getElementById('tuiPromoPopup');
+          if (popup) popup.classList.add('show');
+        }, 800);
+      }
+    });
+
+    function fermerTuiPopup() {
+      const popup = document.getElementById('tuiPromoPopup');
+      if (popup) popup.classList.remove('show');
+      sessionStorage.setItem('tui_popup_closed', '1');
+    }
   </script>
 </body>
 </html>
