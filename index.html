@@ -2337,6 +2337,10 @@
         bouton.disabled = false;
         bouton.textContent = 'Envoyer';
       }
+    } 
+    function switchLang(targetFile) {
+      const currentHash = window.location.hash || '';
+      window.location.href = targetFile + currentHash;
     }
   </script>
 </body>
