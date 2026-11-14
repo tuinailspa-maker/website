@@ -1824,26 +1824,49 @@
         openServicePage(hash);
       }
     });
-    function sendContactEmail(e) {
-      e.preventDefault();
-      const name = document.getElementById('contactName').value.trim();
-      const email = document.getElementById('contactEmail').value.trim();
-      const message = document.getElementById('contactMessage').value.trim();
+    async function envoyerFormulaireContact(evenement) {
+      evenement.preventDefault();
+      const bouton = document.getElementById('boutonEnvoyerContact');
+      const statut = document.getElementById('statutContact');
+      const nom = document.getElementById('nomContact').value.trim();
+      const courriel = document.getElementById('courrielContact').value.trim();
+      const message = document.getElementById('messageContact').value.trim();
 
-      const subject = encodeURIComponent('Message site web - ' + name);
-      const body = encodeURIComponent(
-        'Nom : ' + name + '\n' +
-        'Courriel : ' + email + '\n\n' +
-        'Message :\n' + message
-      );
+      bouton.disabled = true;
+      bouton.textContent = 'Envoi en cours...';
+      statut.style.display = 'none';
 
-      const status = document.getElementById('contactStatus');
-      if (status) {
-        status.textContent = 'Ouverture de votre messagerie vers tuinailspa@gmail.com...';
-        status.style.display = 'block';
+      try {
+        const reponse = await fetch('https://formsubmit.co/ajax/tuinailspa@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: 'Nouveau message - Tui Nail Spa (' + nom + ')',
+            Nom: nom,
+            Courriel: courriel,
+            Message: message
+          })
+        });
+
+        if (reponse.ok) {
+          statut.style.color = '#2e6b3e';
+          statut.textContent = 'Merci ! Votre message a bien été envoyé.';
+          statut.style.display = 'block';
+          evenement.target.reset();
+        } else {
+          throw new Error('Erreur');
+        }
+      } catch (erreur) {
+        statut.style.color = '#b91c1c';
+        statut.textContent = "Une erreur s'est produite. Veuillez nous appeler au (438) 777-7043.";
+        statut.style.display = 'block';
+      } finally {
+        bouton.disabled = false;
+        bouton.textContent = 'Envoyer';
       }
-
-      window.location.href = 'mailto:tuinailspa@gmail.com?subject=' + subject + '&body=' + body;
     }
   </script>
 </body>
