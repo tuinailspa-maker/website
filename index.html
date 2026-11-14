@@ -67,17 +67,53 @@
       flex-shrink: 0;
     }
 
-    .brand-logo-img {
-      height: 84px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+    .brand-logo-box {
+      position: relative;
+      width: 86px;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.3s ease;
     }
 
-    .brand-logo-img:hover {
+    .brand-logo-box:hover {
       transform: scale(1.04);
+    }
+
+    .brand-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-logo-black-text {
+      position: absolute;
+      inset: 14px;
+      background-color: var(--header-bg);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .brand-logo-black-text .t-main {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 21px;
+      line-height: 1;
+      color: #1c1b1a;
+    }
+
+    .brand-logo-black-text .t-sub {
+      font-size: 7.2px;
+      font-weight: 600;
+      color: #2c2a29;
+      margin-top: 3px;
+      letter-spacing: 0.2px;
     }
 
     .nav-links {
