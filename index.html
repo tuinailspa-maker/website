@@ -847,6 +847,116 @@
       background-color: #0d0d0d !important;
     }
   </style>
+  <style>
+  /* PHÔNG NỀN TỐI SANG TRỌNG TOÀN TRANG */
+  html, body {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+  }
+
+  header, .mobile-drawer {
+    background-color: #161616 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+  }
+
+  .nav-links a, .mobile-drawer a, .subpage-header p, .back-home-btn {
+    color: #e5e5e5 !important;
+  }
+
+  .nav-links a:hover, .subpage-header h2, .price-col, .price-special {
+    color: #d4af37 !important;
+  }
+
+  .dropdown-menu {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  }
+
+  .btn-outline {
+    border-color: #d4af37 !important;
+    color: #d4af37 !important;
+    background: transparent !important;
+  }
+
+  .btn-outline:hover, .subpage-pill.current, .subpage-pill:hover {
+    background-color: #d4af37 !important;
+    color: #050505 !important;
+  }
+
+  /* NỀN TỐI + DẢI SÁNG VÀNG GOLD XÉO GÓC CHO TỪNG TRANG DỊCH VỤ */
+  .service-subpage {
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: #0c0c0c !important;
+    border-radius: 14px !important;
+    z-index: 1 !important;
+  }
+
+  .service-subpage::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -120px !important;
+    left: -140px !important;
+    width: 480px !important;
+    height: 280px !important;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.38) 0%, rgba(184, 134, 11, 0.14) 50%, transparent 100%) !important;
+    transform: rotate(-15deg) !important;
+    filter: blur(45px) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+  }
+
+  .service-subpage::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -140px !important;
+    right: -120px !important;
+    width: 520px !important;
+    height: 320px !important;
+    background: linear-gradient(315deg, rgba(212, 175, 55, 0.32) 0%, rgba(184, 134, 11, 0.12) 45%, transparent 100%) !important;
+    transform: rotate(-12deg) !important;
+    filter: blur(55px) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+  }
+
+  /* KHUNG BẢNG ĐEN TUYỀN TƯƠNG PHẢN CAO SO VỚI PHÔNG NỀN */
+  .table-card, .info-card {
+    background-color: #030303 !important;
+    border: 1px solid rgba(212, 175, 55, 0.45) !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.95) !important;
+  }
+
+  .table-card-banner {
+    background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35) !important;
+  }
+
+  .table-card-banner h3, .item-title {
+    color: #ffffff !important;
+  }
+
+  .item-desc {
+    color: #a3a3a3 !important;
+  }
+
+  .menu-table, .menu-table tbody tr {
+    background-color: #030303 !important;
+  }
+
+  .menu-table tbody tr:nth-child(even) {
+    background-color: #090909 !important;
+  }
+
+  .menu-table tbody tr:hover {
+    background-color: #16130e !important;
+  }
+
+  .menu-table thead th {
+    background-color: #0d0d0d !important;
+    color: #d4c5a1 !important;
+  }
+</style>
 </head>
 <body>
 
