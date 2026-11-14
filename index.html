@@ -2465,66 +2465,95 @@
     }
   </style>
 
-  <div id="tuiPromoPopup" class="tui-popup-overlay" onclick="if(event.target === this) fermerTuiPopup()">
+  <!-- POP-UP 1: THÔNG BÁO NGHỈ LỄ -->
+  <div id="tuiPopup1" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup1()">
     <div class="tui-popup-box">
-      <button class="tui-popup-close" onclick="fermerTuiPopup()" aria-label="Fermer">✕</button>
-      
-      <!-- 1. NHÃN NHỎ -->
+      <button class="tui-popup-close" onclick="fermerPopup1()" aria-label="Fermer">✕</button>
       <span class="tui-popup-badge">✨ Horaire des Fêtes ✨</span>
-      
-      <!-- 2. TIÊU ĐỀ -->
       <h3>Avis de fermeture pour les Fêtes</h3>
-      
-      <!-- 3. NỘI DUNG -->
       <p>
-        Veuillez noter que notre salon sera fermé le <strong>25 décembre</strong> (Noël) et le <strong>1er janvier</strong> (Jour de l'An).<br><br>
-        Nous restons ouverts aux heures habituelles tous les autres jours. Réservez votre rendez-vous à l'avance !
+        Veuillez noter que notre salon sera fermé le <strong>25 décembre</strong> (Noël) et le <strong>1er janvier</strong> (Jour de l'An).<br>
+        Ouvert aux heures habituelles tous les autres jours. Réservez à l'avance !
       </p>
-
-      <!-- 4. NÚT BẤM -->
       <div class="tui-popup-actions">
-        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="tui-popup-btn-primary" onclick="fermerTuiPopup();">
+        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="tui-popup-btn-primary" onclick="fermerPopup1();">
           Prendre rendez-vous
         </a>
-        <button type="button" class="tui-popup-btn-secondary" onclick="fermerTuiPopup()">
-          Fermer
-        </button>
+        <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup1()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POP-UP 2: GOM 2 ƯU ĐÃI (COMBOS SHELLAC & GIFT CARD) -->
+  <div id="tuiPopup2" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup2()">
+    <div class="tui-popup-box">
+      <button class="tui-popup-close" onclick="fermerPopup2()" aria-label="Fermer">✕</button>
+      <span class="tui-popup-badge">★ Offres Spéciales des Fêtes ★</span>
+      <h3>Nos Privilèges du Moment</h3>
+      <p style="text-align: left; max-width: 480px; margin: 0 auto 24px;">
+        • <strong>5$ de rabais</strong> sur tous nos forfaits <strong>Combos Mani-Pédi Shellac</strong>.<br><br>
+        • <strong>Traitement à la Paraffine GRATUIT</strong> (mains ou pieds) à l'achat d'une <strong>Carte-Cadeau de 100$ CAD</strong> ou plus.
+      </p>
+      <div class="tui-popup-actions">
+        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">
+          Voir les Combos
+        </a>
+        <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup2()">Fermer</button>
       </div>
     </div>
   </div>
 
   <script>
-    // =========================================================
-    // CÔNG TẮC BẬT / TẮT POP-UP:
-    // Đổi thành false nếu bạn muốn TẮT pop-up tạm thời
-    // =========================================================
-    const AFFICHER_POPUP = true;
-    const THOI_GIAN_CHO_HIEN = 1200;    // Chờ 1.2 giây sau khi mở trang/dịch vụ mới hiện
-    const THOI_GIAN_TU_DONG_TAT = 10000; // Tự động tắt sau 10 giây 
-    let tuiPopupShowTimer = null;
-    let tuiPopupHideTimer = null;
+    const BAT_POPUP_LE = true;      // Bật/tắt thông báo nghỉ lễ
+    const BAT_POPUP_PROMO = true;   // Bật/tắt thông báo khuyến mãi
+
+    let timerShow = null;
+    let timerHide = null;
 
     function lancerTuiPopup() {
-      if (!AFFICHER_POPUP) return;
-      clearTimeout(tuiPopupShowTimer);
-      clearTimeout(tuiPopupHideTimer);
+      // Chỉ hiện 1 lần trong mỗi phiên truy cập để khách không bị khó chịu khi chuyển trang
+      if (sessionStorage.getItem('tui_popups_done')) return;
 
-      tuiPopupShowTimer = setTimeout(() => {
-        const popup = document.getElementById('tuiPromoPopup');
-        if (popup) {
-          popup.classList.add('show');
-          tuiPopupHideTimer = setTimeout(() => {
-            fermerTuiPopup();
-          }, THOI_GIAN_TU_DONG_TAT);
-        }
-      }, THOI_GIAN_CHO_HIEN);
+      if (BAT_POPUP_LE) {
+        timerShow = setTimeout(() => {
+          const p1 = document.getElementById('tuiPopup1');
+          if (p1) {
+            p1.classList.add('show');
+            timerHide = setTimeout(fermerPopup1, 7000); // Tự tắt sau 7 giây
+          }
+        }, 1500); // Chờ 1.5 giây sau khi vào trang
+      } else if (BAT_POPUP_PROMO) {
+        timerShow = setTimeout(ouvrirPopup2, 1500);
+      }
     }
 
-    function fermerTuiPopup() {
-      clearTimeout(tuiPopupShowTimer);
-      clearTimeout(tuiPopupHideTimer);
-      const popup = document.getElementById('tuiPromoPopup');
-      if (popup) popup.classList.remove('show');
+    function fermerPopup1() {
+      clearTimeout(timerShow);
+      clearTimeout(timerHide);
+      const p1 = document.getElementById('tuiPopup1');
+      if (p1) p1.classList.remove('show');
+
+      if (BAT_POPUP_PROMO) {
+        timerShow = setTimeout(ouvrirPopup2, 3000); // Cho khách nghỉ 3 giây rồi mới hiện bảng ưu đãi
+      } else {
+        sessionStorage.setItem('tui_popups_done', '1');
+      }
+    }
+
+    function ouvrirPopup2() {
+      const p2 = document.getElementById('tuiPopup2');
+      if (p2) {
+        p2.classList.add('show');
+        timerHide = setTimeout(fermerPopup2, 8000); // Tự tắt sau 8 giây
+      }
+    }
+
+    function fermerPopup2() {
+      clearTimeout(timerShow);
+      clearTimeout(timerHide);
+      const p2 = document.getElementById('tuiPopup2');
+      if (p2) p2.classList.remove('show');
+      sessionStorage.setItem('tui_popups_done', '1');
     }
 
     window.addEventListener('DOMContentLoaded', lancerTuiPopup);
