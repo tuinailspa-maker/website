@@ -1089,6 +1089,35 @@
       .footer-right {
         align-items: flex-start;
       }
+    } 
+    /* --- NÚT CHUYỂN ĐỔI NGÔN NGỮ (FR / EN) --- */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-gold);
+      border-radius: 999px;
+      padding: 3px;
+      background: #0d0d0d;
+    }
+
+    .lang-btn {
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      color: #ffffff;
+    }
+
+    .lang-btn.active {
+      background-color: var(--gold-primary);
+      color: #050505;
     }
   </style>
 </head>
