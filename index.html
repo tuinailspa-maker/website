@@ -499,4 +499,1160 @@
 
     .subpage-pill:hover,
     .subpage-pill.current {
-      background-color
+      background-color: var(--text-dark);
+      color: #ffffff;
+      border-color: var(--text-dark);
+    }
+
+    .subpage-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .subpage-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .subpage-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .table-card {
+      background: #ffffff;
+      border: 1px solid #e6e1d8;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.03);
+      margin-bottom: 28px;
+    }
+
+    .table-card-banner {
+      background-color: var(--header-bg);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .table-card-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .table-card-banner span {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .menu-table thead th {
+      background-color: var(--table-head-bg);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #4f4c47;
+      padding: 13px 20px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .menu-table thead th:first-child {
+      text-align: left;
+    }
+
+    .menu-table tbody tr {
+      border-bottom: 1px solid #f0ece4;
+      transition: background-color 0.15s ease;
+    }
+
+    .menu-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .menu-table tbody tr:hover {
+      background-color: #fcfaf7;
+    }
+
+    .menu-table tbody td {
+      padding: 15px 20px;
+      font-size: 14.5px;
+      vertical-align: middle;
+    }
+
+    .menu-table tbody td.service-col {
+      text-align: left;
+      width: 52%;
+    }
+
+    .menu-table tbody td.price-col {
+      text-align: right;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-dark);
+      white-space: nowrap;
+    }
+
+    .menu-table tbody td.muted-dash {
+      text-align: right;
+      color: #b8b3aa;
+      font-weight: 400;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      display: block;
+      font-size: 15px;
+    }
+
+    .item-desc {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    /* Khối thông tin cho trang Politiques & Carrières */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid #e6e1d8;
+      border-radius: 8px;
+      padding: 28px 32px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .info-row {
+      padding: 16px 0;
+      border-bottom: 1px dashed #e6e1d8;
+    }
+
+    .info-row:first-child {
+      padding-top: 0;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-row h4 {
+      font-size: 15.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .info-row p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .subpage-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    /* --- 7. FOOTER ĐƠN GIẢN (NỀN XANH NAVY #2F3F50) --- */
+    footer {
+      background-color: var(--footer-navy);
+      color: #ffffff;
+      padding: 48px 24px 36px;
+    }
+
+    .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .footer-logo {
+      display: inline-block;
+    }
+
+    .footer-logo img {
+      height: 82px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .payment-badges {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pay-badge {
+      background: #ffffff;
+      color: #1c1b1a;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.2px;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .social-circles {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-circle:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .social-circle.mail { background-color: #1c1b1a; }
+    .social-circle.fb   { background-color: #1877f2; }
+    .social-circle.ig   { background-color: #e4405f; }
+
+    .footer-tagline {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.2px;
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 920px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: inline-block;
+      }
+      .location-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner {
+        height: 360px;
+      }
+      .location-columns {
+        grid-template-columns: 1fr;
+      }
+      .menu-table thead th,
+      .menu-table tbody td {
+        padding: 11px 10px;
+        font-size: 13px;
+      }
+      .menu-table tbody td.price-col {
+        font-size: 13.5px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-right {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-wrapper" onclick="goHome()">
+        <img src="blacklogo.jpg" alt="Tui - La beauté des ongles">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#" onclick="goHome()">Accueil</a></li>
+        <li>
+          <a href="#pedicure" onclick="openServicePage('pedicure')">Services ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#pedicure" onclick="openServicePage('pedicure')">Pédicure</a></li>
+            <li><a href="#manucure" onclick="openServicePage('manucure')">Manucure</a></li>
+            <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail enhancement</a></li>
+            <li><a href="#combos" onclick="openServicePage('combos')">Combos</a></li>
+            <li><a href="#add-on-services" onclick="openServicePage('add-on-services')">Add on services</a></li>
+            <li><a href="#epilation" onclick="openServicePage('epilation')">Épilation</a></li>
+          </ul>
+        </li>
+        <li><a href="#location" onclick="goHomeSection('location')">Adresse & Heures</a></li>
+        <li><a href="#contact" onclick="goHomeSection('contact')">Contact</a></li>
+        <li><a href="#politiques" onclick="openServicePage('politiques')">Politiques</a></li>
+        <li><a href="#carrieres" onclick="openServicePage('carrieres')">Carrières</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline">Prendre rendez-vous</a>
+        <button class="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobileDrawer" class="mobile-drawer">
+      <a href="#" onclick="goHome(); toggleMobileMenu();">Accueil</a>
+      <div style="padding: 8px 0 4px; font-weight: 600; font-size: 13px; color: var(--text-muted);">Services :</div>
+      <div class="mobile-sub-links">
+        <a href="#pedicure" onclick="openServicePage('pedicure'); toggleMobileMenu();">Pédicure</a>
+        <a href="#manucure" onclick="openServicePage('manucure'); toggleMobileMenu();">Manucure</a>
+        <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement'); toggleMobileMenu();">Nail enhancement</a>
+        <a href="#combos" onclick="openServicePage('combos'); toggleMobileMenu();">Combos</a>
+        <a href="#add-on-services" onclick="openServicePage('add-on-services'); toggleMobileMenu();">Add on services</a>
+        <a href="#epilation" onclick="openServicePage('epilation'); toggleMobileMenu();">Épilation</a>
+      </div>
+      <a href="#location" onclick="goHomeSection('location'); toggleMobileMenu();">Adresse & Heures</a>
+      <a href="#contact" onclick="goHomeSection('contact'); toggleMobileMenu();">Contact</a>
+      <a href="#politiques" onclick="openServicePage('politiques'); toggleMobileMenu();">Politiques</a>
+      <a href="#carrieres" onclick="openServicePage('carrieres'); toggleMobileMenu();">Carrières</a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       TRANG CHỦ (HOME VIEW)
+       ========================================================= -->
+  <main id="home-view">
+    <!-- Main Banner -->
+    <section class="hero-banner">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=80" alt="Tui - La beauté des ongles">
+      <div class="hero-overlay">
+        <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-hero">Prendre rendez-vous</a>
+      </div>
+    </section>
+
+    <!-- Vidéo -->
+    <section class="action-section">
+      <h2>Découvrez nos soins en action</h2>
+      <p class="subtitle">Un premier aperçu de nos traitements et du savoir-faire de notre équipe</p>
+      <div class="video-frame-wrapper">
+        <iframe src="https://www.youtube.com/embed/Mr2fBTyfZDU" title="Tui Nail Spa - Traitement à la paraffine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Adresse & Heures -->
+    <section id="location" class="location-section">
+      <div class="location-grid">
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=100-1570+Rue+Saint-Timoth%C3%A9e,+Montr%C3%A9al,+QC+H2L+3N9&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Carte Tui nail spa Montréal">
+          </iframe>
+        </div>
+
+        <div class="location-details">
+          <h2>Adresse & Heures d'ouverture</h2>
+          <div class="location-columns">
+            <div class="location-info-text">
+              <div class="business-name">Tui nail spa</div>
+              <div>100-1570 Rue Saint-Timothée</div>
+              <div>Montréal, Québec H2L 3N9</div>
+              <div><a href="tel:4387777043">(438) 777-7043</a></div>
+              <div><a href="mailto:tuinailspa@gmail.com">tuinailspa@gmail.com</a></div>
+              <div><a href="https://maps.google.com/?q=100-1570+Rue+Saint-Timoth%C3%A9e,+Montr%C3%A9al,+QC+H2L+3N9" target="_blank" rel="noopener">Obtenir l'itinéraire</a></div>
+            </div>
+
+            <table class="hours-table">
+              <tr><td>Lundi</td><td>10h00 - 19h00</td></tr>
+              <tr><td>Mardi</td><td>10h00 - 19h00</td></tr>
+              <tr><td>Mercredi</td><td>10h00 - 19h00</td></tr>
+              <tr><td>Jeudi</td><td>10h00 - 20h00</td></tr>
+              <tr><td>Vendredi</td><td>10h00 - 20h00</td></tr>
+              <tr><td>Samedi</td><td>10h00 - 19h00</td></tr>
+              <tr><td>Dimanche</td><td>10h00 - 19h00</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contactez-nous -->
+    <section id="contact" class="contact-section">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <h2>Contactez-nous</h2>
+          <p>N'hésitez pas à nous écrire pour toute question concernant nos soins, disponibilités ou demandes spéciales.</p>
+        </div>
+
+        <form class="contact-form" action="mailto:tuinailspa@gmail.com" method="post" enctype="text/plain">
+          <input type="text" name="Nom" placeholder="Nom complet" required>
+          <input type="email" name="Courriel" placeholder="Adresse courriel" required>
+          <textarea name="Message" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       6 TRANG CON DỊCH VỤ DẠNG TABLE MATRIX (BẢNG GIÁ 2026)
+       ========================================================= -->
+
+  <!-- TRANG 1: PÉDICURE -->
+  <section id="page-pedicure" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill current" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Pédicure</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Services de Pédicure</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Sans vernis</th>
+            <th>Vernis régulier</th>
+            <th>Shellac</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pédicure</span>
+              <span class="item-desc">Ce pédicure a été conçu pour les clients pressés : limage des ongles, coupe des cuticules, polissage des callosités, exfoliation des pieds, léger massage des pieds. Plus... callosités, corne, peau morte épaisse, ongles épaissis, difficiles à couper, fissures sous les pieds, aux talons.</span>
+            </td>
+            <td class="price-col">35$</td>
+            <td class="price-col">40$</td>
+            <td class="price-col">50$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Application de vernis — Les pieds</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">22$</td>
+            <td class="price-col">32$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Traitement Paraffine — Les pieds</span>
+              <span class="item-desc">Paraffine chaude et liquide mise dans un sac individuel pour chaque pied, procurant confort, hydratation et souplesse.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">15$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 2: MANUCURE -->
+  <section id="page-manucure" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill current" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Manucure</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Services de Manucure</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Sans vernis</th>
+            <th>Vernis régulier</th>
+            <th>Shellac</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manucure</span>
+              <span class="item-desc">Trempage, limage des ongles, cuticules, léger massage.</span>
+            </td>
+            <td class="price-col">20$</td>
+            <td class="price-col">25$</td>
+            <td class="price-col">35$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manucure Shellac avec calcium</span>
+              <span class="item-desc">En base avec du calcium ajouté, il aidera également à renforcer les ongles fragiles et cassants.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">40$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Application de vernis — Les mains</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">18$</td>
+            <td class="price-col">30$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Traitement Paraffine — Les mains</span>
+              <span class="item-desc">Paraffine chaude et liquide mise dans un sac individuel pour chaque main pour hydrater et assouplir la peau.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">12$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 3: NAIL ENHANCEMENT -->
+  <section id="page-nail-enhancement" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill current" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Nail Enhancement — Les Ongles</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <!-- Bảng 1: Pose d'ongles -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Pose d'ongles</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Vernis régulier</th>
+            <th>Shellac</th>
+            <th>Extra long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Acrylique</span></td>
+            <td class="price-col">48$</td>
+            <td class="price-col">55$</td>
+            <td class="price-col">65$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Bio Gel</span></td>
+            <td class="price-col">48$</td>
+            <td class="price-col">55$</td>
+            <td class="price-col">65$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Après Gel X</span></td>
+            <td class="price-col">48$</td>
+            <td class="price-col">55$</td>
+            <td class="price-col">65$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Recouvrement sur ongles naturels</span></td>
+            <td class="price-col">48$</td>
+            <td class="price-col">55$</td>
+            <td class="price-col">65$+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng 2: Remplissages -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Remplissages</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Vernis régulier</th>
+            <th>Shellac</th>
+            <th>Extra long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Acrylique</span></td>
+            <td class="price-col">40$</td>
+            <td class="price-col">47$</td>
+            <td class="price-col">60$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Bio Gel</span></td>
+            <td class="price-col">40$</td>
+            <td class="price-col">47$</td>
+            <td class="price-col">60$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Après Gel X</span></td>
+            <td class="price-col">40$</td>
+            <td class="price-col">47$</td>
+            <td class="price-col">60$+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng 3: Résine et Poudre -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Résine et Poudre</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Régulier</th>
+            <th>Extra long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Sans pointes d'ongles</span></td>
+            <td class="price-col">50$</td>
+            <td class="price-col">60$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Avec pointes d'ongles</span></td>
+            <td class="price-col">55$</td>
+            <td class="price-col">65$+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 4: COMBOS -->
+  <section id="page-combos" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill current" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Combos Mani-Pédi</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Forfaits Combinés Mains & Pieds</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Forfait</th>
+            <th>Tarif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Mani-Pédi sans vernis</span></td>
+            <td class="price-col">55$</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Mani-Pédi avec vernis régulier</span></td>
+            <td class="price-col">65$</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Mani-Pédi Shellac</span></td>
+            <td class="price-col">80$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Mani-Pédi Shellac (avec calcium gel en base)</span>
+              <span class="item-desc">Protection et renforcement supplémentaire des ongles fragiles et cassants.</span>
+            </td>
+            <td class="price-col">95$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 5: ADD ON SERVICES -->
+  <section id="page-add-on-services" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill current" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Add On Services — Ajouter les Services</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <!-- Bảng Application de vernis -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Application de vernis</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Zone</th>
+            <th>Vernis régulier</th>
+            <th>Shellac</th>
+            <th>Faux ongle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Les mains</span></td>
+            <td class="price-col">18$</td>
+            <td class="price-col">30$</td>
+            <td class="price-col">40$</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Les pieds</span></td>
+            <td class="price-col">22$</td>
+            <td class="price-col">32$</td>
+            <td class="muted-dash">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng Soins complémentaires & Retraits -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Soins complémentaires, Retraits & Options</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Tarif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Traitement Paraffine (Les mains / Les pieds)</span>
+              <span class="item-desc">Paraffine dorlote vos pieds, vos mains et leur redonne confort, hydratation et souplesse. Paraffine chaude et liquide est mise dans un sac individuel pour chaque pied ou main.</span>
+            </td>
+            <td class="price-col">12$ / 15$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Traitement au Collagène</span>
+              <span class="item-desc">Enrichi de collagène, d'huile d'olive et d'huile d'argan, la crème hydratante ultra-nutritionnelle pénètre rapidement pour protéger, nourrir et hydrater les pieds et les mains.</span>
+            </td>
+            <td class="price-col">10$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Enlever Shellac</span>
+              <span class="item-desc">Pour enlever votre vernis Shellac sans endommager vos ongles.</span>
+            </td>
+            <td class="price-col">15$</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Enlever faux ongles</span>
+              <span class="item-desc">Pour enlever vos faux ongles de façon sécuritaire.</span>
+            </td>
+            <td class="price-col">20$</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Réparation de l'ongle</span></td>
+            <td class="price-col">10$+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Option française</span></td>
+            <td class="price-col">10$+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 6: ÉPILATION -->
+  <section id="page-epilation" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pédicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manucure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add on services</a>
+        <a href="#epilation" class="subpage-pill current" onclick="openServicePage('epilation')">Épilation</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Épilation</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Tarifs Épilation à la Cire</h3>
+        <span>Tarifs hors taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Zone</th>
+            <th>Tarif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="service-col"><span class="item-title">Sourcils</span></td><td class="price-col">12$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Lèvre supérieure</span></td><td class="price-col">10$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Menton</span></td><td class="price-col">10$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Cou</span></td><td class="price-col">15$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Aisselles</span></td><td class="price-col">15$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Demi-bras</span></td><td class="price-col">25$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bras</span></td><td class="price-col">30$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Demi-jambes</span></td><td class="price-col">30$ - 35$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Jambes complètes</span></td><td class="price-col">40$ - 45$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bikini</span></td><td class="price-col">20$ - 30$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Brésilien</span></td><td class="price-col">40$ - 45$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Dos</span></td><td class="price-col">35$</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       2 TRANG THÔNG TIN TIỆM: POLITIQUES & CARRIÈRES
+       ========================================================= -->
+
+  <!-- TRANG 7: POLITIQUES DU SALON -->
+  <section id="page-politiques" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#politiques" class="subpage-pill current" onclick="openServicePage('politiques')">Politiques du salon</a>
+        <a href="#carrieres" class="subpage-pill" onclick="openServicePage('carrieres')">Carrières / Recrutement</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Politiques du Salon</h2>
+      <p>Afin d'offrir une expérience agréable, ponctuelle et sécuritaire à toute notre clientèle.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-row">
+        <h4>1. Rendez-vous et ponctualité</h4>
+        <p>Nous vous recommandons de réserver votre rendez-vous à l'avance. En cas de retard de plus de <strong>15 minutes</strong>, nous pourrions devoir raccourcir le soin ou reporter votre rendez-vous afin de respecter l'horaire des clients suivants.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>2. Annulation et modification</h4>
+        <p>Si vous devez annuler ou déplacer votre rendez-vous, merci de nous prévenir au moins <strong>24 heures à l'avance</strong> par téléphone au (438) 777-7043 ou via notre système de réservation en ligne.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>3. Garantie et retouches (Vernis Gel / Pose d'ongles)</h4>
+        <p>Les soins avec Shellac, Bio Gel, Gel-X, Acrylique ou Résine et Poudre bénéficient d'une garantie de <strong>5 jours</strong> suivant votre visite en cas de décollement ou d'écaillement involontaire (hors bris causés par un choc ou un produit chimique). Veuillez nous contacter rapidement pour une retouche gratuite. Le vernis régulier n'est pas couvert par cette garantie.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>4. Hygiène et stérilisation</h4>
+        <p>La sécurité de nos clients est notre priorité absolue. Tous nos instruments métalliques sont désinfectés et stérilisés selon les normes d'hygiène strictes après chaque client, et les limes ainsi que les tampons sont à usage unique ou désinfectés.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>5. Satisfaction et politique de non-remboursement</h4>
+        <p>Veuillez vérifier la forme, la longueur et la couleur de vos ongles pendant la séance avec votre technicienne. Aucun remboursement n'est effectué une fois le service terminé et payé, mais nous ferons toujours le maximum pour ajuster le résultat avant votre départ.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>6. Taxes et modes de paiement</h4>
+        <p>Tous les tarifs affichés sont hors taxes (TPS et TVQ en sus). Nous acceptons les paiements par carte de débit (Interac), cartes de crédit (Visa, Mastercard, American Express), Apple Pay, Google Pay et argent comptant.</p>
+      </div>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+  <!-- TRANG 8: CARRIÈRES / RECRUTEMENT -->
+  <section id="page-carrieres" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Retour à l'accueil</button>
+      <div class="subpage-quick-nav">
+        <a href="#politiques" class="subpage-pill" onclick="openServicePage('politiques')">Politiques du salon</a>
+        <a href="#carrieres" class="subpage-pill current" onclick="openServicePage('carrieres')">Carrières / Recrutement</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Carrières — Rejoignez Notre Équipe</h2>
+      <p>Tui - La beauté des ongles recrute des technicien(ne)s passionné(e)s au cœur de Montréal.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-row">
+        <h4>Poste ouvert : Technicien(ne) en pose d'ongles & Esthétique</h4>
+        <p>Situé au <strong>100-1570 Rue Saint-Timothée, Montréal (QC H2L 3N9)</strong> — à quelques pas du métro Berri-UQAM — notre salon offre une ambiance chaleureuse, moderne et respectueuse avec une clientèle fidèle.</p>
+      </div>
+
+      <div class="info-row">
+        <h4>Compétences recherchées</h4>
+        <p>
+          • Maîtrise de la manucure et pédicure (vernis régulier & Shellac)<br>
+          • Expérience en pose d'ongles : Bio Gel, Gel-X, Acrylique ou Résine et Poudre<br>
+          • Sens du détail, souci de l'hygiène et excellent service à la clientèle<br>
+          • Atout : maîtrise du Nail Art (French, Chrome, Cat-Eye) ou de l'épilation à la cire
+        </p>
+      </div>
+
+      <div class="info-row">
+        <h4>Ce que nous offrons</h4>
+        <p>
+          • Horaire flexible (temps plein ou temps partiel, incluant les fins de semaine)<br>
+          • Rémunération compétitive + pourboires attractifs<br>
+          • Clientèle régulière et achalandage constant au centre-ville de Montréal<br>
+          • Environnement de travail propre, bien équipé et équipe accueillante
+        </p>
+      </div>
+
+      <div class="info-row">
+        <h4>Comment postuler ?</h4>
+        <p>Envoyez-nous votre nom, votre expérience et quelques photos de vos réalisations par courriel à <a href="mailto:tuinailspa@gmail.com" style="color:var(--link-blue);">tuinailspa@gmail.com</a> ou appelez-nous directement au <a href="tel:4387777043" style="color:var(--link-blue);">(438) 777-7043</a>.</p>
+      </div>
+    </div>
+
+    <div class="subpage-cta" style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+      <a href="mailto:tuinailspa@gmail.com?subject=Candidature%20-%20Technicien(ne)%20Tui%20Nail%20Spa" class="btn-outline" style="padding: 12px 28px; font-size: 14px;">Postuler par courriel</a>
+      <a href="tel:4387777043" class="btn-outline" style="padding: 12px 28px; font-size: 14px;">Appeler : (438) 777-7043</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER ĐƠN GIẢN
+       ========================================================= -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <a href="#" class="footer-logo" onclick="goHome()">
+          <img src="whitelogo.png" alt="Tui - La beauté des ongles">
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="payment-badges">
+          <span class="pay-badge">Apple Pay</span>
+          <span class="pay-badge">Google Pay</span>
+          <span class="pay-badge">VISA</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">AMEX</span>
+          <span class="pay-badge">Discover</span>
+          <span class="pay-badge">Interac</span>
+        </div>
+
+        <div class="footer-right">
+          <div class="social-circles">
+            <a href="mailto:tuinailspa@gmail.com" class="social-circle mail" title="Courriel" aria-label="Courriel">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-circle fb" title="Facebook" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="social-circle ig" title="Instagram" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+          <div class="footer-tagline">Welcoming Relaxed Atmosphere</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const validPages = [
+      'pedicure',
+      'manucure',
+      'nail-enhancement',
+      'combos',
+      'add-on-services',
+      'epilation',
+      'politiques',
+      'carrieres'
+    ];
+
+    function openServicePage(slug) {
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'none';
+
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const targetPage = document.getElementById('page-' + slug);
+      if (targetPage) {
+        targetPage.classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function goHome() {
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goHomeSection(sectionId) {
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'block';
+
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 40);
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (validPages.includes(hash)) {
+        openServicePage(hash);
+      }
+    });
+  </script>
+</body>
+</html>
