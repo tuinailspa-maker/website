@@ -2306,6 +2306,10 @@
         bouton.disabled = false;
         bouton.textContent = 'Send Message';
       }
+    } 
+    function switchLang(targetFile) {
+      const currentHash = window.location.hash || '';
+      window.location.href = targetFile + currentHash;
     }
   </script>
 </body>
