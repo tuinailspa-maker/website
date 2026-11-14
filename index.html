@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tui nail spa - La beauté des ongles</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tui - La beauté des ongles | Montréal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #f4f1ea;
-      --header-bg: #f6f4ef;
-      --location-bg: #efece4;
-      --footer-bg: #2e5984; 
-      --text-dark: #2c2a29;
-      --text-muted: #5e5a57;
-      --accent-red: #b81d24;
-      --link-blue: #4a6b82;
-      --border-color: #dedad2;
+      --bg-cream: #faf8f5;
+      --header-bg: #f5f2eb;
+      --table-head-bg: #efece6;
+      --text-dark: #1c1b1a;
+      --text-muted: #6b6863;
+      --border-color: #e5e0d8;
+      --footer-navy: #2f3f50;
+      --link-blue: #1a73e8;
     }
 
     * {
@@ -32,420 +30,281 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ================= 1. HEADER / NAVIGATION ================= */
+    /* --- 1. HEADER & MENU THẢ XUỐNG --- */
     header {
       background-color: var(--header-bg);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 32px;
+      padding: 12px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
 
     .logo-wrapper {
       display: flex;
       align-items: center;
       flex-shrink: 0;
+      text-decoration: none;
     }
 
-    .brand-logo-box {
-      position: relative;
-      width: 86px;
-      height: 86px;
+    .logo-wrapper img {
+      height: 84px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .nav-links {
+      list-style: none;
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
+      gap: 24px;
     }
 
-    .brand-logo-box:hover {
-      transform: scale(1.04);
+    .nav-links > li {
+      position: relative;
     }
 
-    .brand-logo-box img {
-      width: 86px;
-      height: 86px;
-      object-fit: contain;
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.65;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 215px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 6px 0;
+      list-style: none;
+      z-index: 1001;
+    }
+
+    .nav-links li:hover .dropdown-menu {
       display: block;
     }
 
-    /* Thấu kính tròn nằm lọt lòng bên trong, tự động biến chữ trắng gốc thành chữ đen */
-    .brand-logo-inner-lens {
-      position: absolute;
-      inset: 15px;
-      border-radius: 50%;
-      backdrop-filter: invert(1) contrast(1.4);
-      -webkit-backdrop-filter: invert(1) contrast(1.4);
-      pointer-events: none;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links li a {
-      font-size: 14px;
-      font-weight: 500;
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13.5px;
       color: var(--text-dark);
-      transition: color 0.2s ease;
+      border-bottom: 1px solid #f4f1ec;
     }
 
-    .nav-links li a:hover {
-      color: var(--accent-red);
+    .dropdown-menu li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #faf8f5;
+      opacity: 1;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
     .btn-outline {
-      border: 1.5px solid #4a4845;
+      padding: 9px 22px;
+      border: 1px solid var(--text-dark);
+      border-radius: 999px;
       background: transparent;
       color: var(--text-dark);
-      padding: 8px 20px;
-      border-radius: 999px;
       font-size: 13.5px;
       font-weight: 500;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
       transition: all 0.25s ease;
     }
 
     .btn-outline:hover {
       background-color: var(--text-dark);
-      color: #fff;
+      color: #ffffff;
     }
 
-    .icon-btn {
+    /* Mobile menu button */
+    .mobile-menu-toggle {
+      display: none;
       background: none;
-      border: none;
+      border: 1px solid #d5d1c8;
+      border-radius: 6px;
+      padding: 7px 11px;
+      font-size: 18px;
       cursor: pointer;
       color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 4px;
     }
 
-    .cart-badge {
-      position: absolute;
-      top: -2px;
-      right: -4px;
-      background-color: var(--accent-red);
-      color: white;
-      font-size: 10px;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .mobile-drawer {
+      display: none;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 24px 20px;
     }
 
-    /* ================= 2. HERO SECTION ================= */
-    .hero-wrapper {
-      max-width: 1200px;
-      margin: 24px auto 0;
-      padding: 0 32px;
+    .mobile-drawer.open {
+      display: block;
     }
 
+    .mobile-drawer a {
+      display: block;
+      padding: 9px 0;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 14.5px;
+      border-bottom: 1px dashed #ece8e0;
+    }
+
+    .mobile-drawer .mobile-sub-links {
+      padding-left: 16px;
+      background: #faf8f5;
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    /* --- 2. MAIN BANNER --- */
     .hero-banner {
       position: relative;
       width: 100%;
-      height: 440px;
-      background-color: #c5c3b6;
-      background-image: linear-gradient(
-          to right,
-          rgba(195, 193, 180, 0.92) 0%,
-          rgba(195, 193, 180, 0.45) 45%,
-          rgba(195, 193, 180, 0.05) 100%
-        ),
-        url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: right center;
+      height: 460px;
+      background: linear-gradient(to right, #c9c7ba 0%, #dcdad0 45%, #e8e6df 100%);
+      overflow: hidden;
       display: flex;
       align-items: center;
-      overflow: hidden;
+      justify-content: center;
     }
 
-    .hero-cta-box {
-      margin-left: 34%;
-      margin-top: -40px;
+    .hero-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px;
     }
 
     .btn-hero {
-      background-color: #f6f4ef;
-      color: #2c2a29;
+      padding: 13px 32px;
+      background-color: #ffffff;
+      color: var(--text-dark);
       border: none;
-      padding: 11px 26px;
       border-radius: 999px;
-      font-size: 13.5px;
+      font-size: 14.5px;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     }
 
     .btn-hero:hover {
-      background-color: #ffffff;
-      transform: translateY(-2px);
+      background-color: var(--text-dark);
+      color: #ffffff;
+      transform: translateY(-1px);
     }
 
-    /* ================= 3. SEE IT IN ACTION (YOUTUBE VIDEO) ================= */
+    /* --- 3. VIDÉO ("SEE IT IN ACTION") --- */
     .action-section {
+      padding: 72px 24px 64px;
       max-width: 960px;
-      margin: 56px auto 64px;
-      padding: 0 32px;
+      margin: 0 auto;
       text-align: center;
     }
 
     .action-section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 500;
-      color: var(--text-dark);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .action-section p.subtitle {
+    .action-section .subtitle {
       font-size: 14.5px;
       color: var(--text-muted);
       margin-bottom: 32px;
     }
 
-    .video-embed-card {
+    .video-frame-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 4px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #d7d2cc 0%, #e5d4d8 60%, #c89eb2 100%);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .yt-top-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 14px 18px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 5;
-      color: #fff;
-    }
-
-    .yt-channel-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .yt-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: #d97b54;
-      color: #fff;
-      font-weight: 600;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid rgba(255, 255, 255, 0.8);
-    }
-
-    .yt-title-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.25;
-    }
-
-    .yt-video-title {
-      font-size: 15px;
-      font-weight: 500;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-    }
-
-    .yt-channel-sub {
-      font-size: 12px;
-      opacity: 0.85;
-    }
-
-    .slide-content {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      align-items: center;
-      padding: 56px 40px 44px;
-      gap: 24px;
-      position: relative;
-    }
-
-    .slide-image-box {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      padding-bottom: 56.25%;
       border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      background: #000;
     }
 
-    .slide-image-box img {
-      width: 100%;
-      height: 85%;
-      object-fit: cover;
-      border-radius: 6px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .slide-text-box {
-      color: #3a3735;
-      padding-right: 12px;
-      position: relative;
-    }
-
-    .slide-logo-img {
+    .video-frame-wrapper iframe {
       position: absolute;
-      top: -42px;
-      right: 0;
-      width: 68px;
-      height: auto;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-    }
-
-    .slide-text-box h3 {
-      font-size: 22px;
-      font-weight: 500;
-      color: #4a4643;
-      margin-bottom: 14px;
-      text-align: center;
-    }
-
-    .slide-text-box p {
-      font-size: 14.5px;
-      line-height: 1.55;
-      color: #44403d;
-      text-align: center;
-    }
-
-    .yt-play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 68px;
-      height: 48px;
-      background-color: #ff0000;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-      transition: transform 0.2s ease, background-color 0.2s ease;
-      z-index: 6;
-    }
-
-    .video-embed-card:hover .yt-play-btn {
-      transform: translate(-50%, -50%) scale(1.08);
-      background-color: #e60000;
-    }
-
-    .yt-bottom-left {
-      position: absolute;
-      bottom: 14px;
-      left: 16px;
-      display: flex;
-      gap: 10px;
-      z-index: 5;
-    }
-
-    .yt-circle-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .yt-watch-badge {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      background: rgba(23, 23, 23, 0.85);
-      color: #fff;
-      padding: 7px 14px;
-      border-radius: 3px;
-      font-size: 12.5px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 5;
-    }
-
-    .video-iframe {
+      inset: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      display: none;
+      border: 0;
     }
 
-    /* ================= 4. LOCATION & HOURS SECTION ================= */
+    /* --- 4. ADRESSE & HEURES --- */
     .location-section {
-      background-color: var(--location-bg);
+      padding: 72px 24px;
+      max-width: 1140px;
+      margin: 0 auto;
       border-top: 1px solid var(--border-color);
-      padding: 64px 32px;
     }
 
-    .location-container {
-      max-width: 1120px;
-      margin: 0 auto;
+    .location-grid {
       display: grid;
-      grid-template-columns: 1.15fr 1fr 0.9fr;
-      gap: 44px;
-      align-items: start;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
     .map-wrapper {
       width: 100%;
-      height: 310px;
-      border-radius: 2px;
+      height: 360px;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid #d5d1c8;
       background-color: #e5e3df;
@@ -455,96 +314,84 @@
       width: 100%;
       height: 100%;
       border: 0;
-      filter: saturate(0.85);
     }
 
     .location-details h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 23px;
+      font-size: 28px;
       font-weight: 500;
-      color: var(--text-dark);
       margin-bottom: 24px;
+    }
+
+    .location-columns {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 24px;
     }
 
     .location-info-text {
       font-size: 13.5px;
-      color: var(--text-dark);
       line-height: 1.65;
     }
 
     .location-info-text .business-name {
-      font-weight: 500;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
 
     .location-info-text a {
       color: var(--link-blue);
+      text-decoration: none;
       display: inline-block;
-      transition: opacity 0.2s;
+      margin-top: 4px;
     }
 
     .location-info-text a:hover {
       text-decoration: underline;
-      opacity: 0.85;
     }
 
-    .directions-link {
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    .hours-list {
-      margin-top: 52px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .hours-table {
+      width: 100%;
       font-size: 13px;
+      border-collapse: collapse;
     }
 
-    .hours-row {
-      display: grid;
-      grid-template-columns: 105px 1fr;
-      gap: 12px;
-      align-items: baseline;
-    }
-
-    .hours-day {
-      font-weight: 600;
+    .hours-table td {
+      padding: 4px 0;
       color: var(--text-dark);
     }
 
-    .hours-time {
+    .hours-table td:last-child {
+      text-align: right;
       color: var(--text-muted);
     }
 
-    /* ================= 5. CONTACT US SECTION ================= */
+    /* --- 5. CONTACTEZ-NOUS --- */
     .contact-section {
-      background-color: var(--bg-color);
+      padding: 72px 24px 84px;
+      max-width: 1140px;
+      margin: 0 auto;
       border-top: 1px solid var(--border-color);
-      padding: 72px 32px;
     }
 
-    .contact-container {
-      max-width: 960px;
-      margin: 0 auto;
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 64px;
+      gap: 48px;
       align-items: start;
     }
 
-    .contact-intro h2 {
+    .contact-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 23px;
+      font-size: 28px;
       font-weight: 500;
-      color: var(--text-dark);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .contact-intro p {
-      font-size: 13.5px;
+    .contact-text p {
+      font-size: 14px;
       color: var(--text-muted);
-      max-width: 310px;
-      line-height: 1.6;
+      max-width: 360px;
     }
 
     .contact-form {
@@ -553,1288 +400,103 @@
       gap: 14px;
     }
 
-    .contact-input,
-    .contact-textarea,
-    .careers-select {
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
-      background-color: transparent;
-      border: 1px solid #c5c1b8;
-      border-radius: 3px;
-      padding: 12px 14px;
+      padding: 13px 16px;
+      border: 1px solid #d5d1c8;
+      border-radius: 4px;
+      background: #ffffff;
       font-family: inherit;
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-dark);
-      transition: border-color 0.2s ease;
     }
 
-    .contact-input::placeholder,
-    .contact-textarea::placeholder {
-      color: #827e79;
-    }
-
-    .contact-input:focus,
-    .contact-textarea:focus,
-    .careers-select:focus {
-      outline: none;
-      border-color: var(--text-dark);
-    }
-
-    .contact-textarea {
-      min-height: 105px;
+    .contact-form textarea {
+      min-height: 110px;
       resize: vertical;
     }
 
-    .recaptcha-note {
-      font-size: 11px;
-      color: #7c7873;
-      line-height: 1.45;
-      margin-top: 2px;
-    }
-
-    .recaptcha-note a {
-      text-decoration: underline;
-    }
-
-    .btn-contact-submit {
+    .contact-form button {
       align-self: flex-start;
-      background-color: #d6d2c9;
-      color: #4a4744;
-      border: none;
-      padding: 10px 24px;
+      padding: 11px 28px;
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 4px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .btn-contact-submit:hover {
-      background-color: var(--text-dark);
-      color: #ffffff;
-    }
-
-    /* ================= 6. CAREERS / TUYỂN THỢ NAIL SECTION ================= */
-    .careers-section {
-      background-color: var(--location-bg);
-      border-top: 1px solid var(--border-color);
-      padding: 72px 32px;
-    }
-
-    .careers-container {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-
-    .careers-header {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 44px;
-    }
-
-    .careers-badge {
-      display: inline-block;
-      background-color: #e2dcd0;
-      color: var(--text-dark);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-      letter-spacing: 0.4px;
-    }
-
-    .careers-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 500;
-      color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-
-    .careers-header p {
-      font-size: 14.5px;
-      color: var(--text-muted);
-    }
-
-    .job-card {
-      background-color: var(--bg-color);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 36px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    }
-
-    .job-top-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 28px;
-    }
-
-    .job-title-group h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-
-    .job-meta-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12.5px;
-      color: var(--text-muted);
-    }
-
-    .job-tag {
-      background-color: #ebe6dc;
-      padding: 4px 12px;
-      border-radius: 4px;
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-
-    .job-tag.highlight {
-      background-color: #dce6df;
-      color: #214e34;
-      font-weight: 600;
-    }
-
-    .job-cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .btn-apply-primary {
-      background-color: var(--text-dark);
-      color: #fff;
-      padding: 11px 26px;
-      border-radius: 999px;
-      font-size: 13.5px;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-      transition: background-color 0.2s ease;
-    }
-
-    .btn-apply-primary:hover {
-      background-color: var(--accent-red);
-    }
-
-    .btn-apply-secondary {
-      background-color: transparent;
-      color: var(--text-dark);
-      border: 1.5px solid #4a4845;
-      padding: 9.5px 22px;
-      border-radius: 999px;
-      font-size: 13.5px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-apply-secondary:hover {
-      background-color: #e5e0d5;
-    }
-
-    .job-details-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      font-size: 13.5px;
-      color: var(--text-dark);
-    }
-
-    .job-col h4 {
-      font-size: 14.5px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
-    .job-col p {
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-
-    .job-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .job-list li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--text-dark);
-      line-height: 1.55;
-    }
-
-    .job-list li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
-      color: var(--accent-red);
-      font-weight: bold;
-    }
-
-    .comp-box {
-      background-color: #efeae0;
-      border-left: 3px solid var(--accent-red);
-      padding: 14px 18px;
-      border-radius: 4px;
-      margin-top: 8px;
-    }
-
-    .comp-box strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .quick-apply-drawer {
-      display: none;
-      margin-top: 28px;
-      padding-top: 28px;
-      border-top: 1px dashed var(--border-color);
-    }
-
-    .quick-apply-drawer.open {
-      display: block;
-    }
-
-    .careers-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 680px;
-    }
-
-    .careers-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    /* ================= 7. EXPLORE OUR INSTAGRAM SECTION ================= */
-    .instagram-section {
-      background-color: var(--bg-color);
-      border-top: 1px solid var(--border-color);
-      padding: 56px 32px 68px;
-    }
-
-    .instagram-container {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .instagram-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .insta-title-group h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--text-dark);
-      line-height: 1.25;
-    }
-
-    .insta-handle {
-      display: inline-block;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      transition: color 0.2s;
-    }
-
-    .insta-handle:hover {
-      color: var(--text-dark);
-      text-decoration: underline;
-    }
-
-    .insta-nav-arrows {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .arrow-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 18px;
-      padding: 4px 8px;
-      transition: color 0.2s ease;
-    }
-
-    .arrow-btn:hover {
-      color: var(--text-dark);
-    }
-
-    .insta-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .insta-item {
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border-radius: 3px;
-      position: relative;
-      background-color: #dcd8cf;
-      display: block;
-    }
-
-    .insta-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .insta-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .insta-cta-wrapper {
-      text-align: center;
-      margin-top: 32px;
-    }
-
-    .btn-see-feed {
-      display: inline-block;
-      background-color: #e4e0d6;
-      color: #4a4744;
-      padding: 10px 26px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .btn-see-feed:hover {
-      background-color: var(--text-dark);
-      color: #ffffff;
-    }
-
-    /* ================= 8. FOOTER (MÀU XANH NAVY ĐẬM) ================= */
-    footer {
-      background-color: var(--footer-bg);
-      color: #f4f1ea;
-      padding: 48px 32px 36px;
-    }
-
-    .footer-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .footer-logo-img {
-      height: 86px;
-      width: auto;
-      display: block;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      list-style: none;
-      font-size: 13.5px;
-    }
-
-    .footer-links a {
-      color: rgba(244, 241, 234, 0.9);
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-    }
-
-    .footer-bottom {
-      max-width: 1120px;
-      margin: 32px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.16);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-size: 12.5px;
-      color: rgba(244, 241, 234, 0.78);
-    }
-
-    /* ================= MODAL ĐẶT LỊCH ================= */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      padding: 16px;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
-      background: #fff;
-      width: 100%;
-      max-width: 440px;
-      border-radius: 12px;
-      padding: 28px;
-      position: relative;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-      color: var(--text-dark);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: #666;
-    }
-
-    .modal-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-
-    .modal-box p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-      text-align: left;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 5px;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      font-family: inherit;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background-color: var(--text-dark);
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-
-    .btn-submit:hover {
-      background-color: var(--accent-red);
-    }
-
-    /* ================= RESPONSIVE ================= */
-    @media (max-width: 920px) {
-      .nav-links {
-        display: none;
-      }
-      .hero-banner {
-        height: 320px;
-      }
-      .hero-cta-box {
-        margin-left: 12%;
-        margin-top: 0;
-      }
-      .location-container,
-      .contact-container,
-      .job-details-grid,
-      .careers-row {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .job-card {
-        padding: 24px 20px;
-      }
-      .hours-list {
-        margin-top: 0;
-      }
-      .insta-gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .video-embed-card {
-        aspect-ratio: auto;
-        min-height: 340px;
-      }
-      .slide-content {
-        grid-template-columns: 1fr;
-        padding: 64px 20px 52px;
-      }
-      .slide-image-box,
-      .slide-logo-img {
-        display: none;
-      }
-    }
-  </style>
-  /* --- SECTION SERVICES & TARIFS --- */
-    .services-section {
-      padding: 80px 24px;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .services-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      font-weight: 500;
-      color: var(--text-dark, #1c1b1a);
-      margin-bottom: 8px;
-    }
-
-    .services-header p {
-      font-size: 14px;
-      color: #6b6863;
-      margin: 0;
-    }
-
-    .service-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    .service-tab-btn {
-      padding: 10px 20px;
       border: 1px solid #d5d1c8;
-      background: transparent;
-      border-radius: 30px;
+      background: #e9e6df;
+      color: var(--text-dark);
       font-size: 13.5px;
       font-weight: 500;
-      color: #333;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s;
     }
 
-    .service-tab-btn:hover,
-    .service-tab-btn.active {
-      background-color: #1c1b1a;
-      color: #fff;
-      border-color: #1c1b1a;
+    .contact-form button:hover {
+      background: var(--text-dark);
+      color: #ffffff;
+      border-color: var(--text-dark);
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px 36px;
-    }
-
-    .service-category-card {
-      background: #ffffff;
-      border: 1px solid #ece8e0;
-      border-radius: 8px;
-      padding: 28px 30px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-    }
-
-    .service-category-card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .service-category-card.hidden {
+    /* --- 6. TRANG CON DỊCH VỤ & BẢNG GIÁ DẠNG TABLE MATRIX --- */
+    .service-subpage {
       display: none;
+      padding: 56px 24px 88px;
+      max-width: 1020px;
+      margin: 0 auto;
+      min-height: 65vh;
     }
 
-    .service-category-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      font-weight: 600;
-      color: #1c1b1a;
-      padding-bottom: 10px;
-      margin: 0 0 14px 0;
-      border-bottom: 1px solid #e5e0d8;
+    .service-subpage.active-page {
+      display: block;
+      animation: fadeInPage 0.25s ease;
     }
 
-    .service-category-desc {
-      font-size: 13px;
-      color: #6b6863;
-      line-height: 1.5;
-      margin-bottom: 18px;
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .price-matrix {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 14px;
-    }
-
-    .price-matrix th {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      color: #6b6863;
-      text-align: right;
-      padding: 8px 6px;
-      border-bottom: 1px solid #e5e0d8;
-    }
-
-    .price-matrix th:first-child {
-      text-align: left;
-      padding-left: 0;
-    }
-
-    .price-matrix td {
-      font-size: 14px;
-      color: #1c1b1a;
-      padding: 11px 6px;
-      border-bottom: 1px dashed #ece8e0;
-      text-align: right;
-      font-weight: 600;
-    }
-
-    .price-matrix td:first-child {
-      text-align: left;
-      padding-left: 0;
-      font-weight: 500;
-    }
-
-    .price-matrix tr:last-child td {
-      border-bottom: none;
-    }
-
-    .sub-heading-label {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #7c6f64;
-      margin: 22px 0 8px 0;
-    }
-
-    .service-item {
+    .subpage-breadcrumb {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 11px 0;
-      border-bottom: 1px dashed #ece8e0;
-      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .service-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .back-home-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
     }
 
-    .service-info h4 {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #1c1b1a;
-      margin: 0 0 3px 0;
+    .back-home-btn:hover {
+      color: var(--text-dark);
+      text-decoration: underline;
     }
 
-    .service-info p {
+    .subpage-quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .subpage-pill {
+      padding: 6px 14px;
+      border: 1px solid #d5d1c8;
+      border-radius: 999px;
       font-size: 12.5px;
-      color: #6b6863;
-      margin: 0;
-      line-height: 1.4;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.2s;
     }
 
-    .service-price {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #1c1b1a;
-      white-space: nowrap;
-    }
-
-    .waxing-columns {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 36px;
-    }
-
-    .services-cta {
-      text-align: center;
-      margin-top: 44px;
-    }
-
-    @media (max-width: 768px) {
-      .service-grid,
-      .waxing-columns {
-        grid-template-columns: 1fr;
-      }
-      .service-category-card {
-        padding: 22px 18px;
-      }
-      .price-matrix th,
-      .price-matrix td {
-        font-size: 13px;
-        padding: 9px 4px;
-      }
-    }
-</head>
-<body>
-
-  <!-- 1. THANH ĐIỀU HƯỚNG (HEADER) -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo-wrapper">
-        <img src="blacklogo.jpg" alt="Tui - La beauté des ongles" style="height: 84px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply;">
-      </a>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#instagram">Instagram</a></li>
-        <li><a href="#location">Location &amp; Hours</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#careers">Careers / Tuyển thợ</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <button class="btn-outline" onclick="openBookingModal()">Book now</button>
-        
-        <button class="icon-btn" title="Search" onclick="alert('Rechercher un produit ou service...')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-
-        <button class="icon-btn" title="Cart" onclick="alert('Votre panier est vide.')">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
-          <span class="cart-badge">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- 2. ẢNH BÌA CHÍNH (HERO BANNER) -->
-  <section class="hero-wrapper">
-    <div class="hero-banner">
-      <div class="hero-cta-box">
-        <button class="btn-hero" onclick="openBookingModal()">Book now</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. KHU VỰC VIDEO ("SEE IT IN ACTION") -->
-  <section class="action-section" >
-    <h2>See it in Action</h2>
-    <p class="subtitle">Get first peek making of our service</p>
-
-    <div class="video-embed-card" id="videoCard" onclick="playYouTubeVideo()">
-      <div class="yt-top-bar">
-        <div class="yt-channel-info">
-          <div class="yt-avatar">Tui</div>
-          <div class="yt-title-text">
-            <span class="yt-video-title">tuinailspa</span>
-            <span class="yt-channel-sub">Tuinailspa official</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-content" id="videoCover">
-        <div class="slide-image-box">
-          <img src="https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?auto=format&fit=crop&w=700&q=80" alt="Traitement à la paraffine">
-        </div>
-
-        <div class="slide-text-box">
-          <img src="whitelogo.png" alt="Tui Logo" class="slide-logo-img">
-
-          <h3>Traitement à la paraffine</h3>
-          <p>
-            Un traitement combiné à la paraffine (mains ou pieds) est recommandé pour résoudre plusieurs problèmes de peau dont le psoriasis, l'eczéma et les érythroses en générale. La paraffine protège et hydrate en profondeur et de façon durable et permet aussi de soulager les muscles et les ligaments endoloris, l'arthrite, l'arthrose et les rhumatismes.
-          </p>
-        </div>
-      </div>
-
-      <div class="yt-play-btn" id="ytPlayBtn">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="#ffffff">
-          <polygon points="8,5 19,12 8,19"></polygon>
-        </svg>
-      </div>
-
-      <div class="yt-bottom-left" id="ytBottomLeft">
-        <div class="yt-circle-icon" title="Share">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 14 20 9 15 4"></polyline>
-            <path d="M4 20v-7a4 4 0 0 1 4-4h12"></path>
-          </svg>
-        </div>
-        <div class="yt-circle-icon" title="Watch later">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-        </div>
-      </div>
-
-      <div class="yt-watch-badge" id="ytWatchBadge">
-        <span>Watch on</span>
-        <strong style="letter-spacing: -0.3px;">YouTube</strong>
-      </div>
-
-      <iframe
-        id="ytIframe"
-        class="video-iframe"
-        src=""
-        title="Tuinailspa YouTube Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
-
-<!-- SECTION SERVICES & TARIFS (100% FRANÇAIS) -->
-  <section id="services" class="services-section">
-    <div class="services-header">
-      <h2>Liste de Prix & Services</h2>
-      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
-    </div>
-
-    <!-- Barre de filtrage par catégorie -->
-    <div class="service-tabs">
-      <button class="service-tab-btn active" onclick="filterServices('all', this)">Tous les services</button>
-      <button class="service-tab-btn" onclick="filterServices('mains-pieds', this)">Mains & Pieds</button>
-      <button class="service-tab-btn" onclick="filterServices('combos', this)">Combos</button>
-      <button class="service-tab-btn" onclick="filterServices('ongles', this)">Les Ongles</button>
-      <button class="service-tab-btn" onclick="filterServices('extras', this)">Ajouter les services</button>
-      <button class="service-tab-btn" onclick="filterServices('epilation', this)">Épilation</button>
-    </div>
-
-    <div class="service-grid">
-      <!-- 1. SOIN LES PIEDS - LES MAINS -->
-      <div class="service-category-card" data-category="mains-pieds">
-        <h3 class="service-category-title">Soin Les Mains & Les Pieds</h3>
-        <p class="service-category-desc">
-          <strong>Services de Manucure :</strong> Trempage, limage des ongles, cuticules, léger massage.<br>
-          <strong>Services de Pédicure :</strong> Ce pédicure a été conçu pour les clients pressés : limage des ongles, coupe des cuticules, polissage des callosités, exfoliation des pieds, léger massage des pieds. Plus... callosités, corne, peau morte épaisse, ongles épaissis, difficiles à couper, fissures sous les pieds, aux talons.
-        </p>
-
-        <table class="price-matrix">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Sans vernis</th>
-              <th>Vernis régulier</th>
-              <th>Shellac</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Manucure</td>
-              <td>20$</td>
-              <td>25$</td>
-              <td>35$</td>
-            </tr>
-            <tr>
-              <td>Manucure Shellac avec calcium<br><small style="color:#6b6863; font-weight:400;">En base avec du calcium ajouté pour aider à renforcer les ongles fragiles et cassants</small></td>
-              <td>—</td>
-              <td>—</td>
-              <td>40$</td>
-            </tr>
-            <tr>
-              <td>Pédicure</td>
-              <td>35$</td>
-              <td>40$</td>
-              <td>50$</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 2. COMBOS -->
-      <div class="service-category-card" data-category="combos">
-        <h3 class="service-category-title">Combos Mani-Pédi</h3>
-        <p class="service-category-desc">Forfaits combinés pour le soin complet des mains et des pieds.</p>
-
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Mani-Pédi sans vernis</h4>
-          </div>
-          <span class="service-price">55$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Mani-Pédi avec vernis régulier</h4>
-          </div>
-          <span class="service-price">65$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Mani-Pédi Shellac</h4>
-          </div>
-          <span class="service-price">80$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Mani-Pédi Shellac (avec calcium gel en base)</h4>
-            <p>Protection et renforcement supplémentaire des ongles naturels.</p>
-          </div>
-          <span class="service-price">95$</span>
-        </div>
-      </div>
-
-      <!-- 3. LES ONGLES -->
-      <div class="service-category-card full-width" data-category="ongles">
-        <h3 class="service-category-title">Les Ongles — Pose, Remplissages & Résine et Poudre</h3>
-
-        <div class="sub-heading-label">Pose d'ongles</div>
-        <table class="price-matrix">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Vernis régulier</th>
-              <th>Shellac</th>
-              <th>Extra long</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Acrylique</td>
-              <td>48$</td>
-              <td>55$</td>
-              <td>65$+</td>
-            </tr>
-            <tr>
-              <td>Bio Gel</td>
-              <td>48$</td>
-              <td>55$</td>
-              <td>65$+</td>
-            </tr>
-            <tr>
-              <td>Après Gel X</td>
-              <td>48$</td>
-              <td>55$</td>
-              <td>65$+</td>
-            </tr>
-            <tr>
-              <td>Recouvrement sur ongles naturels</td>
-              <td>48$</td>
-              <td>55$</td>
-              <td>65$+</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="sub-heading-label">Remplissages</div>
-        <table class="price-matrix">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Vernis régulier</th>
-              <th>Shellac</th>
-              <th>Extra long</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Acrylique</td>
-              <td>40$</td>
-              <td>47$</td>
-              <td>60$+</td>
-            </tr>
-            <tr>
-              <td>Bio Gel</td>
-              <td>40$</td>
-              <td>47$</td>
-              <td>60$+</td>
-            </tr>
-            <tr>
-              <td>Après Gel X</td>
-              <td>40$</td>
-              <td>47$</td>
-              <td>60$+</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="sub-heading-label">Résine et Poudre</div>
-        <table class="price-matrix">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Régulier</th>
-              <th>Extra long</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sans pointes d'ongles</td>
-              <td>50$</td>
-              <td>60$+</td>
-            </tr>
-            <tr>
-              <td>Avec pointes d'ongles</td>
-              <td>55$</td>
-              <td>65$+</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 4. AJOUTER LES SERVICES -->
-      <div class="service-category-card" data-category="extras">
-        <h3 class="service-category-title">Ajouter les Services</h3>
-
-        <div class="sub-heading-label" style="margin-top:0;">Application de vernis</div>
-        <table class="price-matrix">
-          <thead>
-            <tr>
-              <th>Zone</th>
-              <th>Vernis régulier</th>
-              <th>Shellac</th>
-              <th>Faux ongle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Les mains</td>
-              <td>18$</td>
-              <td>30$</td>
-              <td>40$</td>
-            </tr>
-            <tr>
-              <td>Les pieds</td>
-              <td>22$</td>
-              <td>32$</td>
-              <td>—</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Traitement Paraffine (Les mains / Les pieds)</h4>
-            <p>Paraffine chaude et liquide mise dans un sac individuel pour chaque pied ou main, procurant confort, hydratation et souplesse.</p>
-          </div>
-          <span class="service-price">12$ / 15$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Traitement au Collagène</h4>
-            <p>Enrichi de collagène, d'huile d'olive et d'huile d'argan, la crème hydratante ultra-nutritionnelle protège, nourrit et hydrate les pieds et les mains.</p>
-          </div>
-          <span class="service-price">10$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Enlever Shellac</h4>
-            <p>Pour enlever votre vernis Shellac sans endommager vos ongles.</p>
-          </div>
-          <span class="service-price">15$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Enlever faux ongles</h4>
-            <p>Pour enlever vos faux ongles de façon sécuritaire.</p>
-          </div>
-          <span class="service-price">20$</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Réparation de l'ongle</h4>
-          </div>
-          <span class="service-price">10$+</span>
-        </div>
-        <div class="service-item">
-          <div class="service-info">
-            <h4>Option française</h4>
-          </div>
-          <span class="service-price">10$+</span>
-        </div>
-      </div>
-
-      <!-- 5. ÉPILATION -->
-      <div class="service-category-card" data-category="epilation">
-        <h3 class="service-category-title">Épilation</h3>
-        <div class="waxing-columns">
-          <div>
-            <div class="service-item">
-              <div class="service-info"><h4>Sourcils</h4></div>
-              <span class="service-price">12$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Lèvre supérieure</h4></div>
-              <span class="service-price">10$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Menton</h4></div>
-              <span class="service-price">10$+</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Cou</h4></div>
-              <span class="service-price">15$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Aisselles</h4></div>
-              <span class="service-price">15$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Demi-bras</h4></div>
-              <span class="service-price">25$</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="service-item">
-              <div class="service-info"><h4>Bras</h4></div>
-              <span class="service-price">30$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Demi-jambes</h4></div>
-              <span class="service-price">30$ - 35$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Jambes complètes</h4></div>
-              <span class="service-price">40$ - 45$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Bikini</h4></div>
-              <span class="service-price">20$ - 30$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Brésilien</h4></div>
-              <span class="service-price">40$ - 45$</span>
-            </div>
-            <div class="service-item">
-              <div class="service-info"><h4>Dos</h4></div>
-              <span class="service-price">35$</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="services-cta">
-      <button class="btn-outline" onclick="openBookingModal()" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</button>
-    </div>
-  </section>
-
-  <script>
-    function filterServices(category, btn) {
-      document.querySelectorAll('.service-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.service-category-card').forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-  </script>
-  
-  <!-- 4. KHU VỰC ĐỊA CHỈ & GIỜ MỞ CỬA ("LOCATION & HOURS") -->
-  <section class="location-section" id="location">
-    <div class="location-container">
-      <div class="map-wrapper">
-        <iframe
-          src="https://maps.google.com/maps?q=1570%20Rue%20Saint-Timoth%C3%A9e,%20Montr%C3%A9al,%20QC%20H2L%203N9&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Google Maps - Tui nail spa">
-        </iframe>
-      </div>
-
-      <div class="location-details">
-        <h2>Location &amp; Hours</h2>
-        <div class="location-info-text">
-          <p class="business-name">Tui nail spa</p>
-          <p>100-1570 Rue Saint-Timothée</p>
-          <p>Montréal, Quebec H2L 3N9</p>
-          <p><a href="tel:4387777043">(438) 777-7043</a></p>
-          <p><a href="mailto:tuinailspa@gmail.com">tuinailspa@gmail.com</a></p>
-          <p class="directions-link">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=1570+Rue+Saint-Timoth%C3%A9e,+Montr%C3%A9al,+QC+H2L+3N9" target="_blank" rel="noopener">
-              Get directions
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="hours-list">
-        <div class="hours-row">
-          <span class="hours-day">Monday</span>
-          <span class="hours-time">10:00 a.m. - 7:00 p.m.</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">Tuesday</span>
-          <span class="hours-time">10:00 a.m. - 7:00 p.m.</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">Wednesday</span>
-          <span class="hours-time">10:00 a.m. - 7:00 p.m.</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">Thursday</span>
-          <span class="hours-time">10:00 a.m. - 8:00 p.m.</span>
-        </div>
-        <div class="hours-row">
-          <span class="hours-day">Friday</span>
-          <span class="hours-time">10:00 a.m. - 8:00 p.m.</span>
+    .subpage-pill:hover,
+    .subpage-pill.current {
+      background-color
