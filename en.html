@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tui - Nail Salon & Spa | Montreal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #121212;
+      --header-bg: #161616;
+      --card-dark: #030303;
+      --text-light: #ffffff;
+      --text-muted: #a3a3a3;
+      --gold-primary: #d4af37;
+      --gold-champagne: #d4c5a1;
+      --border-gold: rgba(212, 175, 55, 0.35);
+      --link-blue: #60a5fa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* --- 1. HEADER & DROPDOWN --- */
+    header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-gold);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .logo-wrapper img {
+      height: 84px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links > li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e5e5e5;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 245px;
+      background: #1a1a1a;
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.65);
+      padding: 6px 0;
+      list-style: none;
+      z-index: 1001;
+    }
+
+    .nav-links li:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      color: #e5e5e5;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .dropdown-menu li:last-child a {
+      border-bottom: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #242018;
+      color: var(--gold-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn-outline {
+      padding: 9px 22px;
+      border: 1px solid var(--gold-primary);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--gold-primary);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--gold-primary);
+      color: #050505;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-gold);
+      border-radius: 6px;
+      padding: 7px 11px;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--gold-primary);
+    }
+
+    .mobile-drawer {
+      display: none;
+      background: #161616;
+      border-bottom: 1px solid var(--border-gold);
+      padding: 14px 24px 20px;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-drawer a {
+      display: block;
+      padding: 9px 0;
+      color: #e5e5e5;
+      text-decoration: none;
+      font-size: 14.5px;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+
+    .mobile-drawer .mobile-sub-links {
+      padding-left: 16px;
+      background: #1d1d1d;
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    /* --- 2. MAIN BANNER --- */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      background: #0d0d0d;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.85;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .btn-hero {
+      padding: 13px 32px;
+      background-color: #0d0d0d;
+      color: var(--gold-champagne);
+      border: 1px solid var(--gold-primary);
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.45);
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-hero:hover {
+      background-color: var(--gold-primary);
+      color: #050505;
+      transform: translateY(-1px);
+    }
+
+    /* --- 3. VIDEO ("SEE IT IN ACTION") --- */
+    .action-section {
+      padding: 72px 24px 64px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .action-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--gold-champagne);
+      margin-bottom: 8px;
+    }
+
+    .action-section .subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .video-frame-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.65);
+      background: #000;
+    }
+
+    .video-frame-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* --- 4. ADDRESS & HOURS --- */
+    .location-section {
+      padding: 72px 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-gold);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .map-wrapper {
+      width: 100%;
+      height: 360px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      background-color: #1c1c1c;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .location-details h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--gold-champagne);
+      margin-bottom: 24px;
+    }
+
+    .location-columns {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 24px;
+    }
+
+    .location-info-text {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: #e5e5e5;
+    }
+
+    .location-info-text .business-name {
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .location-info-text a {
+      color: var(--gold-primary);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .location-info-text a:hover {
+      text-decoration: underline;
+    }
+
+    .hours-table {
+      width: 100%;
+      font-size: 13px;
+      border-collapse: collapse;
+    }
+
+    .hours-table td {
+      padding: 4px 0;
+      color: #e5e5e5;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--text-muted);
+    }
+
+    /* --- 5. CONTACT US --- */
+    .contact-section {
+      padding: 72px 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-gold);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--gold-champagne);
+      margin-bottom: 12px;
+    }
+
+    .contact-text p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 360px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 6px;
+      background: #080808;
+      font-family: inherit;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+    }
+
+    .contact-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      padding: 11px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-primary);
+      background: transparent;
+      color: var(--gold-primary);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--gold-primary);
+      color: #050505;
+    }
+
+    /* --- 6. EXPLORE OUR INSTAGRAM --- */
+    .instagram-section {
+      padding: 68px 24px 80px;
+      max-width: 1140px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-gold);
+    }
+
+    .ig-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 28px;
+    }
+
+    .ig-title-group h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--gold-champagne);
+      margin-bottom: 4px;
+    }
+
+    .ig-handle {
+      font-size: 13.5px;
+      color: var(--gold-primary);
+      text-decoration: none;
+    }
+
+    .ig-handle:hover {
+      text-decoration: underline;
+    }
+
+    .ig-arrows {
+      display: flex;
+      gap: 12px;
+    }
+
+    .ig-arrows button {
+      background: transparent;
+      border: 1px solid var(--border-gold);
+      color: var(--gold-primary);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .ig-arrows button:hover {
+      background-color: var(--gold-primary);
+      color: #0d0d0d;
+    }
+
+    .ig-track {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .ig-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ig-card {
+      position: relative;
+      flex: 0 0 calc(25% - 13.5px);
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #1c1c1c;
+      border: 1px solid var(--border-gold);
+      display: block;
+    }
+
+    .ig-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .ig-card:hover img {
+      transform: scale(1.05);
+      opacity: 0.88;
+    }
+
+    .ig-badge-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(13, 13, 13, 0.7);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .ig-cta-wrap {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    /* --- 7. SUBPAGES & PRICING --- */
+    .service-subpage {
+      display: none;
+      position: relative;
+      overflow: hidden;
+      background-color: #0c0c0c;
+      border-radius: 14px;
+      padding: 56px 24px 88px;
+      max-width: 1020px;
+      margin: 24px auto;
+      min-height: 65vh;
+      z-index: 1;
+    }
+
+    .service-subpage.active-page {
+      display: block;
+      animation: fadeInPage 0.25s ease;
+    }
+
+    .service-subpage::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      left: -140px;
+      width: 480px;
+      height: 280px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(184, 134, 11, 0.12) 50%, transparent 100%);
+      transform: rotate(-15deg);
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .service-subpage::after {
+      content: "";
+      position: absolute;
+      bottom: -140px;
+      right: -120px;
+      width: 520px;
+      height: 320px;
+      background: linear-gradient(315deg, rgba(212, 175, 55, 0.3) 0%, rgba(184, 134, 11, 0.1) 45%, transparent 100%);
+      transform: rotate(-12deg);
+      filter: blur(55px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subpage-breadcrumb {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .back-home-btn {
+      background: none;
+      border: none;
+      color: #e5e5e5;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .back-home-btn:hover {
+      color: var(--gold-primary);
+      text-decoration: underline;
+    }
+
+    .subpage-quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .subpage-pill {
+      padding: 6px 14px;
+      border: 1px solid var(--border-gold);
+      border-radius: 999px;
+      font-size: 12.5px;
+      text-decoration: none;
+      color: #e5e5e5;
+      transition: all 0.2s;
+    }
+
+    .subpage-pill:hover,
+    .subpage-pill.current {
+      background-color: var(--gold-primary);
+      color: #050505;
+      border-color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .subpage-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .subpage-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--gold-primary);
+      margin-bottom: 8px;
+    }
+
+    .subpage-header p {
+      font-size: 14px;
+      color: #d4d4d4;
+    }
+
+    .table-card {
+      background-color: var(--card-dark);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
+      margin-bottom: 28px;
+    }
+
+    .table-card-banner {
+      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .table-card-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .table-card-banner span {
+      font-size: 12.5px;
+      color: var(--gold-champagne);
+      font-weight: 500;
+    }
+
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card-dark);
+    }
+
+    .menu-table thead th {
+      background-color: #0d0d0d;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--gold-champagne);
+      padding: 13px 20px;
+      text-align: right;
+      border-bottom: 1px solid var(--border-gold);
+      white-space: nowrap;
+    }
+
+    .menu-table thead th:first-child {
+      text-align: left;
+    }
+
+    .menu-table tbody tr {
+      background-color: var(--card-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background-color 0.15s ease;
+    }
+
+    .menu-table tbody tr:nth-child(even) {
+      background-color: #090909;
+    }
+
+    .menu-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .menu-table tbody tr:hover {
+      background-color: #16130e;
+    }
+
+    .menu-table tbody td {
+      padding: 15px 20px;
+      font-size: 14.5px;
+      vertical-align: middle;
+    }
+
+    .menu-table tbody td.service-col {
+      text-align: left;
+      width: 54%;
+    }
+
+    .menu-table tbody td.price-col,
+    .menu-table tbody td.price-special {
+      text-align: right;
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--gold-primary);
+      white-space: nowrap;
+    }
+
+    .menu-table tbody td.price-old {
+      text-align: right;
+      color: #888888;
+      text-decoration: line-through;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .menu-table tbody td.muted-dash {
+      text-align: right;
+      color: #555555;
+      font-weight: 400;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: #ffffff;
+      display: block;
+      font-size: 15px;
+    }
+
+    .item-desc {
+      display: block;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .subpage-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    /* --- 8. POLICIES & CAREERS --- */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .policy-card {
+      background-color: var(--card-dark);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .policy-card-full {
+      grid-column: 1 / -1;
+    }
+
+    .policy-title-bar {
+      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-num {
+      background-color: var(--gold-champagne);
+      color: #0d0d0d;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .policy-title-bar h3 {
+      color: var(--gold-champagne);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin: 0;
+    }
+
+    .policy-body {
+      padding: 20px 22px;
+      background-color: var(--card-dark);
+      flex: 1;
+    }
+
+    .policy-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .policy-body li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #d4d4d4;
+    }
+
+    .policy-body li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold-primary);
+    }
+
+    .policy-body strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .career-cta-box {
+      background-color: #0d0d0d;
+      border: 1px solid var(--gold-champagne);
+      border-radius: 10px;
+      padding: 34px 24px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .career-cta-box h3 {
+      color: var(--gold-champagne);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .career-cta-box p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14.5px;
+      margin-bottom: 22px;
+    }
+
+    .career-btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .career-btn-gold {
+      background-color: var(--gold-champagne);
+      color: #0d0d0d !important;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--gold-champagne);
+      transition: all 0.25s ease;
+    }
+
+    .career-btn-gold:hover {
+      background-color: #e5d8b8;
+      transform: translateY(-1px);
+    }
+
+    .career-btn-outline-light {
+      background-color: transparent;
+      color: var(--gold-champagne) !important;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--gold-champagne);
+      transition: all 0.25s ease;
+    }
+
+    .career-btn-outline-light:hover {
+      background-color: rgba(212, 197, 161, 0.15);
+    }
+
+    /* --- 9. FOOTER --- */
+    footer {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      padding: 48px 24px 36px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .footer-logo {
+      display: inline-block;
+    }
+
+    .footer-logo img {
+      height: 82px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .payment-badges {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .social-circles {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-circle:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .social-circle.mail { background-color: #1c1b1a; border: 1px solid rgba(255,255,255,0.25); }
+    .social-circle.fb   { background-color: #1877f2; }
+    .social-circle.ig   { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+    .footer-tagline {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.2px;
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 920px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: inline-block;
+      }
+      .location-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ig-card {
+        flex: 0 0 calc(50% - 6px);
+      }
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner {
+        height: 360px;
+      }
+      .location-columns {
+        grid-template-columns: 1fr;
+      }
+      .menu-table thead th,
+      .menu-table tbody td {
+        padding: 11px 10px;
+        font-size: 13px;
+      }
+      .menu-table tbody td.price-col,
+      .menu-table tbody td.price-special {
+        font-size: 13.5px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-right {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-wrapper" onclick="goHome()">
+        <img src="whitelogo.png" alt="Tui - Nail Salon & Spa">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#" onclick="goHome()">Home</a></li>
+        <li>
+          <a href="#offres-speciales" onclick="openServicePage('offres-speciales')">Services ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: #d4af37;">★ Special Offers & Care</a></li>
+            <li><a href="#pedicure" onclick="openServicePage('pedicure')">Pedicure</a></li>
+            <li><a href="#manucure" onclick="openServicePage('manucure')">Manicure</a></li>
+            <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a></li>
+            <li><a href="#combos" onclick="openServicePage('combos')">Combos</a></li>
+            <li><a href="#add-on-services" onclick="openServicePage('add-on-services')">Add-on Services</a></li>
+            <li><a href="#epilation" onclick="openServicePage('epilation')">Waxing / Hair Removal</a></li>
+          </ul>
+        </li>
+        <li><a href="#location" onclick="goHomeSection('location')">Location & Hours</a></li>
+        <li><a href="#contact" onclick="goHomeSection('contact')">Contact</a></li>
+        <li><a href="#politiques" onclick="openServicePage('politiques')">Policies</a></li>
+        <li><a href="#carrieres" onclick="openServicePage('carrieres')">Careers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline">Book Online</a>
+        <button class="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="mobile-drawer">
+      <a href="#" onclick="goHome(); toggleMobileMenu();">Home</a>
+      <div style="padding: 8px 0 4px; font-weight: 600; font-size: 13px; color: var(--text-muted);">Services:</div>
+      <div class="mobile-sub-links">
+        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: #d4af37;">★ Special Offers & Care</a>
+        <a href="#pedicure" onclick="openServicePage('pedicure'); toggleMobileMenu();">Pedicure</a>
+        <a href="#manucure" onclick="openServicePage('manucure'); toggleMobileMenu();">Manicure</a>
+        <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement'); toggleMobileMenu();">Nail Enhancement</a>
+        <a href="#combos" onclick="openServicePage('combos'); toggleMobileMenu();">Combos</a>
+        <a href="#add-on-services" onclick="openServicePage('add-on-services'); toggleMobileMenu();">Add-on Services</a>
+        <a href="#epilation" onclick="openServicePage('epilation'); toggleMobileMenu();">Waxing / Hair Removal</a>
+      </div>
+      <a href="#location" onclick="goHomeSection('location'); toggleMobileMenu();">Location & Hours</a>
+      <a href="#contact" onclick="goHomeSection('contact'); toggleMobileMenu();">Contact</a>
+      <a href="#politiques" onclick="openServicePage('politiques'); toggleMobileMenu();">Policies</a>
+      <a href="#carrieres" onclick="openServicePage('carrieres'); toggleMobileMenu();">Careers</a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+        HOME VIEW
+         ========================================================= -->
+  <main id="home-view">
+    <!-- Main Banner -->
+    <section class="hero-banner">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=80" alt="Tui - Nail Salon & Spa">
+      <div class="hero-overlay">
+        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-hero">Book Online</a>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="action-section">
+      <h2>See Our Treatments in Action</h2>
+      <p class="subtitle">A first look at our professional treatments and expert craftsmanship</p>
+      <div class="video-frame-wrapper">
+        <iframe src="https://www.youtube.com/embed/Mr2fBTyfZDU" title="Tui Nail Spa - Paraffin Treatment" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Location & Hours -->
+    <section id="location" class="location-section">
+      <div class="location-grid">
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=100-1570+Rue+Saint-Timoth%C3%A9e,+Montr%C3%A9al,+QC+H2L+3N9&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map Tui nail spa Montreal">
+          </iframe>
+        </div>
+
+        <div class="location-details">
+          <h2>Location & Opening Hours</h2>
+          <div class="location-columns">
+            <div class="location-info-text">
+              <div class="business-name">Tui Nail Spa</div>
+              <div>100-1570 Rue Saint-Timothée</div>
+              <div>Montreal, Quebec H2L 3N9</div>
+              <div><a href="tel:4387777043">(438) 777-7043</a></div>
+              <div><a href="mailto:tuinailspa@gmail.com">tuinailspa@gmail.com</a></div>
+              <div><a href="https://maps.google.com/?q=100-1570+Rue+Saint-Timoth%C3%A9e,+Montr%C3%A9al,+QC+H2L+3N9" target="_blank" rel="noopener">Get Directions</a></div>
+            </div>
+
+            <table class="hours-table">
+              <tr><td>Monday</td><td>08:00 AM - 07:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>08:00 AM - 07:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>08:00 AM - 07:00 PM</td></tr>
+              <tr><td>Thursday</td><td>08:00 AM - 08:00 PM</td></tr>
+              <tr><td>Friday</td><td>08:00 AM - 08:00 PM</td></tr>
+              <tr><td>Saturday</td><td>08:00 AM - 07:00 PM</td></tr>
+              <tr><td>Sunday</td><td>08:00 AM - 07:00 PM</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="contact-section">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <h2>Contact Us</h2>
+          <p>Feel free to reach out to us and let us know if there is anything we can do for you.</p>
+        </div>
+
+        <form class="contact-form" onsubmit="envoyerFormulaireContact(event)">
+          <input type="text" id="nomContact" name="Name" placeholder="Full Name" required>
+          <input type="email" id="courrielContact" name="Email" placeholder="Email Address" required>
+          <input type="tel" id="telephoneContact" name="Phone" placeholder="Phone Number" required>
+          <textarea id="messageContact" name="Message" placeholder="Your Message" required></textarea>
+          <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.45; margin: 2px 0 4px;">
+            This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+          </p>
+          <button type="submit" id="boutonEnvoyerContact">Send Message</button>
+          <p id="statutContact" style="display:none; font-size: 13.5px; font-weight: 500; margin-top: 6px;"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Explore our Instagram -->
+    <section class="instagram-section">
+      <div class="ig-header-row">
+        <div class="ig-title-group">
+          <h2>Explore our Instagram</h2>
+          <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-handle">@tuinailspa</a>
+        </div>
+        <div class="ig-arrows">
+          <button type="button" onclick="scrollIgFeed(-1)" aria-label="Previous">‹</button>
+          <button type="button" onclick="scrollIgFeed(1)" aria-label="Next">›</button>
+        </div>
+      </div>
+
+      <div class="ig-track" id="igFeedTrack">
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 1">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 2">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 3">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 4">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail5.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 5">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail6.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 6">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail7.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 7">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail8.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 8">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+      </div>
+
+      <div class="ig-cta-wrap">
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="btn-outline" style="padding: 11px 28px;">See full feed</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+        SPECIAL OFFERS & SPECIALIZED CARE
+         ========================================================= -->
+  <section id="page-offres-speciales" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill current" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Special Offers & Specialized Care</h2>
+      <p>6 years of experience • Competitive prices • Guaranteed service • Online booking from 8 AM</p>
+    </div>
+
+    <!-- 1. SPECIALIZED FOOT CARE -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Specialized Foot Care</h3>
+        <span>Experts in dry skin and cracked heels treatment</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service & Limited Time Offer</th>
+            <th>Regular Price</th>
+            <th>Special Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Classic Pedicure (No Polish) + Repair Treatment</span>
+              <span class="item-desc">Limited time offer: includes the "All Cracked Up" foot repair balm.</span>
+            </td>
+            <td class="price-old">$65</td>
+            <td class="price-special">$55</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Regular Polish Pedicure + Repair Treatment</span>
+              <span class="item-desc">Limited time offer: includes the "All Cracked Up" foot repair balm.</span>
+            </td>
+            <td class="price-old">$70</td>
+            <td class="price-special">$60</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Gel Polish Pedicure + Repair Treatment</span>
+              <span class="item-desc">Limited time offer: includes the "All Cracked Up" foot repair balm.</span>
+            </td>
+            <td class="price-old">$80</td>
+            <td class="price-special">$70</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. HAND CARE -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Hand Care</h3>
+        <span>Strengthening treatment for short and fragile nails</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Regular Price</th>
+            <th>Special Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manicure + Gel Polish</span>
+            </td>
+            <td class="price-old">$40</td>
+            <td class="price-special">$35</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manicure + Calcium Repair Base + Gel Polish</span>
+              <span class="item-desc">Fortifying calcium base designed to protect and strengthen short and fragile nails.</span>
+            </td>
+            <td class="price-old">$50</td>
+            <td class="price-special">$40</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. NAIL ENHANCEMENT -->
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Nail Enhancement</h3>
+        <span>Best pricing for New Acrylic, Gel & Gel-X Sets</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Regular Price</th>
+            <th>Special Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Full Set with Tips (New Set)</span>
+              <span class="item-desc">Acrylic or Gel with extensions.</span>
+            </td>
+            <td class="price-old">$60</td>
+            <td class="price-special">$55</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Refill / Maintenance</span>
+              <span class="item-desc">Maintenance for an existing full set or overlay.</span>
+            </td>
+            <td class="price-old">$55</td>
+            <td class="price-special">$47</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Gel-X Full Set (3+ years of Gel-X expertise)</span>
+              <span class="item-desc">Soft, lightweight, and natural extensions crafted by our certified specialists.</span>
+            </td>
+            <td class="price-old">$70</td>
+            <td class="price-special">$55</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment Online (from 8 AM)</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+        6 SERVICE SUBPAGES
+         ========================================================= -->
+
+  <!-- SUBPAGE 1: PEDICURE -->
+  <section id="page-pedicure" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill current" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Pedicure</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Pedicure Services</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>No Polish</th>
+            <th>Regular Polish</th>
+            <th>Shellac / Gel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Pedicure</span>
+              <span class="item-desc">Designed for busy clients: nail trimming & shaping, cuticle care, callus buffing, foot exfoliation, light massage. Addresses calluses, dead skin, thick nails, cracked heels.</span>
+            </td>
+            <td class="price-col">$35</td>
+            <td class="price-col">$40</td>
+            <td class="price-col">$50</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Polish Application — Feet</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">$22</td>
+            <td class="price-col">$32</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Paraffin Treatment — Feet</span>
+              <span class="item-desc">Warm liquid paraffin in individual liners for each foot, providing comfort, deep hydration, and smoothness.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">$15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 2: MANICURE -->
+  <section id="page-manucure" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill current" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Manicure</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Manicure Services</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>No Polish</th>
+            <th>Regular Polish</th>
+            <th>Shellac / Gel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Manicure</span>
+              <span class="item-desc">Soak, nail trimming & shaping, cuticle care, light hand massage.</span>
+            </td>
+            <td class="price-col">$20</td>
+            <td class="price-col">$25</td>
+            <td class="price-col">$35</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Shellac Manicure with Calcium Base</span>
+              <span class="item-desc">Infused with added calcium base to help strengthen brittle and weak nails.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">$40</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Polish Application — Hands</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">$18</td>
+            <td class="price-col">$30</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Paraffin Treatment — Hands</span>
+              <span class="item-desc">Warm liquid paraffin in individual liners for each hand to intensely hydrate and soften skin.</span>
+            </td>
+            <td class="muted-dash">—</td>
+            <td class="muted-dash">—</td>
+            <td class="price-col">$12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 3: NAIL ENHANCEMENT -->
+  <section id="page-nail-enhancement" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill current" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Nail Enhancements</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Full Sets</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Regular Polish</th>
+            <th>Shellac / Gel</th>
+            <th>Extra Long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Acrylic</span></td>
+            <td class="price-col">$48</td>
+            <td class="price-col">$55</td>
+            <td class="price-col">$65+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Bio Gel</span></td>
+            <td class="price-col">$48</td>
+            <td class="price-col">$55</td>
+            <td class="price-col">$65+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Gel-X Extensions</span></td>
+            <td class="price-col">$48</td>
+            <td class="price-col">$55</td>
+            <td class="price-col">$65+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Natural Nail Overlay</span></td>
+            <td class="price-col">$48</td>
+            <td class="price-col">$55</td>
+            <td class="price-col">$65+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Refills / Fills</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Regular Polish</th>
+            <th>Shellac / Gel</th>
+            <th>Extra Long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Acrylic</span></td>
+            <td class="price-col">$40</td>
+            <td class="price-col">$47</td>
+            <td class="price-col">$60+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Bio Gel</span></td>
+            <td class="price-col">$40</td>
+            <td class="price-col">$47</td>
+            <td class="price-col">$60+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Gel-X Refill</span></td>
+            <td class="price-col">$40</td>
+            <td class="price-col">$47</td>
+            <td class="price-col">$60+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Dip Powder / Resin & Powder</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Regular</th>
+            <th>Extra Long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Without nail tips</span></td>
+            <td class="price-col">$50</td>
+            <td class="price-col">$60+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">With nail tips</span></td>
+            <td class="price-col">$55</td>
+            <td class="price-col">$65+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 4: COMBOS -->
+  <section id="page-combos" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill current" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Mani-Pedi Combos</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Hand & Foot Packages</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Mani-Pedi (No Polish)</span></td>
+            <td class="price-col">$55</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Mani-Pedi with Regular Polish</span></td>
+            <td class="price-col">$65</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Shellac Mani-Pedi</span></td>
+            <td class="price-col">$80</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Shellac Mani-Pedi (with Calcium Gel Base)</span>
+              <span class="item-desc">Extra protection and reinforcement for fragile and brittle nails.</span>
+            </td>
+            <td class="price-col">$95</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 5: ADD ON SERVICES -->
+  <section id="page-add-on-services" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill current" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Add-on Services</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Polish Application</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Regular Polish</th>
+            <th>Shellac / Gel</th>
+            <th>Fake Nail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col"><span class="item-title">Hands</span></td>
+            <td class="price-col">$18</td>
+            <td class="price-col">$30</td>
+            <td class="price-col">$40</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Feet</span></td>
+            <td class="price-col">$22</td>
+            <td class="price-col">$32</td>
+            <td class="muted-dash">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Additional Treatments, Removals & Options</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Paraffin Treatment (Hands / Feet)</span>
+              <span class="item-desc">Warm liquid paraffin in individual liners restores comfort, deep hydration, and smoothness to feet and hands.</span>
+            </td>
+            <td class="price-col">$12 / $15</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Collagen Treatment</span>
+              <span class="item-desc">Enriched with collagen, olive oil, and argan oil, this ultra-nourishing moisturizing cream quickly absorbs to protect and hydrate.</span>
+            </td>
+            <td class="price-col">$10</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Shellac Removal</span>
+              <span class="item-desc">Safe removal of shellac polish without damaging natural nails.</span>
+            </td>
+            <td class="price-col">$15</td>
+          </tr>
+          <tr>
+            <td class="service-col">
+              <span class="item-title">Artificial Nail Removal</span>
+              <span class="item-desc">Safe and professional removal of artificial nails.</span>
+            </td>
+            <td class="price-col">$20</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">Nail Repair</span></td>
+            <td class="price-col">$10+</td>
+          </tr>
+          <tr>
+            <td class="service-col"><span class="item-title">French Tip Option</span></td>
+            <td class="price-col">$10+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- SUBPAGE 6: WAXING / ÉPILATION -->
+  <section id="page-epilation" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#offres-speciales" class="subpage-pill" onclick="openServicePage('offres-speciales')">★ Special Offers</a>
+        <a href="#pedicure" class="subpage-pill" onclick="openServicePage('pedicure')">Pedicure</a>
+        <a href="#manucure" class="subpage-pill" onclick="openServicePage('manucure')">Manicure</a>
+        <a href="#nail-enhancement" class="subpage-pill" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a>
+        <a href="#combos" class="subpage-pill" onclick="openServicePage('combos')">Combos</a>
+        <a href="#add-on-services" class="subpage-pill" onclick="openServicePage('add-on-services')">Add-on Services</a>
+        <a href="#epilation" class="subpage-pill current" onclick="openServicePage('epilation')">Waxing</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Waxing / Hair Removal</h2>
+      <p>Prices shown are before taxes.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-card-banner">
+        <h3>Waxing Rates</h3>
+        <span>Prices before taxes</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="service-col"><span class="item-title">Eyebrows</span></td><td class="price-col">$12</td></tr>
+          <tr><td class="service-col"><span class="item-title">Upper Lip</span></td><td class="price-col">$10</td></tr>
+          <tr><td class="service-col"><span class="item-title">Chin</span></td><td class="price-col">$10+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Neck</span></td><td class="price-col">$15</td></tr>
+          <tr><td class="service-col"><span class="item-title">Underarms</span></td><td class="price-col">$15</td></tr>
+          <tr><td class="service-col"><span class="item-title">Half Arms</span></td><td class="price-col">$25</td></tr>
+          <tr><td class="service-col"><span class="item-title">Full Arms</span></td><td class="price-col">$30</td></tr>
+          <tr><td class="service-col"><span class="item-title">Half Legs</span></td><td class="price-col">$30 - $35</td></tr>
+          <tr><td class="service-col"><span class="item-title">Full Legs</span></td><td class="price-col">$40 - $45</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bikini</span></td><td class="price-col">$20 - $30</td></tr>
+          <tr><td class="service-col"><span class="item-title">Brazilian</span></td><td class="price-col">$40 - $45</td></tr>
+          <tr><td class="service-col"><span class="item-title">Back</span></td><td class="price-col">$35</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subpage-cta">
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline" style="padding: 12px 32px; font-size: 14px;">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+        POLICIES & CAREERS
+         ========================================================= -->
+
+  <!-- SUBPAGE 7: SALON POLICIES -->
+  <section id="page-politiques" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#politiques" class="subpage-pill current" onclick="openServicePage('politiques')">Salon Policies</a>
+        <a href="#carrieres" class="subpage-pill" onclick="openServicePage('carrieres')">Careers / Recruitment</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Salon Policies</h2>
+      <p>To ensure a relaxing and punctual experience for every client, please review our guidelines prior to your visit.</p>
+    </div>
+
+    <div class="policy-grid">
+      <!-- 01. CANCELLATIONS & NO-SHOWS -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">01</span>
+          <h3>CANCELLATIONS &amp; NO-SHOWS</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Rescheduling / Cancellation:</strong> Free of charge up to <strong>24 hours</strong> before your appointment.</li>
+            <li><strong>Late Cancellation (&lt; 24h):</strong> A fee equivalent to <strong>40%</strong> of the booked services will apply.</li>
+            <li><strong>No-Show:</strong> In case of a missed appointment without notice, <strong>100%</strong> of the service cost will be charged prior to booking any future appointment.</li>
+            <li><strong>Credit Card:</strong> A valid credit card is required on file when booking online to secure your appointment.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 02. LATE ARRIVALS & PUNCTUALITY -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">02</span>
+          <h3>LATE ARRIVALS &amp; PUNCTUALITY</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Notice:</strong> Please contact us by phone (<strong>438-777-7043</strong>) or email if you expect to be late.</li>
+            <li><strong>15-Minute Grace Period:</strong> After 15 minutes without notice, the appointment will be considered a no-show and your spot may be offered to another client.</li>
+            <li><strong>Service Adjustment:</strong> In case of an accepted late arrival, your service may be shortened to respect the next client's schedule at the original full price.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03. COMFORT & GUESTS -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">03</span>
+          <h3>COMFORT &amp; GUESTS</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Arrive Alone:</strong> To maintain a calm and safe atmosphere, please avoid bringing extra guests (including children or pets) unless agreed upon in advance.</li>
+            <li><strong>Client Profile:</strong> Complete contact information (name, phone, email) is required upon registration for appointment tracking.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 04. PRICING & PROMOTIONS -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">04</span>
+          <h3>PRICING &amp; PROMOTIONS</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Price Review:</strong> All prices are subject to change without notice.</li>
+            <li><strong>Promotions:</strong> Promotions and discounts cannot be combined. Rescheduling a promotional appointment outside the valid period results in losing the discounted rate.</li>
+            <li><strong>Senior Technicians:</strong> Services performed by our senior specialists are excluded from promotional offers unless specified otherwise.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05. SERVICE GUARANTEE & REFUNDS -->
+      <div class="policy-card policy-card-full">
+        <div class="policy-title-bar">
+          <span class="policy-num">05</span>
+          <h3>SERVICE GUARANTEE &amp; PRODUCT RETURNS</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Services (7-Day Guarantee):</strong> No monetary refunds are issued for rendered services. If you experience any issues with your set or polish, contact us within <strong>7 days</strong> of your visit: we will gladly perform a touch-up.</li>
+            <li><strong>Products:</strong> Opened or used items are final sale and non-refundable. Only defective or damaged products upon purchase may be exchanged or converted into salon credit.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 32px; font-style: italic; color: #a3a3a3; font-size: 14px;">
+      Thank you for your trust and understanding. — The Tui - Nail Salon & Spa Team
+    </p>
+  </section>
+
+  <!-- SUBPAGE 8: CAREERS / RECRUITMENT -->
+  <section id="page-carrieres" class="service-subpage">
+    <div class="subpage-breadcrumb">
+      <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
+      <div class="subpage-quick-nav">
+        <a href="#politiques" class="subpage-pill" onclick="openServicePage('politiques')">Salon Policies</a>
+        <a href="#carrieres" class="subpage-pill current" onclick="openServicePage('carrieres')">Careers / Recruitment</a>
+      </div>
+    </div>
+
+    <div class="subpage-header">
+      <h2>Careers at Tui</h2>
+      <p>Join a passionate and caring team in the heart of Montreal. We are looking for creative and meticulous nail artists.</p>
+    </div>
+
+    <div class="policy-grid">
+      <!-- 01. OPEN POSITIONS -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">01</span>
+          <h3>OPEN POSITIONS</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Nail Technician:</strong> Mastery in Shellac, UV gel, Gel-X, BIAB, or dip powder.</li>
+            <li><strong>Manicure &amp; Pedicure Specialist:</strong> Complete aesthetic care, regular/gel polish, and spa treatments.</li>
+            <li><strong>Flexible Hours:</strong> Full-time and part-time positions available based on your schedule.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 02. WHY JOIN US -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">02</span>
+          <h3>WHY CHOOSE TUI NAIL SPA?</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Competitive Compensation:</strong> Attractive salary + generous commissions + 100% of tips.</li>
+            <li><strong>Established Loyal Clientele:</strong> Salon located at 1570 Rue Saint-Timothée (Ville-Marie) with a steady flow of appointments.</li>
+            <li><strong>High-End Environment:</strong> Modern equipment, strict hygiene standards, and a warm atmosphere.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03. PROFILE SOUGHT -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">03</span>
+          <h3>PROFILE SOUGHT</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Craftsmanship:</strong> Attention to detail, impeccable cleanliness, and a passion for nail aesthetics.</li>
+            <li><strong>Customer Service:</strong> Welcoming attitude, punctuality, and team spirit.</li>
+            <li><strong>Languages:</strong> Functional French and/or English (an appreciated asset).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 04. HOW TO APPLY -->
+      <div class="policy-card">
+        <div class="policy-title-bar">
+          <span class="policy-num">04</span>
+          <h3>HOW TO APPLY?</h3>
+        </div>
+        <div class="policy-body">
+          <ul>
+            <li><strong>Online (Quick):</strong> Apply in 2 minutes via our StaffedUp portal.</li>
+            <li><strong>By Email:</strong> Send your resume or portfolio photos to <strong>tuinailspa@gmail.com</strong>.</li>
+            <li><strong>By Phone:</strong> Contact us directly at <strong>438-777-7043</strong> to schedule an interview.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05. CTA BOX -->
+      <div class="career-cta-box policy-card-full">
+        <h3>Ready to be part of the Tui journey?</h3>
+        <p>Apply directly online or send us your resume by email today.</p>
+        <div class="career-btn-group">
+          <a href="https://staffedup.com/tuinailspa/?src=social" target="_blank" rel="noopener" class="career-btn-gold">
+            Apply Online (StaffedUp)
+          </a>
+          <a href="mailto:tuinailspa@gmail.com?subject=Application%20-%20Nail%20Technician%20|%20Tui%20Nail%20Spa" class="career-btn-outline-light">
+            Send Resume by Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+        FOOTER
+         ========================================================= -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <a href="#" class="footer-logo" onclick="goHome()">
+          <img src="whitelogo.png" alt="Tui - Nail Salon & Spa">
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="payment-badges">
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Square">
+            <svg viewBox="0 0 24 24" width="15" height="15"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#111" stroke-width="2.5"/><rect x="8.5" y="8.5" width="7" height="7" rx="1" fill="#111"/></svg>
+          </span>
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:-apple-system,sans-serif; font-weight:700; font-size:10px; color:#000;" title="Apple Pay">Pay</span>
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; font-weight:700; font-size:10px;" title="Google Pay"><span style="color:#4285F4">G</span><span style="color:#5f6368; margin-left:1px;">Pay</span></span>
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; font-weight:900; font-style:italic; font-size:10px; color:#1a1f71;" title="VISA">VISA</span>
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Mastercard">
+            <svg viewBox="0 0 28 18" width="22" height="14"><circle cx="10.5" cy="9" r="6.5" fill="#eb001b"/><circle cx="17.5" cy="9" r="6.5" fill="#f79e1b" fill-opacity="0.88"/></svg>
+          </span>
+          <span style="background:#006fcf; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; font-weight:800; font-size:8px; color:#fff;" title="AMEX">AMEX</span>
+          <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; font-weight:800; font-size:7.5px; color:#222;" title="Discover">DISC<span style="color:#ff6000">O</span>VER</span>
+          <span style="background:#ffb81c; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:Arial,sans-serif; font-weight:800; font-size:8px; color:#111; font-style:italic;" title="Interac">Interac</span>
+        </div>
+
+        <div class="footer-right">
+          <div class="social-circles">
+            <a href="mailto:tuinailspa@gmail.com" class="social-circle mail" title="Email" aria-label="Email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-circle fb" title="Facebook" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="social-circle ig" title="Instagram" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+          <div class="footer-tagline">Welcoming Relaxed Atmosphere</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const validPages = [
+      'offres-speciales',
+      'pedicure',
+      'manucure',
+      'nail-enhancement',
+      'combos',
+      'add-on-services',
+      'epilation',
+      'politiques',
+      'carrieres'
+    ];
+
+    function openServicePage(slug) {
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'none';
+
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const targetPage = document.getElementById('page-' + slug);
+      if (targetPage) {
+        targetPage.classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function goHome() {
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goHomeSection(sectionId) {
+      document.querySelectorAll('.service-subpage').forEach(sec => {
+        sec.classList.remove('active-page');
+      });
+
+      const homeView = document.getElementById('home-view');
+      if (homeView) homeView.style.display = 'block';
+
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 40);
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      if (drawer) drawer.classList.toggle('open');
+    }
+
+    function scrollIgFeed(direction) {
+      const track = document.getElementById('igFeedTrack');
+      if (track) {
+        const step = track.clientWidth * 0.75;
+        track.scrollBy({ left: direction * step, behavior: 'smooth' });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (validPages.includes(hash)) {
+        openServicePage(hash);
+      }
+    });
+
+    async function envoyerFormulaireContact(evenement) {
+      evenement.preventDefault();
+      const bouton = document.getElementById('boutonEnvoyerContact');
+      const statut = document.getElementById('statutContact');
+      const nom = document.getElementById('nomContact').value.trim();
+      const courriel = document.getElementById('courrielContact').value.trim();
+      const telephone = document.getElementById('telephoneContact').value.trim();
+      const message = document.getElementById('messageContact').value.trim();
+
+      bouton.disabled = true;
+      bouton.textContent = 'Sending...';
+      statut.style.display = 'none';
+
+      try {
+        const reponse = await fetch('https://formsubmit.co/ajax/tuinailspa@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: 'New Message - Tui Nail Spa (' + nom + ')',
+            Name: nom,
+            Email: courriel,
+            Phone: telephone,
+            Message: message
+          })
+        });
+
+        if (reponse.ok) {
+          statut.style.color = '#4ade80';
+          statut.textContent = 'Thank you! Your message has been sent successfully.';
+          statut.style.display = 'block';
+          evenement.target.reset();
+        } else {
+          throw new Error('Error');
+        }
+      } catch (erreur) {
+        statut.style.color = '#f87171';
+        statut.textContent = "An error occurred. Please call us at (438) 777-7043.";
+        statut.style.display = 'block';
+      } finally {
+        bouton.disabled = false;
+        bouton.textContent = 'Send Message';
+      }
+    }
+  </script>
+</body>
+</html>
