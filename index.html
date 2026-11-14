@@ -1450,6 +1450,346 @@
     </div>
   </section>
 
+<!-- SECTION SERVICES & TARIFS (100% FRANÇAIS) -->
+  <section id="services" class="services-section">
+    <div class="services-header">
+      <h2>Liste de Prix & Services</h2>
+      <p>Les prix indiqués sont hors taxes (avant taxes).</p>
+    </div>
+
+    <!-- Barre de filtrage par catégorie -->
+    <div class="service-tabs">
+      <button class="service-tab-btn active" onclick="filterServices('all', this)">Tous les services</button>
+      <button class="service-tab-btn" onclick="filterServices('mains-pieds', this)">Mains & Pieds</button>
+      <button class="service-tab-btn" onclick="filterServices('combos', this)">Combos</button>
+      <button class="service-tab-btn" onclick="filterServices('ongles', this)">Les Ongles</button>
+      <button class="service-tab-btn" onclick="filterServices('extras', this)">Ajouter les services</button>
+      <button class="service-tab-btn" onclick="filterServices('epilation', this)">Épilation</button>
+    </div>
+
+    <div class="service-grid">
+      <!-- 1. SOIN LES PIEDS - LES MAINS -->
+      <div class="service-category-card" data-category="mains-pieds">
+        <h3 class="service-category-title">Soin Les Mains & Les Pieds</h3>
+        <p class="service-category-desc">
+          <strong>Services de Manucure :</strong> Trempage, limage des ongles, cuticules, léger massage.<br>
+          <strong>Services de Pédicure :</strong> Ce pédicure a été conçu pour les clients pressés : limage des ongles, coupe des cuticules, polissage des callosités, exfoliation des pieds, léger massage des pieds. Plus... callosités, corne, peau morte épaisse, ongles épaissis, difficiles à couper, fissures sous les pieds, aux talons.
+        </p>
+
+        <table class="price-matrix">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Sans vernis</th>
+              <th>Vernis régulier</th>
+              <th>Shellac</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Manucure</td>
+              <td>20$</td>
+              <td>25$</td>
+              <td>35$</td>
+            </tr>
+            <tr>
+              <td>Manucure Shellac avec calcium<br><small style="color:#6b6863; font-weight:400;">En base avec du calcium ajouté pour aider à renforcer les ongles fragiles et cassants</small></td>
+              <td>—</td>
+              <td>—</td>
+              <td>40$</td>
+            </tr>
+            <tr>
+              <td>Pédicure</td>
+              <td>35$</td>
+              <td>40$</td>
+              <td>50$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2. COMBOS -->
+      <div class="service-category-card" data-category="combos">
+        <h3 class="service-category-title">Combos Mani-Pédi</h3>
+        <p class="service-category-desc">Forfaits combinés pour le soin complet des mains et des pieds.</p>
+
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Mani-Pédi sans vernis</h4>
+          </div>
+          <span class="service-price">55$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Mani-Pédi avec vernis régulier</h4>
+          </div>
+          <span class="service-price">65$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Mani-Pédi Shellac</h4>
+          </div>
+          <span class="service-price">80$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Mani-Pédi Shellac (avec calcium gel en base)</h4>
+            <p>Protection et renforcement supplémentaire des ongles naturels.</p>
+          </div>
+          <span class="service-price">95$</span>
+        </div>
+      </div>
+
+      <!-- 3. LES ONGLES -->
+      <div class="service-category-card full-width" data-category="ongles">
+        <h3 class="service-category-title">Les Ongles — Pose, Remplissages & Résine et Poudre</h3>
+
+        <div class="sub-heading-label">Pose d'ongles</div>
+        <table class="price-matrix">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Vernis régulier</th>
+              <th>Shellac</th>
+              <th>Extra long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Acrylique</td>
+              <td>48$</td>
+              <td>55$</td>
+              <td>65$+</td>
+            </tr>
+            <tr>
+              <td>Bio Gel</td>
+              <td>48$</td>
+              <td>55$</td>
+              <td>65$+</td>
+            </tr>
+            <tr>
+              <td>Après Gel X</td>
+              <td>48$</td>
+              <td>55$</td>
+              <td>65$+</td>
+            </tr>
+            <tr>
+              <td>Recouvrement sur ongles naturels</td>
+              <td>48$</td>
+              <td>55$</td>
+              <td>65$+</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="sub-heading-label">Remplissages</div>
+        <table class="price-matrix">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Vernis régulier</th>
+              <th>Shellac</th>
+              <th>Extra long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Acrylique</td>
+              <td>40$</td>
+              <td>47$</td>
+              <td>60$+</td>
+            </tr>
+            <tr>
+              <td>Bio Gel</td>
+              <td>40$</td>
+              <td>47$</td>
+              <td>60$+</td>
+            </tr>
+            <tr>
+              <td>Après Gel X</td>
+              <td>40$</td>
+              <td>47$</td>
+              <td>60$+</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="sub-heading-label">Résine et Poudre</div>
+        <table class="price-matrix">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Régulier</th>
+              <th>Extra long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sans pointes d'ongles</td>
+              <td>50$</td>
+              <td>60$+</td>
+            </tr>
+            <tr>
+              <td>Avec pointes d'ongles</td>
+              <td>55$</td>
+              <td>65$+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 4. AJOUTER LES SERVICES -->
+      <div class="service-category-card" data-category="extras">
+        <h3 class="service-category-title">Ajouter les Services</h3>
+
+        <div class="sub-heading-label" style="margin-top:0;">Application de vernis</div>
+        <table class="price-matrix">
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>Vernis régulier</th>
+              <th>Shellac</th>
+              <th>Faux ongle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Les mains</td>
+              <td>18$</td>
+              <td>30$</td>
+              <td>40$</td>
+            </tr>
+            <tr>
+              <td>Les pieds</td>
+              <td>22$</td>
+              <td>32$</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Traitement Paraffine (Les mains / Les pieds)</h4>
+            <p>Paraffine chaude et liquide mise dans un sac individuel pour chaque pied ou main, procurant confort, hydratation et souplesse.</p>
+          </div>
+          <span class="service-price">12$ / 15$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Traitement au Collagène</h4>
+            <p>Enrichi de collagène, d'huile d'olive et d'huile d'argan, la crème hydratante ultra-nutritionnelle protège, nourrit et hydrate les pieds et les mains.</p>
+          </div>
+          <span class="service-price">10$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Enlever Shellac</h4>
+            <p>Pour enlever votre vernis Shellac sans endommager vos ongles.</p>
+          </div>
+          <span class="service-price">15$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Enlever faux ongles</h4>
+            <p>Pour enlever vos faux ongles de façon sécuritaire.</p>
+          </div>
+          <span class="service-price">20$</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Réparation de l'ongle</h4>
+          </div>
+          <span class="service-price">10$+</span>
+        </div>
+        <div class="service-item">
+          <div class="service-info">
+            <h4>Option française</h4>
+          </div>
+          <span class="service-price">10$+</span>
+        </div>
+      </div>
+
+      <!-- 5. ÉPILATION -->
+      <div class="service-category-card" data-category="epilation">
+        <h3 class="service-category-title">Épilation</h3>
+        <div class="waxing-columns">
+          <div>
+            <div class="service-item">
+              <div class="service-info"><h4>Sourcils</h4></div>
+              <span class="service-price">12$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Lèvre supérieure</h4></div>
+              <span class="service-price">10$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Menton</h4></div>
+              <span class="service-price">10$+</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Cou</h4></div>
+              <span class="service-price">15$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Aisselles</h4></div>
+              <span class="service-price">15$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Demi-bras</h4></div>
+              <span class="service-price">25$</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="service-item">
+              <div class="service-info"><h4>Bras</h4></div>
+              <span class="service-price">30$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Demi-jambes</h4></div>
+              <span class="service-price">30$ - 35$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Jambes complètes</h4></div>
+              <span class="service-price">40$ - 45$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Bikini</h4></div>
+              <span class="service-price">20$ - 30$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Brésilien</h4></div>
+              <span class="service-price">40$ - 45$</span>
+            </div>
+            <div class="service-item">
+              <div class="service-info"><h4>Dos</h4></div>
+              <span class="service-price">35$</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-cta">
+      <button class="btn-outline" onclick="openBookingModal()" style="padding: 12px 32px; font-size: 14px;">Prendre rendez-vous</button>
+    </div>
+  </section>
+
+  <script>
+    function filterServices(category, btn) {
+      document.querySelectorAll('.service-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.service-category-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+  
   <!-- 4. KHU VỰC ĐỊA CHỈ & GIỜ MỞ CỬA ("LOCATION & HOURS") -->
   <section class="location-section" id="location">
     <div class="location-container">
