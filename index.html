@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-cream: #faf8f5;
-      --header-bg: #f5f2eb;
-      --table-head-bg: #efece6;
-      --text-dark: #1c1b1a;
-      --text-muted: #6b6863;
-      --border-color: #e5e0d8;
-      --footer-navy: #161616;
-      --link-blue: #1a73e8;
-      --accent-warm: #8c5a3c;
+      --bg-dark: #121212;
+      --header-bg: #161616;
+      --card-dark: #030303;
+      --text-light: #ffffff;
+      --text-muted: #a3a3a3;
+      --gold-primary: #d4af37;
+      --gold-champagne: #d4c5a1;
+      --border-gold: rgba(212, 175, 55, 0.35);
+      --link-blue: #60a5fa;
     }
 
     * {
@@ -28,19 +28,21 @@
 
     html {
       scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
     }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       line-height: 1.6;
     }
 
     /* --- 1. HEADER & MENU THẢ XUỐNG --- */
     header {
       background-color: var(--header-bg);
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-gold);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -83,18 +85,18 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--text-dark);
+      color: #e5e5e5;
       font-size: 14px;
       font-weight: 500;
       padding: 8px 0;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      opacity: 0.65;
+      color: var(--gold-primary);
     }
 
     .dropdown-menu {
@@ -102,11 +104,11 @@
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 235px;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
+      min-width: 245px;
+      background: #1a1a1a;
+      border: 1px solid var(--border-gold);
       border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.65);
       padding: 6px 0;
       list-style: none;
       z-index: 1001;
@@ -120,8 +122,8 @@
       display: block;
       padding: 10px 18px;
       font-size: 13.5px;
-      color: var(--text-dark);
-      border-bottom: 1px solid #f4f1ec;
+      color: #e5e5e5;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .dropdown-menu li:last-child a {
@@ -129,8 +131,8 @@
     }
 
     .dropdown-menu li a:hover {
-      background-color: #faf8f5;
-      opacity: 1;
+      background-color: #242018;
+      color: var(--gold-primary);
     }
 
     .nav-actions {
@@ -142,10 +144,10 @@
 
     .btn-outline {
       padding: 9px 22px;
-      border: 1px solid var(--text-dark);
+      border: 1px solid var(--gold-primary);
       border-radius: 999px;
       background: transparent;
-      color: var(--text-dark);
+      color: var(--gold-primary);
       font-size: 13.5px;
       font-weight: 500;
       cursor: pointer;
@@ -155,25 +157,25 @@
     }
 
     .btn-outline:hover {
-      background-color: var(--text-dark);
-      color: #ffffff;
+      background-color: var(--gold-primary);
+      color: #050505;
     }
 
     .mobile-menu-toggle {
       display: none;
       background: none;
-      border: 1px solid #d5d1c8;
+      border: 1px solid var(--border-gold);
       border-radius: 6px;
       padding: 7px 11px;
       font-size: 18px;
       cursor: pointer;
-      color: var(--text-dark);
+      color: var(--gold-primary);
     }
 
     .mobile-drawer {
       display: none;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border-color);
+      background: #161616;
+      border-bottom: 1px solid var(--border-gold);
       padding: 14px 24px 20px;
     }
 
@@ -184,15 +186,15 @@
     .mobile-drawer a {
       display: block;
       padding: 9px 0;
-      color: var(--text-dark);
+      color: #e5e5e5;
       text-decoration: none;
       font-size: 14.5px;
-      border-bottom: 1px dashed #ece8e0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
     }
 
     .mobile-drawer .mobile-sub-links {
       padding-left: 16px;
-      background: #faf8f5;
+      background: #1d1d1d;
       border-radius: 6px;
       margin: 6px 0;
     }
@@ -202,7 +204,7 @@
       position: relative;
       width: 100%;
       height: 460px;
-      background: linear-gradient(to right, #c9c7ba 0%, #dcdad0 45%, #e8e6df 100%);
+      background: #0d0d0d;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -216,6 +218,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      opacity: 0.85;
     }
 
     .hero-overlay {
@@ -227,22 +230,22 @@
 
     .btn-hero {
       padding: 13px 32px;
-      background-color: #ffffff;
-      color: var(--text-dark);
-      border: none;
+      background-color: #0d0d0d;
+      color: var(--gold-champagne);
+      border: 1px solid var(--gold-primary);
       border-radius: 999px;
       font-size: 14.5px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.45);
       transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     }
 
     .btn-hero:hover {
-      background-color: var(--text-dark);
-      color: #ffffff;
+      background-color: var(--gold-primary);
+      color: #050505;
       transform: translateY(-1px);
     }
 
@@ -258,6 +261,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       font-weight: 500;
+      color: var(--gold-champagne);
       margin-bottom: 8px;
     }
 
@@ -271,9 +275,10 @@
       position: relative;
       width: 100%;
       padding-bottom: 56.25%;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.65);
       background: #000;
     }
 
@@ -290,7 +295,7 @@
       padding: 72px 24px;
       max-width: 1140px;
       margin: 0 auto;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--border-gold);
     }
 
     .location-grid {
@@ -303,10 +308,10 @@
     .map-wrapper {
       width: 100%;
       height: 360px;
-      border-radius: 4px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #d5d1c8;
-      background-color: #e5e3df;
+      border: 1px solid var(--border-gold);
+      background-color: #1c1c1c;
     }
 
     .map-wrapper iframe {
@@ -319,6 +324,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 28px;
       font-weight: 500;
+      color: var(--gold-champagne);
       margin-bottom: 24px;
     }
 
@@ -330,16 +336,18 @@
 
     .location-info-text {
       font-size: 13.5px;
-      line-height: 1.65;
+      line-height: 1.7;
+      color: #e5e5e5;
     }
 
     .location-info-text .business-name {
       font-weight: 600;
+      color: #ffffff;
       margin-bottom: 4px;
     }
 
     .location-info-text a {
-      color: var(--link-blue);
+      color: var(--gold-primary);
       text-decoration: none;
       display: inline-block;
       margin-top: 4px;
@@ -357,7 +365,7 @@
 
     .hours-table td {
       padding: 4px 0;
-      color: var(--text-dark);
+      color: #e5e5e5;
     }
 
     .hours-table td:last-child {
@@ -367,10 +375,10 @@
 
     /* --- 5. CONTACTEZ-NOUS --- */
     .contact-section {
-      padding: 72px 24px 72px;
+      padding: 72px 24px;
       max-width: 1140px;
       margin: 0 auto;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--border-gold);
     }
 
     .contact-grid {
@@ -384,6 +392,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 28px;
       font-weight: 500;
+      color: var(--gold-champagne);
       margin-bottom: 12px;
     }
 
@@ -403,12 +412,18 @@
     .contact-form textarea {
       width: 100%;
       padding: 13px 16px;
-      border: 1px solid #d5d1c8;
-      border-radius: 4px;
-      background: #ffffff;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 6px;
+      background: #080808;
       font-family: inherit;
       font-size: 14px;
-      color: var(--text-dark);
+      color: #ffffff;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold-primary);
     }
 
     .contact-form textarea {
@@ -420,27 +435,26 @@
       align-self: flex-start;
       padding: 11px 28px;
       border-radius: 999px;
-      border: 1px solid #d5d1c8;
-      background: #e9e6df;
-      color: var(--text-dark);
+      border: 1px solid var(--gold-primary);
+      background: transparent;
+      color: var(--gold-primary);
       font-size: 13.5px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .contact-form button:hover {
-      background: var(--text-dark);
-      color: #ffffff;
-      border-color: var(--text-dark);
+      background: var(--gold-primary);
+      color: #050505;
     }
 
-    /* --- 6. EXPLORE OUR INSTAGRAM --- */
+    /* --- 6. EXPLORE OUR INSTAGRAM (@tuinailspa) --- */
     .instagram-section {
       padding: 68px 24px 80px;
       max-width: 1140px;
       margin: 0 auto;
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-top: 1px solid var(--border-gold);
     }
 
     .ig-header-row {
@@ -454,13 +468,13 @@
       font-family: 'Playfair Display', serif;
       font-size: 28px;
       font-weight: 500;
-      color: #ffffff;
+      color: var(--gold-champagne);
       margin-bottom: 4px;
     }
 
     .ig-handle {
       font-size: 13.5px;
-      color: #d4c5a1;
+      color: var(--gold-primary);
       text-decoration: none;
     }
 
@@ -475,10 +489,10 @@
 
     .ig-arrows button {
       background: transparent;
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      color: #d4af37;
-      width: 34px;
-      height: 34px;
+      border: 1px solid var(--border-gold);
+      color: var(--gold-primary);
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       font-size: 20px;
       line-height: 1;
@@ -490,25 +504,30 @@
     }
 
     .ig-arrows button:hover {
-      background-color: #d4af37;
+      background-color: var(--gold-primary);
       color: #0d0d0d;
     }
 
-    .ig-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .ig-track {
+      display: flex;
       gap: 18px;
       overflow-x: auto;
       scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .ig-track::-webkit-scrollbar {
+      display: none;
     }
 
     .ig-card {
       position: relative;
+      flex: 0 0 calc(25% - 13.5px);
       aspect-ratio: 1 / 1;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       background-color: #1c1c1c;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid var(--border-gold);
       display: block;
     }
 
@@ -521,7 +540,7 @@
 
     .ig-card:hover img {
       transform: scale(1.05);
-      opacity: 0.85;
+      opacity: 0.88;
     }
 
     .ig-badge-icon {
@@ -531,7 +550,7 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(13, 13, 13, 0.65);
+      background: rgba(13, 13, 13, 0.7);
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -544,18 +563,51 @@
       margin-top: 32px;
     }
 
-    /* --- 7. TRANG CON DỊCH VỤ & BẢNG GIÁ DẠNG TABLE MATRIX --- */
+    /* --- 7. TRANG CON DỊCH VỤ & BẢNG GIÁ --- */
     .service-subpage {
       display: none;
+      position: relative;
+      overflow: hidden;
+      background-color: #0c0c0c;
+      border-radius: 14px;
       padding: 56px 24px 88px;
       max-width: 1020px;
-      margin: 0 auto;
+      margin: 24px auto;
       min-height: 65vh;
+      z-index: 1;
     }
 
     .service-subpage.active-page {
       display: block;
       animation: fadeInPage 0.25s ease;
+    }
+
+    .service-subpage::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      left: -140px;
+      width: 480px;
+      height: 280px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(184, 134, 11, 0.12) 50%, transparent 100%);
+      transform: rotate(-15deg);
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .service-subpage::after {
+      content: "";
+      position: absolute;
+      bottom: -140px;
+      right: -120px;
+      width: 520px;
+      height: 320px;
+      background: linear-gradient(315deg, rgba(212, 175, 55, 0.3) 0%, rgba(184, 134, 11, 0.1) 45%, transparent 100%);
+      transform: rotate(-12deg);
+      filter: blur(55px);
+      pointer-events: none;
+      z-index: -1;
     }
 
     @keyframes fadeInPage {
@@ -571,13 +623,13 @@
       gap: 12px;
       margin-bottom: 32px;
       padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-gold);
     }
 
     .back-home-btn {
       background: none;
       border: none;
-      color: var(--text-muted);
+      color: #e5e5e5;
       font-size: 13.5px;
       font-weight: 500;
       cursor: pointer;
@@ -585,7 +637,7 @@
     }
 
     .back-home-btn:hover {
-      color: var(--text-dark);
+      color: var(--gold-primary);
       text-decoration: underline;
     }
 
@@ -597,19 +649,20 @@
 
     .subpage-pill {
       padding: 6px 14px;
-      border: 1px solid #d5d1c8;
+      border: 1px solid var(--border-gold);
       border-radius: 999px;
       font-size: 12.5px;
       text-decoration: none;
-      color: var(--text-dark);
+      color: #e5e5e5;
       transition: all 0.2s;
     }
 
     .subpage-pill:hover,
     .subpage-pill.current {
-      background-color: var(--text-dark);
-      color: #ffffff;
-      border-color: var(--text-dark);
+      background-color: var(--gold-primary);
+      color: #050505;
+      border-color: var(--gold-primary);
+      font-weight: 600;
     }
 
     .subpage-header {
@@ -621,27 +674,28 @@
       font-family: 'Playfair Display', serif;
       font-size: 34px;
       font-weight: 500;
+      color: var(--gold-primary);
       margin-bottom: 8px;
     }
 
     .subpage-header p {
       font-size: 14px;
-      color: var(--text-muted);
+      color: #d4d4d4;
     }
 
     .table-card {
-      background: #ffffff;
-      border: 1px solid #e6e1d8;
+      background-color: var(--card-dark);
+      border: 1px solid rgba(212, 175, 55, 0.45);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
       margin-bottom: 28px;
     }
 
     .table-card-banner {
-      background-color: var(--header-bg);
+      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
       padding: 16px 24px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-gold);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -653,30 +707,31 @@
       font-family: 'Playfair Display', serif;
       font-size: 21px;
       font-weight: 600;
-      color: var(--text-dark);
+      color: #ffffff;
     }
 
     .table-card-banner span {
       font-size: 12.5px;
-      color: var(--text-muted);
+      color: var(--gold-champagne);
       font-weight: 500;
     }
 
     .menu-table {
       width: 100%;
       border-collapse: collapse;
+      background-color: var(--card-dark);
     }
 
     .menu-table thead th {
-      background-color: var(--table-head-bg);
+      background-color: #0d0d0d;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      color: #4f4c47;
+      color: var(--gold-champagne);
       padding: 13px 20px;
       text-align: right;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-gold);
       white-space: nowrap;
     }
 
@@ -685,8 +740,13 @@
     }
 
     .menu-table tbody tr {
-      border-bottom: 1px solid #f0ece4;
+      background-color: var(--card-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       transition: background-color 0.15s ease;
+    }
+
+    .menu-table tbody tr:nth-child(even) {
+      background-color: #090909;
     }
 
     .menu-table tbody tr:last-child {
@@ -694,7 +754,7 @@
     }
 
     .menu-table tbody tr:hover {
-      background-color: #fcfaf7;
+      background-color: #16130e;
     }
 
     .menu-table tbody td {
@@ -708,25 +768,18 @@
       width: 54%;
     }
 
-    .menu-table tbody td.price-col {
-      text-align: right;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--text-dark);
-      white-space: nowrap;
-    }
-
+    .menu-table tbody td.price-col,
     .menu-table tbody td.price-special {
       text-align: right;
       font-weight: 700;
       font-size: 15.5px;
-      color: var(--accent-warm);
+      color: var(--gold-primary);
       white-space: nowrap;
     }
 
     .menu-table tbody td.price-old {
       text-align: right;
-      color: #9c978e;
+      color: #888888;
       text-decoration: line-through;
       font-weight: 400;
       white-space: nowrap;
@@ -734,13 +787,13 @@
 
     .menu-table tbody td.muted-dash {
       text-align: right;
-      color: #b8b3aa;
+      color: #555555;
       font-weight: 400;
     }
 
     .item-title {
       font-weight: 600;
-      color: var(--text-dark);
+      color: #ffffff;
       display: block;
       font-size: 15px;
     }
@@ -753,49 +806,162 @@
       line-height: 1.45;
     }
 
-    .info-card {
-      background: #ffffff;
-      border: 1px solid #e6e1d8;
-      border-radius: 8px;
-      padding: 28px 32px;
-      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.03);
-    }
-
-    .info-row {
-      padding: 16px 0;
-      border-bottom: 1px dashed #e6e1d8;
-    }
-
-    .info-row:first-child {
-      padding-top: 0;
-    }
-
-    .info-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .info-row h4 {
-      font-size: 15.5px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--text-dark);
-    }
-
-    .info-row p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
     .subpage-cta {
       text-align: center;
       margin-top: 36px;
     }
 
-    /* --- 8. FOOTER ĐƠN GIẢN --- */
+    /* --- 8. THẺ POLITIQUES & CARRIÈRES --- */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .policy-card {
+      background-color: var(--card-dark);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .policy-card-full {
+      grid-column: 1 / -1;
+    }
+
+    .policy-title-bar {
+      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-num {
+      background-color: var(--gold-champagne);
+      color: #0d0d0d;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .policy-title-bar h3 {
+      color: var(--gold-champagne);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin: 0;
+    }
+
+    .policy-body {
+      padding: 20px 22px;
+      background-color: var(--card-dark);
+      flex: 1;
+    }
+
+    .policy-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .policy-body li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #d4d4d4;
+    }
+
+    .policy-body li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--gold-primary);
+    }
+
+    .policy-body strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* KHỐI NÚT ỨNG TUYỂN TRANG CARRIÈRES */
+    .career-cta-box {
+      background-color: #0d0d0d;
+      border: 1px solid var(--gold-champagne);
+      border-radius: 10px;
+      padding: 34px 24px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .career-cta-box h3 {
+      color: var(--gold-champagne);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .career-cta-box p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14.5px;
+      margin-bottom: 22px;
+    }
+
+    .career-btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .career-btn-gold {
+      background-color: var(--gold-champagne);
+      color: #0d0d0d !important;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--gold-champagne);
+      transition: all 0.25s ease;
+    }
+
+    .career-btn-gold:hover {
+      background-color: #e5d8b8;
+      transform: translateY(-1px);
+    }
+
+    .career-btn-outline-light {
+      background-color: transparent;
+      color: var(--gold-champagne) !important;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--gold-champagne);
+      transition: all 0.25s ease;
+    }
+
+    .career-btn-outline-light:hover {
+      background-color: rgba(212, 197, 161, 0.15);
+    }
+
+    /* --- 9. FOOTER ĐƠN GIẢN --- */
     footer {
-      background-color: var(--footer-navy);
+      background-color: #0d0d0d;
       color: #ffffff;
       padding: 48px 24px 36px;
       border-top: 1px solid rgba(212, 175, 55, 0.25);
@@ -868,9 +1034,9 @@
       opacity: 0.9;
     }
 
-    .social-circle.mail { background-color: #1c1b1a; }
+    .social-circle.mail { background-color: #1c1b1a; border: 1px solid rgba(255,255,255,0.25); }
     .social-circle.fb   { background-color: #1877f2; }
-    .social-circle.ig   { background-color: #e4405f; }
+    .social-circle.ig   { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
     .footer-tagline {
       font-size: 13.5px;
@@ -893,9 +1059,8 @@
     }
 
     @media (max-width: 768px) {
-      .ig-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+      .ig-card {
+        flex: 0 0 calc(50% - 6px);
       }
       .policy-grid {
         grid-template-columns: 1fr;
@@ -926,263 +1091,6 @@
         align-items: flex-start;
       }
     }
-
-    /* PHÔNG NỀN TỐI SANG TRỌNG TOÀN TRANG */
-    html, body {
-      background-color: #121212 !important;
-      color: #ffffff !important;
-    }
-
-    header, .mobile-drawer {
-      background-color: #161616 !important;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
-    }
-
-    .nav-links a, .mobile-drawer a, .subpage-header p, .back-home-btn {
-      color: #e5e5e5 !important;
-    }
-
-    .nav-links a:hover, .subpage-header h2, .price-col, .price-special {
-      color: #d4af37 !important;
-    }
-
-    .dropdown-menu {
-      background-color: #1a1a1a !important;
-      border: 1px solid rgba(212, 175, 55, 0.3) !important;
-    }
-
-    .btn-outline {
-      border-color: #d4af37 !important;
-      color: #d4af37 !important;
-      background: transparent !important;
-    }
-
-    .btn-outline:hover, .subpage-pill.current, .subpage-pill:hover {
-      background-color: #d4af37 !important;
-      color: #050505 !important;
-    }
-
-    /* NỀN TỐI + DẢI SÁNG VÀNG GOLD XÉO GÓC CHO TỪNG TRANG DỊCH VỤ */
-    .service-subpage {
-      position: relative !important;
-      overflow: hidden !important;
-      background-color: #0c0c0c !important;
-      border-radius: 14px !important;
-      z-index: 1 !important;
-    }
-
-    .service-subpage::before {
-      content: "" !important;
-      position: absolute !important;
-      top: -120px !important;
-      left: -140px !important;
-      width: 480px !important;
-      height: 280px !important;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.38) 0%, rgba(184, 134, 11, 0.14) 50%, transparent 100%) !important;
-      transform: rotate(-15deg) !important;
-      filter: blur(45px) !important;
-      pointer-events: none !important;
-      z-index: -1 !important;
-    }
-
-    .service-subpage::after {
-      content: "" !important;
-      position: absolute !important;
-      bottom: -140px !important;
-      right: -120px !important;
-      width: 520px !important;
-      height: 320px !important;
-      background: linear-gradient(315deg, rgba(212, 175, 55, 0.32) 0%, rgba(184, 134, 11, 0.12) 45%, transparent 100%) !important;
-      transform: rotate(-12deg) !important;
-      filter: blur(55px) !important;
-      pointer-events: none !important;
-      z-index: -1 !important;
-    }
-
-    /* KHUNG BẢNG ĐEN TUYỀN TƯƠNG PHẢN CAO SO VỚI PHÔNG NỀN */
-    .table-card, .info-card {
-      background-color: #030303 !important;
-      border: 1px solid rgba(212, 175, 55, 0.45) !important;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.95) !important;
-    }
-
-    .table-card-banner {
-      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%) !important;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.35) !important;
-    }
-
-    .table-card-banner h3, .item-title {
-      color: #ffffff !important;
-    }
-
-    .item-desc {
-      color: #a3a3a3 !important;
-    }
-
-    .menu-table, .menu-table tbody tr {
-      background-color: #030303 !important;
-    }
-
-    .menu-table tbody tr:nth-child(even) {
-      background-color: #090909 !important;
-    }
-
-    .menu-table tbody tr:hover {
-      background-color: #16130e !important;
-    }
-
-    .menu-table thead th {
-      background-color: #0d0d0d !important;
-      color: #d4c5a1 !important;
-    }
-
-    /* GIAO DIỆN THẺ POLITIQUES & CARRIÈRES ĐỒNG BỘ NỀN TỐI SANG TRỌNG */
-    .policy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .policy-card {
-      background-color: #030303;
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .policy-card-full {
-      grid-column: 1 / -1;
-    }
-
-    .policy-title-bar {
-      background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .policy-num {
-      background-color: #d4c5a1;
-      color: #0d0d0d;
-      font-weight: 800;
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-
-    .policy-title-bar h3 {
-      color: #d4c5a1;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      margin: 0;
-    }
-
-    .policy-body {
-      padding: 20px 22px;
-      background-color: #030303;
-      flex: 1;
-    }
-
-    .policy-body ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .policy-body li {
-      position: relative;
-      padding-left: 16px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: #d4d4d4;
-    }
-
-    .policy-body li::before {
-      content: "▪";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #d4af37;
-    }
-
-    .policy-body strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    /* KHỐI NÚT ỨNG TUYỂN TRANG CARRIÈRES */
-    .career-cta-box {
-      background-color: #0d0d0d;
-      border: 1px solid #d4c5a1;
-      border-radius: 10px;
-      padding: 34px 24px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-    }
-
-    .career-cta-box h3 {
-      color: #d4c5a1;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .career-cta-box p {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 14.5px;
-      margin-bottom: 22px;
-    }
-
-    .career-btn-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .career-btn-gold {
-      background-color: #d4c5a1;
-      color: #0d0d0d !important;
-      padding: 12px 26px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      border: 1px solid #d4c5a1;
-      transition: all 0.25s ease;
-    }
-
-    .career-btn-gold:hover {
-      background-color: #e5d8b8;
-      transform: translateY(-1px);
-    }
-
-    .career-btn-outline-light {
-      background-color: transparent;
-      color: #d4c5a1 !important;
-      padding: 12px 26px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      border: 1px solid #d4c5a1;
-      transition: all 0.25s ease;
-    }
-
-    .career-btn-outline-light:hover {
-      background-color: rgba(212, 197, 161, 0.15);
-    }
   </style>
 </head>
 <body>
@@ -1199,7 +1107,7 @@
         <li>
           <a href="#offres-speciales" onclick="openServicePage('offres-speciales')">Services ▾</a>
           <ul class="dropdown-menu">
-            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: #8c5a3c;">★ Offres Spéciales & Soins</a></li>
+            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: #d4af37;">★ Offres Spéciales & Soins</a></li>
             <li><a href="#pedicure" onclick="openServicePage('pedicure')">Pédicure</a></li>
             <li><a href="#manucure" onclick="openServicePage('manucure')">Manucure</a></li>
             <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail enhancement</a></li>
@@ -1225,7 +1133,7 @@
       <a href="#" onclick="goHome(); toggleMobileMenu();">Accueil</a>
       <div style="padding: 8px 0 4px; font-weight: 600; font-size: 13px; color: var(--text-muted);">Services :</div>
       <div class="mobile-sub-links">
-        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: #8c5a3c;">★ Offres Spéciales & Soins</a>
+        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: #d4af37;">★ Offres Spéciales & Soins</a>
         <a href="#pedicure" onclick="openServicePage('pedicure'); toggleMobileMenu();">Pédicure</a>
         <a href="#manucure" onclick="openServicePage('manucure'); toggleMobileMenu();">Manucure</a>
         <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement'); toggleMobileMenu();">Nail enhancement</a>
@@ -1334,33 +1242,46 @@
         </div>
       </div>
 
-      <div class="ig-grid" id="igFeedTrack">
+      <!-- Lưới ảnh Instagram: Tự động nhận file nail1.jpg -> nail8.jpg bạn tải lên GitHub -->
+      <div class="ig-track" id="igFeedTrack">
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
-          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80" alt="Nail Art Tui Nail Spa 1">
-          <span class="ig-badge-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </span>
+          <img src="nail1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 1">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
 
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
-          <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=600&q=80" alt="Manucure Gel Tui Nail Spa 2">
-          <span class="ig-badge-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </span>
+          <img src="nail2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 2">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
 
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
-          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80" alt="Pédicure Spa Tui Nail Spa 3">
-          <span class="ig-badge-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </span>
+          <img src="nail3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 3">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
 
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
-          <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80" alt="Nail Design Tui Nail Spa 4">
-          <span class="ig-badge-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </span>
+          <img src="nail4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 4">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail5.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 5">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail6.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 6">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail7.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 7">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        </a>
+
+        <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
+          <img src="nail8.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 8">
+          <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
       </div>
 
@@ -1518,7 +1439,7 @@
   </section>
 
   <!-- =========================================================
-       6 TRANG CON DỊCH VỤ DẠNG TABLE MATRIX (BẢNG GIÁ 2026)
+       6 TRANG CON DỊCH VỤ DẠNG TABLE MATRIX
        ========================================================= -->
 
   <!-- TRANG 1: PÉDICURE -->
@@ -2231,7 +2152,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="payment-badges" style="display:flex; align-items:center; flex-wrap:wrap; gap:6px;">
+        <div class="payment-badges">
           <span style="background:#fff; border-radius:4px; width:38px; height:24px; display:inline-flex; align-items:center; justify-content:center;" title="Square">
             <svg viewBox="0 0 24 24" width="15" height="15"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#111" stroke-width="2.5"/><rect x="8.5" y="8.5" width="7" height="7" rx="1" fill="#111"/></svg>
           </span>
@@ -2324,7 +2245,8 @@
     function scrollIgFeed(direction) {
       const track = document.getElementById('igFeedTrack');
       if (track) {
-        track.scrollBy({ left: direction * 280, behavior: 'smooth' });
+        const step = track.clientWidth * 0.75;
+        track.scrollBy({ left: direction * step, behavior: 'smooth' });
       }
     }
 
@@ -2365,7 +2287,7 @@
         });
 
         if (reponse.ok) {
-          statut.style.color = '#2e6b3e';
+          statut.style.color = '#4ade80';
           statut.textContent = 'Merci ! Votre message a bien été envoyé.';
           statut.style.display = 'block';
           evenement.target.reset();
@@ -2373,7 +2295,7 @@
           throw new Error('Erreur');
         }
       } catch (erreur) {
-        statut.style.color = '#b91c1c';
+        statut.style.color = '#f87171';
         statut.textContent = "Une erreur s'est produite. Veuillez nous appeler au (438) 777-7043.";
         statut.style.display = 'block';
       } finally {
