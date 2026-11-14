@@ -1121,7 +1121,13 @@
         <li><a href="#carrieres" onclick="openServicePage('carrieres')">Careers</a></li>
       </ul>
 
-      <div class="nav-actions">
+<div class="nav-actions">
+        <!-- Nút chuyển đổi ngôn ngữ (Đang ở EN) -->
+        <div class="lang-switcher" aria-label="Language selector">
+          <a href="index.html" onclick="switchLang('index.html'); return false;" class="lang-btn">FR</a>
+          <a href="en.html" class="lang-btn active">EN</a>
+        </div>
+
         <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="btn-outline">Book Online</a>
         <button class="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">☰</button>
       </div>
