@@ -2463,63 +2463,94 @@
     }
   </style>
 
-  <div id="tuiPromoPopup" class="tui-popup-overlay" onclick="if(event.target === this) fermerTuiPopup()">
+  <!-- POP-UP 1: HOLIDAY HOURS -->
+  <div id="tuiPopup1" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup1()">
     <div class="tui-popup-box">
-      <button class="tui-popup-close" onclick="fermerTuiPopup()" aria-label="Close">✕</button>
-      
-      <!-- 1. TOP BADGE -->
+      <button class="tui-popup-close" onclick="fermerPopup1()" aria-label="Close">✕</button>
       <span class="tui-popup-badge">✨ Holiday Hours ✨</span>
-      
-      <!-- 2. HEADING -->
       <h3>Holiday Closure Notice</h3>
-      
-      <!-- 3. MESSAGE -->
       <p>
-        Please note that our salon will be closed on <strong>December 25</strong> (Christmas Day) and <strong>January 1</strong> (New Year's Day).<br><br>
-        We remain open during regular hours on all other days. Book your appointment in advance!
+        Please note that our salon will be closed on <strong>December 25</strong> (Christmas Day) and <strong>January 1</strong> (New Year's Day).<br>
+        Open regular hours on all other days. Book your visit in advance!
       </p>
-
-      <!-- 4. BUTTONS -->
       <div class="tui-popup-actions">
-        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="tui-popup-btn-primary" onclick="fermerTuiPopup();">
+        <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" target="_blank" rel="noopener" class="tui-popup-btn-primary" onclick="fermerPopup1();">
           Book Online
         </a>
-        <button type="button" class="tui-popup-btn-secondary" onclick="fermerTuiPopup()">
-          Close
-        </button>
+        <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup1()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POP-UP 2: COMBINED PROMOTIONS (SHELLAC COMBOS & GIFT CARD) -->
+  <div id="tuiPopup2" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup2()">
+    <div class="tui-popup-box">
+      <button class="tui-popup-close" onclick="fermerPopup2()" aria-label="Close">✕</button>
+      <span class="tui-popup-badge">★ Holiday Specials ★</span>
+      <h3>Seasonal Privileges</h3>
+      <p style="text-align: left; max-width: 480px; margin: 0 auto 24px;">
+        • <strong>$5 OFF</strong> all <strong>Shellac Mani-Pedi Combos</strong>.<br><br>
+        • <strong>FREE Paraffin Treatment</strong> (hands or feet) with any <strong>$100 CAD Gift Card</strong> purchase or more.
+      </p>
+      <div class="tui-popup-actions">
+        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">
+          View Combos
+        </a>
+        <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup2()">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Set to false whenever you want to HIDE the pop-up
-    const AFFICHER_POPUP = true;
-    const THOI_GIAN_CHO_HIEN = 1200;    // Chờ 1.2 giây sau khi mở trang/dịch vụ mới hiện
-    const THOI_GIAN_TU_DONG_TAT = 10000; // Tự động tắt sau 10 giây
-    let tuiPopupShowTimer = null;
-    let tuiPopupHideTimer = null;
+    const BAT_POPUP_LE = true;      // Enable/disable Holiday Hours pop-up
+    const BAT_POPUP_PROMO = true;   // Enable/disable Promotions pop-up
+
+    let timerShow = null;
+    let timerHide = null;
 
     function lancerTuiPopup() {
-      if (!AFFICHER_POPUP) return;
-      clearTimeout(tuiPopupShowTimer);
-      clearTimeout(tuiPopupHideTimer);
+      if (sessionStorage.getItem('tui_popups_done')) return;
 
-      tuiPopupShowTimer = setTimeout(() => {
-        const popup = document.getElementById('tuiPromoPopup');
-        if (popup) {
-          popup.classList.add('show');
-          tuiPopupHideTimer = setTimeout(() => {
-            fermerTuiPopup();
-          }, THOI_GIAN_TU_DONG_TAT);
-        }
-      }, THOI_GIAN_CHO_HIEN);
+      if (BAT_POPUP_LE) {
+        timerShow = setTimeout(() => {
+          const p1 = document.getElementById('tuiPopup1');
+          if (p1) {
+            p1.classList.add('show');
+            timerHide = setTimeout(fermerPopup1, 7000);
+          }
+        }, 1500);
+      } else if (BAT_POPUP_PROMO) {
+        timerShow = setTimeout(ouvrirPopup2, 1500);
+      }
     }
 
-    function fermerTuiPopup() {
-      clearTimeout(tuiPopupShowTimer);
-      clearTimeout(tuiPopupHideTimer);
-      const popup = document.getElementById('tuiPromoPopup');
-      if (popup) popup.classList.remove('show');
+    function fermerPopup1() {
+      clearTimeout(timerShow);
+      clearTimeout(timerHide);
+      const p1 = document.getElementById('tuiPopup1');
+      if (p1) p1.classList.remove('show');
+
+      if (BAT_POPUP_PROMO) {
+        timerShow = setTimeout(ouvrirPopup2, 3000);
+      } else {
+        sessionStorage.setItem('tui_popups_done', '1');
+      }
+    }
+
+    function ouvrirPopup2() {
+      const p2 = document.getElementById('tuiPopup2');
+      if (p2) {
+        p2.classList.add('show');
+        timerHide = setTimeout(fermerPopup2, 8000);
+      }
+    }
+
+    function fermerPopup2() {
+      clearTimeout(timerShow);
+      clearTimeout(timerHide);
+      const p2 = document.getElementById('tuiPopup2');
+      if (p2) p2.classList.remove('show');
+      sessionStorage.setItem('tui_popups_done', '1');
     }
 
     window.addEventListener('DOMContentLoaded', lancerTuiPopup);
