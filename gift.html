@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unbox Your Mystery Gift | Tui Nail Spa</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #fff1f2 0%, #fdf2f8 50%, #fffbeb 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px;
+      color: #1f2937;
+    }
+    .card {
+      max-width: 560px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(136, 19, 55, 0.08);
+      border: 1px solid #ffe4e6;
+      padding: 28px 22px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #fff1f2;
+      color: #9f1239;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid #fecdd3;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 26px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .bags-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .bags-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .bag-btn {
+      border: 2px solid #fda4af;
+      border-radius: 18px;
+      padding: 12px 10px;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+    .bag-btn:nth-child(odd) { background: linear-gradient(180deg, #ffe4e6 0%, #fecdd3 100%); }
+    .bag-btn:nth-child(even) { background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%); border-color: #fcd34d; }
+    .bag-btn:hover:not(:disabled) {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(159, 18, 57, 0.15);
+    }
+    .bag-btn.opening {
+      animation: shake 0.4s infinite;
+      box-shadow: 0 0 0 4px #fbbf24;
+      transform: scale(1.05);
+    }
+    .bag-btn.dimmed { opacity: 0.4; transform: scale(0.95); }
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg) scale(1.05); }
+      25% { transform: rotate(-4deg) scale(1.05); }
+      75% { transform: rotate(4deg) scale(1.05); }
+    }
+    .bag-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      font-weight: 700;
+      color: #881337;
+      border-bottom: 1px dashed rgba(136, 19, 55, 0.4);
+      padding-bottom: 5px;
+    }
+    .bag-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .bag-title { font-family: Georgia, serif; font-weight: 700; font-size: 13px; color: #111827; }
+    .bag-cta {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 4px 0;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #881337;
+    }
+    .box {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: left;
+    }
+    .box-header { text-align: center; margin-bottom: 16px; }
+    .rarity-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .secret-badge {
+      background: #881337;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+      font-size: 10px;
+    }
+    .prize-name { font-size: 22px; font-weight: 800; color: #111827; }
+    .input-group { margin-bottom: 10px; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus { border-color: #be123c; }
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: #4b5563;
+      margin: 10px 0 14px;
+      line-height: 1.4;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #881337;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-primary:disabled { background: #fda4af; }
+    .claimed-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .code-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 2px dashed #34d399;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+    .code-text { font-family: monospace; font-size: 18px; font-weight: 800; letter-spacing: 1px; }
+    .copy-btn {
+      background: #d1fae5;
+      color: #065f46;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .book-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: #111827;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 12px;
+      margin-top: 14px;
+    }
+    .hidden { display: none; }
+    .error { color: #dc2626; font-size: 12px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">✨ Tui Nail Spa Blind Bag</div>
+    <h1>Unbox Your Mystery Nail Gift</h1>
+    <p class="subtitle" id="subtitleText">
+      Tap 1 of the 6 sealed mystery bags below to reveal a surprise treat for your appointment!
+    </p>
+
+    <div id="stepPick" class="bags-grid"></div>
+
+    <div id="stepClaim" class="box hidden">
+      <div class="box-header">
+        <div class="rarity-tag" id="bagRevealTag">🎉 Bag Revealed</div>
+        <div class="prize-name" id="wonPrizeLabel"></div>
+        <p style="font-size: 12px; color: #4b5563; margin-top: 4px;">
+          Enter your details below to send this voucher to your email & lock it in:
+        </p>
+      </div>
+      <form id="claimForm">
+        <div class="input-group">
+          <input type="text" id="custName" required placeholder="Your Full Name *" />
+        </div>
+        <div class="input-group">
+          <input type="email" id="custEmail" required placeholder="Your Email (to receive voucher) *" />
+        </div>
+        <div class="input-group">
+          <input type="tel" id="custPhone" required placeholder="Phone Number (e.g., 514-555-0199) *" />
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="caslConsent" checked style="margin-top: 2px;" />
+          <span>Send my reward voucher to my email and keep me updated on special offers from Tui Nail Spa (Canada). Unsubscribe anytime.</span>
+        </label>
+        <div id="errorMsg" class="error hidden"></div>
+        <button type="submit" id="submitBtn" class="btn-primary">
+          Save Voucher & Continue to Booking →
+        </button>
+      </form>
+    </div>
+
+    <div id="stepClaimed" class="claimed-box hidden">
+      <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase; margin-bottom: 4px;" id="sentEmailText">
+        ✓ Voucher Sent!
+      </div>
+      <div class="prize-name" id="finalPrizeLabel"></div>
+      <div class="code-row">
+        <span class="code-text" id="finalCodeText"></span>
+        <button type="button" class="copy-btn" id="copyBtn">Copy Code</button>
+      </div>
+      <p style="font-size: 12px; color: #374151; line-height: 1.5;">
+        <strong>Next step:</strong> Book your appointment on Square below. Show the email we just sent you when you arrive at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book Appointment on Square Now
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const PRIZES = [
+      { label: 'Free 2-Finger Nail Art', code: 'TUI-ART2', weight: 30, rarity: 'Common' },
+      { label: '$5 Off Your Service', code: 'TUI-5OFF', weight: 25, rarity: 'Common' },
+      { label: 'Free Paraffin Hand Wax', code: 'TUI-WAX', weight: 20, rarity: 'Common' },
+      { label: 'Free Gel Polish Removal', code: 'TUI-GEL', weight: 15, rarity: 'Common' },
+      { label: 'Free Oxygen Fragrance Hand Cream', code: 'TUI-HANDCREAM', weight: 10, rarity: 'Secret' },
+    ];
+
+    const STORAGE_KEY = 'tuinailspa_blindbag_v1';
+    let selectedBagIdx = null;
+    let wonPrize = null;
+    let isOpening = false;
+
+    const stepPick = document.getElementById('stepPick');
+    const stepClaim = document.getElementById('stepClaim');
+    const stepClaimed = document.getElementById('stepClaimed');
+    const subtitleText = document.getElementById('subtitleText');
+
+    function pickWeightedPrize() {
+      const total = PRIZES.reduce((sum, p) => sum + p.weight, 0);
+      let r = Math.random() * total;
+      for (const p of PRIZES) {
+        if (r < p.weight) return p;
+        r -= p.weight;
+      }
+      return PRIZES[0];
+    }
+
+    function renderBags() {
+      stepPick.innerHTML = '';
+      for (let i = 0; i < 6; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'bag-btn';
+        btn.innerHTML = `
+          <div class="bag-top"><span>BAG #0${i + 1}</span><span>✂️ TEAR</span></div>
+          <div style="margin: auto 0; text-align: center;">
+            <div class="bag-icon">🎁</div>
+            <div class="bag-title">Mystery Bag</div>
+          </div>
+          <div class="bag-cta">Tap to Open</div>
+        `;
+        btn.onclick = () => handleOpenBag(i);
+        stepPick.appendChild(btn);
+      }
+    }
+
+    function handleOpenBag(index) {
+      if (isOpening) return;
+      isOpening = true;
+      selectedBagIdx = index;
+
+      const buttons = stepPick.querySelectorAll('.bag-btn');
+      buttons.forEach((b, idx) => {
+        b.disabled = true;
+        if (idx === index) {
+          b.classList.add('opening');
+          b.querySelector('.bag-icon').textContent = '✨';
+          b.querySelector('.bag-title').textContent = 'Opening...';
+        } else {
+          b.classList.add('dimmed');
+        }
+      });
+
+      wonPrize = pickWeightedPrize();
+
+      setTimeout(() => {
+        if (typeof confetti === 'function') {
+          confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: false }));
+        showClaimStep();
+      }, 1500);
+    }
+
+    function showClaimStep() {
+      stepPick.classList.add('hidden');
+      stepClaim.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your voucher below.';
+      const secretHtml = wonPrize.rarity === 'Secret' ? '<span class="secret-badge">SECRET</span>' : '';
+      document.getElementById('bagRevealTag').innerHTML = `🎉 Bag #0${(selectedBagIdx ?? 0) + 1} Revealed ${secretHtml}`;
+      document.getElementById('wonPrizeLabel').textContent = wonPrize.label;
+    }
+
+    function showClaimedStep(email) {
+      stepPick.classList.add('hidden');
+      stepClaim.classList.add('hidden');
+      stepClaimed.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your voucher below.';
+      document.getElementById('sentEmailText').textContent = `✓ Voucher Sent to ${email}!`;
+      document.getElementById('finalPrizeLabel').textContent = wonPrize.label;
+      document.getElementById('finalCodeText').textContent = wonPrize.code;
+    }
+
+    document.getElementById('claimForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const caslConsent = document.getElementById('caslConsent').checked;
+      const submitBtn = document.getElementById('submitBtn');
+      const errorMsg = document.getElementById('errorMsg');
+
+      errorMsg.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving Your Voucher...';
+
+      try {
+        const timestamp = new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto' });
+        const res = await fetch('/api/spin-reward', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            prize: wonPrize.label,
+            code: wonPrize.code,
+            caslConsent,
+            timestamp,
+          }),
+        });
+
+        if (!res.ok) throw new Error('Request failed');
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ prize: wonPrize, bagIndex: selectedBagIdx, email, claimed: true })
+        );
+        showClaimedStep(email);
+      } catch (err) {
+        errorMsg.textContent = 'Something went wrong. Please try again.';
+        errorMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Save Voucher & Continue to Booking →';
+      }
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(wonPrize.code);
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => (btn.textContent = 'Copy Code'), 2500);
+    });
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed.prize) {
+          wonPrize = parsed.prize;
+          selectedBagIdx = parsed.bagIndex ?? 0;
+          if (parsed.claimed) {
+            showClaimedStep(parsed.email || 'your email');
+          } else {
+            showClaimStep();
+          }
+        } else {
+          renderBags();
+        }
+      } catch {
+        renderBags();
+      }
+    } else {
+      renderBags();
+    }
+  </script>
+</body>
+</html>
