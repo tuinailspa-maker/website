@@ -25,29 +25,32 @@ module.exports = async (req, res) => {
     const SQUARE_BOOKING_URL =
       'https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services';
 
-    // 1. Lưu dữ liệu khách hàng sang Google Sheets
+    // 1. Kiểm tra trùng lặp & lưu dữ liệu sang Google Sheets trước
     if (process.env.SPIN_WEBHOOK_URL) {
-      try {
-        await fetch(process.env.SPIN_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            salon: 'Tui Nail Spa',
-            name,
-            email,
-            phone,
-            prize,
-            code,
-            caslConsent: caslConsent ? 'Yes' : 'No',
-            timestamp,
-          }),
+      const sheetRes = await fetch(process.env.SPIN_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          salon: 'Tui Nail Spa',
+          name,
+          email,
+          phone,
+          prize,
+          code,
+          caslConsent: caslConsent ? 'Yes' : 'No',
+          timestamp,
+        }),
+      });
+
+      const sheetData = await sheetRes.json().catch(() => ({}));
+      if (sheetData.status === 'duplicate') {
+        return res.status(409).json({
+          error: sheetData.error || 'This email or phone number has already claimed a gift.',
         });
-      } catch (sheetErr) {
-        console.error('Google Sheets error:', sheetErr);
       }
     }
 
-    // 2. Gửi Email Voucher qua Resend
+    // 2. Chỉ gửi Email Voucher qua Resend khi không bị trùng lặp
     if (process.env.RESEND_API_KEY) {
       const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -87,7 +90,7 @@ module.exports = async (req, res) => {
                   <strong>How to redeem at the salon:</strong><br/>
                   • Book your appointment online via Square Appointments.<br/>
                   • Show this email at check-in (Issued to <strong>${name}</strong> • ${phone}).<br/>
-                  • Claimed on: ${timestamp} • <strong>Redemption Period: Dec 1 – Dec 31, 2026</strong> (Cannot be combined with other promos).
+                  • Claimed on: ${timestamp} • <strong>Redemption Period: Dec 1 – Dec 31, 2026</strong> (Limit 1 gift per client; cannot be combined with other promos).
                 </div>
               </div>
               <div style="background-color: #fdf2f8; padding: 14px; text-align: center; font-size: 11px; color: #6b7280;">
