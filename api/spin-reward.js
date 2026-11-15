@@ -1,10 +1,22 @@
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { name, email, phone, prize, code, caslConsent, timestamp } = req.body;
+    let body = req.body;
+    if (typeof body === 'string') {
+      body = JSON.parse(body);
+    }
+    const { name, email, phone, prize, code, caslConsent, timestamp } = body || {};
 
     if (!name || !email || !phone || !prize) {
       return res.status(400).json({ error: 'Please fill in all required fields.' });
@@ -13,27 +25,31 @@ export default async function handler(req, res) {
     const SQUARE_BOOKING_URL =
       'https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services';
 
-    // 1. Gửi dữ liệu khách hàng sang Google Sheets
+    // 1. Lưu dữ liệu khách hàng sang Google Sheets
     if (process.env.SPIN_WEBHOOK_URL) {
-      await fetch(process.env.SPIN_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          salon: 'Tui Nail Spa',
-          name,
-          email,
-          phone,
-          prize,
-          code,
-          caslConsent: caslConsent ? 'Yes' : 'No',
-          timestamp,
-        }),
-      });
+      try {
+        await fetch(process.env.SPIN_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            salon: 'Tui Nail Spa',
+            name,
+            email,
+            phone,
+            prize,
+            code,
+            caslConsent: caslConsent ? 'Yes' : 'No',
+            timestamp,
+          }),
+        });
+      } catch (sheetErr) {
+        console.error('Google Sheets error:', sheetErr);
+      }
     }
 
     // 2. Gửi Email Voucher qua Resend
     if (process.env.RESEND_API_KEY) {
-      await fetch('https://api.resend.com/emails', {
+      const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
@@ -80,11 +96,15 @@ export default async function handler(req, res) {
           `,
         }),
       });
+
+      if (!emailRes.ok) {
+        const errText = await emailRes.text();
+        return res.status(500).json({ error: 'Resend error: ' + errText });
+      }
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Error:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    return res.status(500).json({ error: error.message || 'Server error' });
   }
-}
+};
