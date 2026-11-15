@@ -18,7 +18,7 @@
       color: #1f2937;
     }
     .card {
-      max-width: 560px;
+      max-width: 580px;
       width: 100%;
       background: #ffffff;
       border-radius: 24px;
@@ -49,21 +49,32 @@
     .subtitle {
       font-size: 14px;
       color: #4b5563;
-      margin-bottom: 24px;
+      margin-bottom: 10px;
       line-height: 1.5;
+    }
+    .promo-period {
+      display: inline-block;
+      font-size: 12px;
+      color: #881337;
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
     .bags-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
     }
-    @media (max-width: 480px) {
-      .bags-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 540px) {
+      .bags-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     }
     .bag-btn {
       border: 2px solid #fda4af;
-      border-radius: 18px;
-      padding: 12px 10px;
+      border-radius: 16px;
+      padding: 10px 8px;
       aspect-ratio: 4 / 5;
       display: flex;
       flex-direction: column;
@@ -97,27 +108,27 @@
       font-weight: 700;
       color: #881337;
       border-bottom: 1px dashed rgba(136, 19, 55, 0.4);
-      padding-bottom: 5px;
+      padding-bottom: 4px;
     }
     .bag-icon {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       background: rgba(255, 255, 255, 0.85);
-      border-radius: 14px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
-      margin-bottom: 6px;
+      font-size: 22px;
+      margin: 0 auto 5px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    .bag-title { font-family: Georgia, serif; font-weight: 700; font-size: 13px; color: #111827; }
+    .bag-title { font-family: Georgia, serif; font-weight: 700; font-size: 12px; color: #111827; }
     .bag-cta {
       width: 100%;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       padding: 4px 0;
-      border-radius: 8px;
-      font-size: 11px;
+      border-radius: 6px;
+      font-size: 10px;
       font-weight: 600;
       color: #881337;
     }
@@ -127,6 +138,13 @@
       border-radius: 18px;
       padding: 20px;
       text-align: left;
+    }
+    .neutral-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
     }
     .box-header { text-align: center; margin-bottom: 16px; }
     .rarity-tag {
@@ -148,6 +166,17 @@
       font-size: 10px;
     }
     .prize-name { font-size: 22px; font-weight: 800; color: #111827; }
+    .redeem-note {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #9f1239;
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px dashed #fda4af;
+    }
     .input-group { margin-bottom: 10px; }
     input[type="text"], input[type="email"], input[type="tel"] {
       width: 100%;
@@ -220,24 +249,45 @@
       margin-top: 14px;
     }
     .hidden { display: none; }
-    .error { color: #dc2626; font-size: 12px; margin-bottom: 10px; }
+    .error { color: #dc2626; font-size: 12px; margin-bottom: 10px; word-break: break-word; }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="badge">✨ Tui Nail Spa Blind Bag</div>
+    <div class="badge">✨ Tui Nail Spa Holiday Blind Bag</div>
     <h1>Unbox Your Mystery Nail Gift</h1>
     <p class="subtitle" id="subtitleText">
-      Tap 1 of the 6 sealed mystery bags below to reveal a surprise treat for your appointment!
+      Play now to lock in your surprise gift! All vouchers are valid to redeem in-salon starting December 2026.
     </p>
+    <div class="promo-period">🗓️ Gift Redemption Period: Dec 1 – Dec 31, 2026</div>
 
+    <!-- Màn hình thông báo hết hạn chơi (sau 31/12/2026) -->
+    <div id="stepClosed" class="neutral-box hidden">
+      <div style="font-size: 38px; margin-bottom: 10px;">⏳</div>
+      <div class="prize-name" id="closedTitle" style="font-size: 20px; margin-bottom: 8px;">Event Ended</div>
+      <p id="closedDesc" style="font-size: 13px; color: #4b5563; line-height: 1.5;">
+        This mystery bag event has ended. Stay tuned for our next special event at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book Appointment on Square Now
+      </a>
+    </div>
+
+    <!-- Bước 1: Lưới 10 túi mù (Mở chơi ngay từ hôm nay) -->
     <div id="stepPick" class="bags-grid"></div>
 
+    <!-- Bước 2A: Trúng quà -> Điền thông tin nhận Voucher -->
     <div id="stepClaim" class="box hidden">
       <div class="box-header">
         <div class="rarity-tag" id="bagRevealTag">🎉 Bag Revealed</div>
         <div class="prize-name" id="wonPrizeLabel"></div>
-        <p style="font-size: 12px; color: #4b5563; margin-top: 4px;">
+        <div class="redeem-note">Valid for appointments: Dec 1 – Dec 31, 2026</div>
+        <p style="font-size: 12px; color: #4b5563; margin-top: 8px;">
           Enter your details below to send this voucher to your email & lock it in:
         </p>
       </div>
@@ -257,22 +307,18 @@
         </label>
         <div id="errorMsg" class="error hidden"></div>
         <button type="submit" id="submitBtn" class="btn-primary">
-          Save Voucher & Continue to Booking →
+          Save Voucher & Book for December →
         </button>
       </form>
     </div>
 
-    <div id="stepClaimed" class="claimed-box hidden">
-      <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase; margin-bottom: 4px;" id="sentEmailText">
-        ✓ Voucher Sent!
-      </div>
-      <div class="prize-name" id="finalPrizeLabel"></div>
-      <div class="code-row">
-        <span class="code-text" id="finalCodeText"></span>
-        <button type="button" class="copy-btn" id="copyBtn">Copy Code</button>
-      </div>
-      <p style="font-size: 12px; color: #374151; line-height: 1.5;">
-        <strong>Next step:</strong> Book your appointment on Square below. Show the email we just sent you when you arrive at Tui Nail Spa!
+    <!-- Bước 2B: Bóc trúng túi Chúc bạn may mắn lần sau -->
+    <div id="stepNoWin" class="neutral-box hidden">
+      <div style="font-size: 40px; margin-bottom: 10px;">🍀</div>
+      <div class="rarity-tag" id="noWinBagTag" style="background: #e5e7eb; color: #374151;">Bag Revealed</div>
+      <div class="prize-name" style="margin-bottom: 8px;">Better Luck Next Time!</div>
+      <p style="font-size: 13px; color: #4b5563; line-height: 1.5;">
+        So close! This bag didn't contain a gift voucher, but we'd still love to pamper you this holiday season at Tui Nail Spa!
       </p>
       <a
         href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
@@ -283,26 +329,80 @@
         📅 Book Appointment on Square Now
       </a>
     </div>
+
+    <!-- Bước 3: Đã nhận Voucher thành công -->
+    <div id="stepClaimed" class="claimed-box hidden">
+      <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase; margin-bottom: 4px;" id="sentEmailText">
+        ✓ Voucher Sent!
+      </div>
+      <div class="prize-name" id="finalPrizeLabel"></div>
+      <div class="code-row">
+        <span class="code-text" id="finalCodeText"></span>
+        <button type="button" class="copy-btn" id="copyBtn">Copy Code</button>
+      </div>
+      <p style="font-size: 12px; color: #374151; line-height: 1.5;">
+        <strong>Next step:</strong> Book your <strong>December 2026</strong> appointment on Square below. Show the email we just sent you when you arrive at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book December Appointment on Square
+      </a>
+    </div>
   </div>
 
   <script>
+    // =========================================================================
+    // CÀI ĐẶT THỜI HẠN CHƠI & NHẬN QUÀ
+    // =========================================================================
+    const CAMPAIGN_CONFIG = {
+      campaignId: '2026-12-holiday',
+      playStartDate: '2026-11-15T00:00:00', // Mở cho khách bóc túi ngay từ hôm nay
+      playEndDate:   '2026-12-31T23:59:59', // Đóng minigame vào hết ngày 31/12/2026
+      totalBags: 10
+    };
+
+    // Cơ cấu giải thưởng & tỷ lệ (%) - Tổng weight = 100
     const PRIZES = [
-      { label: 'Free 2-Finger Nail Art', code: 'TUI-ART2', weight: 30, rarity: 'Common' },
-      { label: '$5 Off Your Service', code: 'TUI-5OFF', weight: 25, rarity: 'Common' },
-      { label: 'Free Paraffin Hand Wax', code: 'TUI-WAX', weight: 20, rarity: 'Common' },
-      { label: 'Free Gel Polish Removal', code: 'TUI-GEL', weight: 15, rarity: 'Common' },
-      { label: 'Free Oxygen Fragrance Hand Cream', code: 'TUI-HANDCREAM', weight: 10, rarity: 'Secret' },
+      { label: 'Complimentary Sweet Candy Treat', code: 'TUI-CANDY', weight: 40, rarity: 'Common', isWin: true },
+      { label: 'Free 2-Finger Nail Art', code: 'TUI-ART2', weight: 15, rarity: 'Common', isWin: true },
+      { label: 'Free Paraffin Hand Wax', code: 'TUI-WAX', weight: 10, rarity: 'Common', isWin: true },
+      { label: 'Free Gel Polish Removal', code: 'TUI-GEL', weight: 10, rarity: 'Common', isWin: true },
+      { label: 'Free Oxygen Fragrance Hand Cream', code: 'TUI-HANDCREAM', weight: 10, rarity: 'Secret', isWin: true },
+      { label: '$5 Off Your Service', code: 'TUI-5OFF', weight: 5, rarity: 'Rare', isWin: true },
+      { label: 'Better Luck Next Time', code: 'NO-WIN', weight: 10, rarity: 'TryAgain', isWin: false }
     ];
 
-    const STORAGE_KEY = 'tuinailspa_blindbag_v1';
+    const STORAGE_KEY = 'tuinailspa_blindbag_' + CAMPAIGN_CONFIG.campaignId;
     let selectedBagIdx = null;
     let wonPrize = null;
     let isOpening = false;
 
     const stepPick = document.getElementById('stepPick');
     const stepClaim = document.getElementById('stepClaim');
+    const stepNoWin = document.getElementById('stepNoWin');
     const stepClaimed = document.getElementById('stepClaimed');
+    const stepClosed = document.getElementById('stepClosed');
     const subtitleText = document.getElementById('subtitleText');
+
+    function checkCampaignActive() {
+      const now = new Date();
+      const start = new Date(CAMPAIGN_CONFIG.playStartDate);
+      const end = new Date(CAMPAIGN_CONFIG.playEndDate);
+
+      if (now < start || now > end) {
+        stepPick.classList.add('hidden');
+        stepClosed.classList.remove('hidden');
+        subtitleText.textContent = 'This limited-time Mystery Bag event has closed.';
+        document.getElementById('closedTitle').textContent = 'Holiday Event Ended';
+        document.getElementById('closedDesc').textContent = 'Thank you for playing! Follow Tui Nail Spa to catch our next Mystery Bag drop.';
+        return false;
+      }
+      return true;
+    }
 
     function pickWeightedPrize() {
       const total = PRIZES.reduce((sum, p) => sum + p.weight, 0);
@@ -316,12 +416,13 @@
 
     function renderBags() {
       stepPick.innerHTML = '';
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < CAMPAIGN_CONFIG.totalBags; i++) {
+        const bagNum = i + 1 < 10 ? `0${i + 1}` : `${i + 1}`;
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'bag-btn';
         btn.innerHTML = `
-          <div class="bag-top"><span>BAG #0${i + 1}</span><span>✂️ TEAR</span></div>
+          <div class="bag-top"><span>BAG #${bagNum}</span><span>✂️ TEAR</span></div>
           <div style="margin: auto 0; text-align: center;">
             <div class="bag-icon">🎁</div>
             <div class="bag-title">Mystery Bag</div>
@@ -353,28 +454,44 @@
       wonPrize = pickWeightedPrize();
 
       setTimeout(() => {
-        if (typeof confetti === 'function') {
-          confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+        if (wonPrize.isWin) {
+          if (typeof confetti === 'function') {
+            confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: false }));
+          showClaimStep();
+        } else {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: true }));
+          showNoWinStep();
         }
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: false }));
-        showClaimStep();
       }, 1500);
     }
 
     function showClaimStep() {
       stepPick.classList.add('hidden');
       stepClaim.classList.remove('hidden');
-      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your voucher below.';
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your December gift voucher below.';
+      const bagNum = (selectedBagIdx ?? 0) + 1;
+      const bagStr = bagNum < 10 ? `0${bagNum}` : `${bagNum}`;
       const secretHtml = wonPrize.rarity === 'Secret' ? '<span class="secret-badge">SECRET</span>' : '';
-      document.getElementById('bagRevealTag').innerHTML = `🎉 Bag #0${(selectedBagIdx ?? 0) + 1} Revealed ${secretHtml}`;
+      document.getElementById('bagRevealTag').innerHTML = `🎉 Bag #${bagStr} Revealed ${secretHtml}`;
       document.getElementById('wonPrizeLabel').textContent = wonPrize.label;
+    }
+
+    function showNoWinStep() {
+      stepPick.classList.add('hidden');
+      stepNoWin.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed!';
+      const bagNum = (selectedBagIdx ?? 0) + 1;
+      const bagStr = bagNum < 10 ? `0${bagNum}` : `${bagNum}`;
+      document.getElementById('noWinBagTag').textContent = `Bag #${bagStr} Revealed`;
     }
 
     function showClaimedStep(email) {
       stepPick.classList.add('hidden');
       stepClaim.classList.add('hidden');
       stepClaimed.classList.remove('hidden');
-      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your voucher below.';
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your December gift voucher below.';
       document.getElementById('sentEmailText').textContent = `✓ Voucher Sent to ${email}!`;
       document.getElementById('finalPrizeLabel').textContent = wonPrize.label;
       document.getElementById('finalCodeText').textContent = wonPrize.code;
@@ -409,7 +526,10 @@
           }),
         });
 
-        if (!res.ok) throw new Error('Request failed');
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.error || 'Server error (' + res.status + ')');
+        }
 
         localStorage.setItem(
           STORAGE_KEY,
@@ -417,10 +537,10 @@
         );
         showClaimedStep(email);
       } catch (err) {
-        errorMsg.textContent = 'Something went wrong. Please try again.';
+        errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
         errorMsg.classList.remove('hidden');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Save Voucher & Continue to Booking →';
+        submitBtn.textContent = 'Save Voucher & Book for December →';
       }
     });
 
@@ -431,26 +551,30 @@
       setTimeout(() => (btn.textContent = 'Copy Code'), 2500);
     });
 
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.prize) {
-          wonPrize = parsed.prize;
-          selectedBagIdx = parsed.bagIndex ?? 0;
-          if (parsed.claimed) {
-            showClaimedStep(parsed.email || 'your email');
+    if (checkCampaignActive()) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.prize) {
+            wonPrize = parsed.prize;
+            selectedBagIdx = parsed.bagIndex ?? 0;
+            if (!wonPrize.isWin) {
+              showNoWinStep();
+            } else if (parsed.claimed) {
+              showClaimedStep(parsed.email || 'your email');
+            } else {
+              showClaimStep();
+            }
           } else {
-            showClaimStep();
+            renderBags();
           }
-        } else {
+        } catch {
           renderBags();
         }
-      } catch {
+      } else {
         renderBags();
       }
-    } else {
-      renderBags();
     }
   </script>
 </body>
