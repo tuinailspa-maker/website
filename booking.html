@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mystery Gift Unbox | Tui La beauté des ongles</title>
+  <title>Mystery Gift & Booking | Tui La beauté des ongles</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -137,6 +137,25 @@
       padding: 6px 14px; border-radius: 8px; font-family: monospace;
       font-size: 16px; font-weight: bold; color: #f9e29c; letter-spacing: 1px; margin-top: 8px;
     }
+    .book-now-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #f7e08a 0%, #d4af37 100%);
+      color: #09090b;
+      text-decoration: none;
+      padding: 15px 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-top: 16px;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .book-now-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
     .error-msg { background: #7f1d1d; color: #fecaca; padding: 10px; border-radius: 8px; font-size: 12px; margin-bottom: 12px; display: none; }
     .loading { display: none; font-size: 13px; color: #f7e08a; margin-top: 10px; font-weight: 600; }
     .footer-link { margin-top: 16px; font-size: 12px; color: #9ca3af; }
@@ -147,8 +166,8 @@
   <div class="card">
     <div class="badge">✨ Tui La beauté des ongles</div>
     <h1>Unbox Your Mystery Gift</h1>
-    <div class="subtitle">Thank you for booking your appointment! Choose a mystery bag below to reveal your surprise holiday reward.</div>
-    <div class="step-notice">📌 Rule: Online booking completed first • Limit 1 gift per client (Dec 2026).</div>
+    <div class="subtitle">Step 1: Choose a mystery bag below to reveal your holiday reward.<br>Step 2: Complete your appointment booking to activate your voucher!</div>
+    <div class="step-notice">📌 Valid with an online appointment • Limit 1 gift per client (Dec 2026).</div>
     <div class="promo-period">Redeemable: Dec 1 – Dec 31, 2026</div>
 
     <!-- Màn hình chọn túi mù -->
@@ -180,12 +199,12 @@
             I consent to receive promotional emails and gift vouchers from Tui Nail Spa (CASL compliance). You can unsubscribe anytime.
           </label>
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn">Claim My Gift Now</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Claim My Gift & Continue</button>
         <div class="loading" id="loadingText">Processing your reward & sending email... Please wait.</div>
       </form>
     </div>
 
-    <!-- Màn hình kết quả trúng thưởng -->
+    <!-- Màn hình kết quả trúng thưởng + Nút chuyển sang đặt lịch Square -->
     <div id="result-screen" class="result-box">
       <div class="badge">🎉 Congratulations!</div>
       <div class="result-prize">
@@ -194,7 +213,12 @@
         <p style="font-size:12px; color:#d1d5db;">Present this code or confirmation email at your December visit:</p>
         <div class="code-tag" id="wonCodeTag"></div>
       </div>
-      <p style="font-size:12.5px; color:#cbd5e1; line-height:1.5;">We have sent a confirmation voucher to your email. See you in December 2026!</p>
+      <p style="font-size:13px; color:#f7e08a; font-weight:600; line-height:1.5;">
+        Final Step: Book your appointment now to activate your reward!
+      </p>
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-now-btn">
+        Continue to Book Appointment →
+      </a>
       <div class="footer-link">
         <a href="https://www.tuinailspa.ca">← Back to Tui Nail Spa Home</a>
       </div>
@@ -220,7 +244,6 @@
     const loadingText = document.getElementById('loadingText');
     const submitBtn = document.getElementById('submitBtn');
 
-    // Tạo ngẫu nhiên 10 túi mù
     function initBags() {
       bagsGrid.innerHTML = '';
       for (let i = 1; i <= 10; i++) {
@@ -237,13 +260,11 @@
     }
 
     function pickBag(btn) {
-      // Vô hiệu hóa tất cả túi sau khi chọn 1
       const allBtns = document.querySelectorAll('.bag-btn');
       allBtns.forEach(b => b.disabled = true);
       btn.style.borderColor = '#f9e29c';
       btn.style.background = '#272012';
 
-      // Thuật toán quay thưởng theo tỷ lệ trọng số (weight)
       let totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
       let randomVal = Math.random() * totalWeight;
       let cumulative = 0;
@@ -295,7 +316,6 @@
           throw new Error(data.error || 'Something went wrong. Please try again.');
         }
 
-        // Bắn pháo giấy chúc mừng
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
 
         document.getElementById('wonPrizeName').textContent = payload.prize;
@@ -310,7 +330,6 @@
         submitBtn.disabled = false;
         loadingText.style.display = 'none';
         
-        // Bật lại túi mù nếu lỗi
         const allBtns = document.querySelectorAll('.bag-btn');
         allBtns.forEach(b => b.disabled = false);
       }
