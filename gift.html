@@ -17,7 +17,7 @@
       color: #f9fafb;
     }
     .card {
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
       background: #151419;
       border-radius: 24px;
@@ -47,11 +47,26 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
     }
+    .section-lang {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .lang-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #f7e08a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
     p {
-      font-size: 14.5px;
+      font-size: 13.5px;
       color: #d1d5db;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      line-height: 1.5;
     }
     .book-btn {
       display: inline-block;
@@ -60,12 +75,15 @@
       text-decoration: none;
       padding: 14px 28px;
       border-radius: 12px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      margin-top: 10px;
       margin-bottom: 16px;
+      transition: opacity 0.2s;
     }
+    .book-btn:hover { opacity: 0.9; }
     .footer-link {
       margin-top: 10px;
       font-size: 12px;
@@ -81,12 +99,22 @@
 <body>
   <div class="card">
     <div class="badge">✨ Tui La beauté des ongles</div>
-    <h1>Mystery Gift Game</h1>
-    <p>
-      Chương trình minigame <strong>Túi Mù (Mystery Gift)</strong> hiện đang tạm ngưng và sẽ chính thức mở cửa chào đón quý khách vào dịp lễ hội tháng 12/2026.<br/><br/>
-      Quý khách vui lòng đặt lịch hẹn trước trực tuyến trên hệ thống của tiệm. Hẹn gặp lại quý khách!
-    </p>
+    <h1>Mystery Gift / Sac Mystère</h1>
+    
+    <!-- Tiếng Anh -->
+    <div class="section-lang">
+      <div class="lang-title">🇬🇧 English</div>
+      <p>The Mystery Gift minigame is currently paused and will officially open for the December 2026 holiday season. Please book your appointment online in advance. See you soon!</p>
+    </div>
+
+    <!-- Tiếng Pháp -->
+    <div class="section-lang">
+      <div class="lang-title">🇫🇷 Français</div>
+      <p>Le mini-jeu du Sac Mystère est temporairement suspendu et ouvrira officiellement pour la saison des fêtes de décembre 2026. Veuillez réserver votre rendez-vous en ligne à l'avance. À bientôt !</p>
+    </div>
+
     <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-btn">Book Appointment Online →</a>
+    
     <div class="footer-link">
       <a href="https://www.tuinailspa.ca">← Back to Tui Nail Spa Home</a>
     </div>
