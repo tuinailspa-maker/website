@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
 
     const webhookUrl = process.env.SPIN_WEBHOOK_URL || '';
 
-    // 1. Kiểm tra trùng lặp & lưu dữ liệu sang Google Sheets trước
+    // 1. Kiểm tra trùng lặp & lưu dữ liệu sang Google Sheets
     if (webhookUrl) {
       const sheetRes = await fetch(webhookUrl, {
         method: 'POST',
@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
       ? `${webhookUrl}?action=redeem&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`
       : SQUARE_BOOKING_URL;
 
-    // 2. Chỉ gửi Email Voucher qua Resend khi không bị trùng lặp
+    // 2. Gửi Email Voucher qua Resend kèm nút xác nhận cho Staff
     if (process.env.RESEND_API_KEY) {
       const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -97,7 +97,7 @@ module.exports = async (req, res) => {
                   <strong>How to redeem at the salon:</strong><br/>
                   • Book your appointment online via Square Appointments.<br/>
                   • Show this email at check-in (Issued to <strong>${name}</strong> • ${phone}).<br/>
-                  • Claimed on: ${timestamp} • <strong>Redemption Period: Dec 1 – Dec 31, 2026</strong> (Limit 1 gift per client; cannot be combined with other promos).
+                  • <strong>Redemption Period: Dec 1 – Dec 31, 2026</strong> (Limit 1 gift per client; cannot be combined with other promos).
                 </div>
                 <div style="margin-top: 22px; padding-top: 16px; border-top: 1px dashed #e5e7eb;">
                   <p style="margin: 0 0 8px; font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px;">For Tui Nail Spa Staff Only (Do not tap before visit)</p>
