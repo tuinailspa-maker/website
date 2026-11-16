@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mystery Gift Game | Tui La beauté des ongles</title>
+  <title>Mystery Gift Unbox | Tui La beauté des ongles</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -17,13 +18,13 @@
       color: #f9fafb;
     }
     .card {
-      max-width: 520px;
+      max-width: 580px;
       width: 100%;
       background: #151419;
       border-radius: 24px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
       border: 2px solid #d4af37;
-      padding: 36px 24px;
+      padding: 28px 22px;
       text-align: center;
     }
     .badge {
@@ -37,7 +38,7 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       border: 1px solid #d4af37;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     h1 {
       font-family: Georgia, serif;
@@ -45,75 +46,277 @@
       background: linear-gradient(90deg, #f9e29c 0%, #d4af37 50%, #f5d77f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
-    .section-lang {
-      background: rgba(212, 175, 55, 0.05);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 16px;
-      text-align: left;
-    }
-    .lang-title {
-      font-size: 12px;
-      font-weight: 800;
-      color: #f7e08a;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-    p {
-      font-size: 13.5px;
+    .subtitle {
+      font-size: 14px;
       color: #d1d5db;
+      margin-bottom: 10px;
       line-height: 1.5;
     }
-    .book-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #f7e08a 0%, #d4af37 100%);
-      color: #09090b;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-      margin-top: 10px;
-      margin-bottom: 16px;
-      transition: opacity 0.2s;
-    }
-    .book-btn:hover { opacity: 0.9; }
-    .footer-link {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-    .footer-link a {
+    .step-notice {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       color: #f7e08a;
-      text-decoration: none;
-      font-weight: bold;
+      font-size: 12.5px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      font-weight: 600;
     }
+    .promo-period {
+      display: inline-block;
+      font-size: 12px;
+      color: #09090b;
+      background: #d4af37;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .bags-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 540px) {
+      .bags-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+    .bag-btn {
+      border: 2px solid #d4af37;
+      border-radius: 16px;
+      padding: 10px 8px;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      background: linear-gradient(180deg, #231f16 0%, #111014 100%);
+    }
+    .bag-btn:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+      border-color: #f7e08a;
+    }
+    .bag-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .bag-num { font-size: 11px; font-weight: 800; color: #d4af37; letter-spacing: 1px; }
+    .bag-icon { font-size: 32px; }
+    .bag-text { font-size: 11px; font-weight: 700; color: #ffffff; }
+    
+    .form-container { display: none; margin-top: 15px; text-align: left; }
+    .form-group { margin-bottom: 12px; }
+    label { display: block; font-size: 12px; font-weight: 700; color: #f7e08a; margin-bottom: 4px; }
+    input {
+      width: 100%; padding: 11px 14px; border-radius: 10px;
+      border: 1px solid #d4af37; background: #0b0b0e; color: #ffffff;
+      font-size: 14px; outline: none; box-sizing: border-box;
+    }
+    input:focus { border-color: #f9e29c; box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px;
+      color: #cbd5e1; margin: 14px 0; line-height: 1.4;
+    }
+    .checkbox-group input { width: 16px; height: 16px; margin-top: 2px; accent-color: #d4af37; flex-shrink: 0; }
+    .submit-btn {
+      width: 100%; background: linear-gradient(135deg, #f7e08a 0%, #d4af37 100%);
+      color: #09090b; border: none; padding: 13px; border-radius: 12px;
+      font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); transition: opacity 0.2s;
+    }
+    .submit-btn:hover { opacity: 0.9; }
+    .result-box { display: none; text-align: center; padding: 10px 0; }
+    .result-prize {
+      background: #231f16; border: 2px dashed #d4af37; border-radius: 16px;
+      padding: 18px; margin: 15px 0; color: #ffffff;
+    }
+    .result-prize h3 { font-size: 20px; color: #f7e08a; margin-bottom: 6px; }
+    .code-tag {
+      display: inline-block; background: #0b0b0e; border: 1px solid #d4af37;
+      padding: 6px 14px; border-radius: 8px; font-family: monospace;
+      font-size: 16px; font-weight: bold; color: #f9e29c; letter-spacing: 1px; margin-top: 8px;
+    }
+    .error-msg { background: #7f1d1d; color: #fecaca; padding: 10px; border-radius: 8px; font-size: 12px; margin-bottom: 12px; display: none; }
+    .loading { display: none; font-size: 13px; color: #f7e08a; margin-top: 10px; font-weight: 600; }
+    .footer-link { margin-top: 16px; font-size: 12px; color: #9ca3af; }
+    .footer-link a { color: #f7e08a; text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="badge">✨ Tui La beauté des ongles</div>
-    <h1>Mystery Gift / Sac Mystère</h1>
-    
-    <!-- Tiếng Anh -->
-    <div class="section-lang">
-      <div class="lang-title">🇬🇧 English</div>
-      <p>The Mystery Gift minigame is currently paused and will officially open for the December 2026 holiday season. Please book your appointment online in advance. See you soon!</p>
+    <h1>Unbox Your Mystery Gift</h1>
+    <div class="subtitle">Thank you for booking your appointment! Choose a mystery bag below to reveal your surprise holiday reward.</div>
+    <div class="step-notice">📌 Rule: Online booking completed first • Limit 1 gift per client (Dec 2026).</div>
+    <div class="promo-period">Redeemable: Dec 1 – Dec 31, 2026</div>
+
+    <!-- Màn hình chọn túi mù -->
+    <div id="selection-screen">
+      <div class="bags-grid" id="bagsGrid"></div>
     </div>
 
-    <!-- Tiếng Pháp -->
-    <div class="section-lang">
-      <div class="lang-title">🇫🇷 Français</div>
-      <p>Le mini-jeu du Sac Mystère est temporairement suspendu et ouvrira officiellement pour la saison des fêtes de décembre 2026. Veuillez réserver votre rendez-vous en ligne à l'avance. À bientôt !</p>
+    <!-- Màn hình nhập thông tin -->
+    <div id="form-screen" class="form-container">
+      <div class="error-msg" id="errorMsg"></div>
+      <form id="rewardForm">
+        <input type="hidden" id="selectedPrize" />
+        <input type="hidden" id="selectedCode" />
+        <div class="form-group">
+          <label>Your Full Name *</label>
+          <input type="text" id="clientName" required placeholder="e.g. Sarah Johnson" />
+        </div>
+        <div class="form-group">
+          <label>Email Address * (To receive your voucher)</label>
+          <input type="email" id="clientEmail" required placeholder="sarah@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="clientPhone" required placeholder="514-000-0000" />
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="caslConsent" required />
+          <label for="caslConsent" style="display:inline; font-weight:normal; font-size:11.5px; color:#cbd5e1;">
+            I consent to receive promotional emails and gift vouchers from Tui Nail Spa (CASL compliance). You can unsubscribe anytime.
+          </label>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Claim My Gift Now</button>
+        <div class="loading" id="loadingText">Processing your reward & sending email... Please wait.</div>
+      </form>
     </div>
 
-    <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-btn">Book Appointment Online →</a>
-    
-    <div class="footer-link">
-      <a href="
+    <!-- Màn hình kết quả trúng thưởng -->
+    <div id="result-screen" class="result-box">
+      <div class="badge">🎉 Congratulations!</div>
+      <div class="result-prize">
+        <p style="font-size:12px; text-transform:uppercase; color:#d4af37; font-weight:bold;">Your Unboxed Reward</p>
+        <h3 id="wonPrizeName"></h3>
+        <p style="font-size:12px; color:#d1d5db;">Present this code or confirmation email at your December visit:</p>
+        <div class="code-tag" id="wonCodeTag"></div>
+      </div>
+      <p style="font-size:12.5px; color:#cbd5e1; line-height:1.5;">We have sent a confirmation voucher to your email. See you in December 2026!</p>
+      <div class="footer-link">
+        <a href="https://www.tuinailspa.ca">← Back to Tui Nail Spa Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const prizes = [
+      { name: "Sweet Candy Treat", code: "TUI-CANDY", weight: 40 },
+      { name: "2-Finger Nail Art", code: "TUI-ART2", weight: 15 },
+      { name: "Paraffin Hand Wax", code: "TUI-WAX", weight: 10 },
+      { name: "Gel Polish Removal", code: "TUI-GEL", weight: 10 },
+      { name: "Fragrance Hand Cream", code: "TUI-HANDCREAM", weight: 10 },
+      { name: "$5 Off Your Service", code: "TUI-5OFF", weight: 5 },
+      { name: "Surprise Holiday Treat", code: "TUI-BONUS", weight: 10 }
+    ];
+
+    const bagsGrid = document.getElementById('bagsGrid');
+    const selectionScreen = document.getElementById('selection-screen');
+    const formScreen = document.getElementById('form-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const errorMsg = document.getElementById('errorMsg');
+    const loadingText = document.getElementById('loadingText');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Tạo ngẫu nhiên 10 túi mù
+    function initBags() {
+      bagsGrid.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'bag-btn';
+        btn.innerHTML = `
+          <span class="bag-num">BAG #${i < 10 ? '0' + i : i}</span>
+          <span class="bag-icon">🎁</span>
+          <span class="bag-text">TAP TO UNBOX</span>
+        `;
+        btn.onclick = () => pickBag(btn);
+        bagsGrid.appendChild(btn);
+      }
+    }
+
+    function pickBag(btn) {
+      // Vô hiệu hóa tất cả túi sau khi chọn 1
+      const allBtns = document.querySelectorAll('.bag-btn');
+      allBtns.forEach(b => b.disabled = true);
+      btn.style.borderColor = '#f9e29c';
+      btn.style.background = '#272012';
+
+      // Thuật toán quay thưởng theo tỷ lệ trọng số (weight)
+      let totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
+      let randomVal = Math.random() * totalWeight;
+      let cumulative = 0;
+      let chosen = prizes[0];
+
+      for (let p of prizes) {
+        cumulative += p.weight;
+        if (randomVal <= cumulative) {
+          chosen = p;
+          break;
+        }
+      }
+
+      document.getElementById('selectedPrize').value = chosen.name;
+      document.getElementById('selectedCode').value = chosen.code;
+
+      setTimeout(() => {
+        selectionScreen.style.display = 'none';
+        formScreen.style.display = 'block';
+      }, 500);
+    }
+
+    document.getElementById('rewardForm').onsubmit = async function(e) {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+      submitBtn.disabled = true;
+      loadingText.style.display = 'block';
+
+      const payload = {
+        name: document.getElementById('clientName').value.trim(),
+        email: document.getElementById('clientEmail').value.trim(),
+        phone: document.getElementById('clientPhone').value.trim(),
+        prize: document.getElementById('selectedPrize').value,
+        code: document.getElementById('selectedCode').value,
+        caslConsent: document.getElementById('caslConsent').checked,
+        timestamp: new Date().toLocaleString()
+      };
+
+      try {
+        const res = await fetch('/api/spin-reward', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Something went wrong. Please try again.');
+        }
+
+        // Bắn pháo giấy chúc mừng
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+
+        document.getElementById('wonPrizeName').textContent = payload.prize;
+        document.getElementById('wonCodeTag').textContent = payload.code;
+
+        formScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
+
+      } catch (err) {
+        errorMsg.textContent = err.message;
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        loadingText.style.display = 'none';
+        
+        // Bật lại túi mù nếu lỗi
+        const allBtns = document.querySelectorAll('.bag-btn');
+        allBtns.forEach(b => b.disabled = false);
+      }
+    };
+
+    initBags();
+  </script>
+</body>
+</html>
