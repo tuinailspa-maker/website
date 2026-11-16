@@ -25,9 +25,11 @@ module.exports = async (req, res) => {
     const SQUARE_BOOKING_URL =
       'https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services';
 
+    const webhookUrl = process.env.SPIN_WEBHOOK_URL || '';
+
     // 1. Kiểm tra trùng lặp & lưu dữ liệu sang Google Sheets trước
-    if (process.env.SPIN_WEBHOOK_URL) {
-      const sheetRes = await fetch(process.env.SPIN_WEBHOOK_URL, {
+    if (webhookUrl) {
+      const sheetRes = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -50,18 +52,15 @@ module.exports = async (req, res) => {
       }
     }
 
-    // 2. Chỉ gửi Email Voucher qua Resend khi không bị trùng lặp
-    if (process.env.RESEND_API_KEY) {
-      const emailRes = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+    // Tạo link xác nhận 1 chạm cho thợ tại quầy
+    const staffRedeemUrl = webhookUrl
+      ? `${webhookUrl}?action=redeem&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}` : SQUARE_BOOKING_URL;  // 2. Chỉ gửi Email Voucher qua Resend khi không bị trùng lặp if (process.env.RESEND_API_KEY) { const emailRes = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           from: 'Tui Nail Spa <rewards@tuinailspa.ca>',
           to: [email],
-          subject: `🎁 Your Tui Nail Spa Holiday Gift: ${prize} (Code: ${code})`,
+          subject: `🎁 Your Tui Nail Spa Holiday Gift: ${prize} (Code:${code})`,
           html: `
             <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 520px; margin: 0 auto; border: 1px solid #f3e8ee; border-radius: 16px; overflow: hidden; background-color: #ffffff;">
               <div style="background-color: #881337; padding: 24px; text-align: center; color: #ffffff;">
@@ -89,26 +88,9 @@ module.exports = async (req, res) => {
                 <div style="text-align: left; background-color: #f9fafb; padding: 14px 16px; border-radius: 10px; font-size: 12px; color: #4b5563; line-height: 1.6;">
                   <strong>How to redeem at the salon:</strong><br/>
                   • Book your appointment online via Square Appointments.<br/>
-                  • Show this email at check-in (Issued to <strong>${name}</strong> • ${phone}).<br/>
+                  • Show this email at check-in (Issued to <strong>${name}</strong> •${phone}).<br/>
                   • Claimed on: ${timestamp} • <strong>Redemption Period: Dec 1 – Dec 31, 2026</strong> (Limit 1 gift per client; cannot be combined with other promos).
                 </div>
-              </div>
-              <div style="background-color: #fdf2f8; padding: 14px; text-align: center; font-size: 11px; color: #6b7280;">
-                Tui Nail Spa • <a href="https://tuinailspa.ca" style="color: #881337; text-decoration: none;">tuinailspa.ca</a>
-              </div>
-            </div>
-          `,
-        }),
-      });
-
-      if (!emailRes.ok) {
-        const errText = await emailRes.text();
-        return res.status(500).json({ error: 'Resend error: ' + errText });
-      }
-    }
-
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    return res.status(500).json({ error: error.message || 'Server error' });
-  }
-};
+                <div style="margin-top: 22px; padding-top: 16px; border-top: 1px dashed #e5e7eb;">
+                  <p style="margin: 0 0 8px; font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px;">For Tui Nail Spa Staff Only (Do not tap before visit)</p>
+                  <a href="${staffRedeemUrl}" style="display: inline-block; background-color: #f3f4f6; color: #374151; border: 1px solid #d1d5db; font-size: 12px; font-weight: bold; text-decoration: none; padding: 8px 16px; border-radius:
