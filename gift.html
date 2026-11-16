@@ -26,6 +26,13 @@
       border: 2px solid #d4af37;
       padding: 28px 22px;
       text-align: center;
+      position: relative;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
     .badge {
       display: inline-block;
@@ -38,7 +45,21 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       border: 1px solid #d4af37;
-      margin-bottom: 12px;
+    }
+    .lang-toggle {
+      background: #272012;
+      border: 1px solid #d4af37;
+      color: #f7e08a;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-toggle:hover {
+      background: #d4af37;
+      color: #09090b;
     }
     h1 {
       font-family: Georgia, serif;
@@ -165,17 +186,19 @@
 </head>
 <body>
   <div class="card">
-    <div class="badge">✨ Tui La beauté des ongles</div>
-    <h1>Boîte Cadeau Mystère<br><span style="font-size: 20px; font-weight: normal; color: #d4c5a1;">Mystery Gift Unbox</span></h1>
-    <div class="subtitle">
-      Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.<br>
-      <span style="font-size: 13px; color: #9ca3af;">Step 1: Choose a mystery bag below to reveal your holiday reward.</span>
+    <div class="top-bar">
+      <div class="badge">✨ Tui La beauté des ongles</div>
+      <button class="lang-toggle" id="langToggleBtn" onclick="toggleLanguage()">EN</button>
     </div>
-    <div class="step-notice">
-      📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite sur Square.<br>
-      <em>1. Open your gift here first • 2. Book your appointment on Square next.</em>
+
+    <h1 id="txtTitle">Boîte Cadeau Mystère</h1>
+    <div class="subtitle" id="txtSubtitle">
+      Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.
     </div>
-    <div class="promo-period">Valide : Déc 1 – Déc 31, 2026 / Valid: Dec 2026</div>
+    <div class="step-notice" id="txtStepNotice">
+      📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite sur Square.
+    </div>
+    <div class="promo-period" id="txtPromoPeriod">Valide : Déc 1 – Déc 31, 2026</div>
 
     <!-- Màn hình chọn túi mù -->
     <div id="selection-screen">
@@ -189,51 +212,127 @@
         <input type="hidden" id="selectedPrize" />
         <input type="hidden" id="selectedCode" />
         <div class="form-group">
-          <label>Nom complet / Full Name *</label>
+          <label id="lblClientName">Nom complet *</label>
           <input type="text" id="clientName" required placeholder="ex. Sarah Johnson" />
         </div>
         <div class="form-group">
-          <label>Courriel / Email Address * (Pour recevoir votre bon / To receive voucher)</label>
+          <label id="lblClientEmail">Courriel * (Pour recevoir votre bon)</label>
           <input type="email" id="clientEmail" required placeholder="sarah@example.com" />
         </div>
         <div class="form-group">
-          <label>Téléphone / Phone Number *</label>
+          <label id="lblClientPhone">Téléphone *</label>
           <input type="tel" id="clientPhone" required placeholder="514-000-0000" />
         </div>
         <div class="checkbox-group">
           <input type="checkbox" id="caslConsent" required />
-          <label for="caslConsent" style="display:inline; font-weight:normal; font-size:11.5px; color:#cbd5e1;">
+          <label for="caslConsent" id="lblCasl" style="display:inline; font-weight:normal; font-size:11.5px; color:#cbd5e1;">
             J'accepte de recevoir des courriels promotionnels et des bons cadeaux de Tui Nail Spa (Conforme LCAP/CASL). Vous pouvez vous désabonner à tout moment.
           </label>
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn">Réclamer mon cadeau & Continuer / Claim Gift & Continue</button>
-        <div class="loading" id="loadingText">Traitement de votre cadeau en cours... Veuillez patienter.<br><em>Processing your reward... Please wait.</em></div>
+        <button type="submit" class="submit-btn" id="submitBtn">Réclamer mon cadeau & Continuer</button>
+        <div class="loading" id="loadingText">Traitement de votre cadeau en cours... Veuillez patienter.</div>
       </form>
     </div>
 
-    <!-- Màn hình kết quả trúng thưởng + Nút chuyển sang đặt lịch Square -->
+    <!-- Màn hình kết quả trúng thưởng -->
     <div id="result-screen" class="result-box">
-      <div class="badge">🎉 Félicitations / Congratulations!</div>
+      <div class="badge" id="resBadge">🎉 Félicitations !</div>
       <div class="result-prize">
-        <p style="font-size:12px; text-transform:uppercase; color:#d4af37; font-weight:bold;">Votre Cadeau Gagné / Your Unboxed Reward</p>
+        <p style="font-size:12px; text-transform:uppercase; color:#d4af37; font-weight:bold;" id="resLabel">Votre Cadeau Gagné</p>
         <h3 id="wonPrizeName"></h3>
-        <p style="font-size:12px; color:#d1d5db;">Présentez ce code ou l'e-mail de confirmation lors de votre visite :<br><em>Present this code or email at your visit:</em></p>
+        <p style="font-size:12px; color:#d1d5db;" id="resSub">Présentez ce code ou l'e-mail de confirmation lors de votre visite :</p>
         <div class="code-tag" id="wonCodeTag"></div>
       </div>
-      <p style="font-size:13px; color:#f7e08a; font-weight:600; line-height:1.5; margin-bottom: 12px;">
-        Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous sur Square et valider votre code !<br>
-        <em style="font-size:11.5px; color:#cbd5e1;">Step 2: Click below to book your appointment on Square and validate your code!</em>
+      <p style="font-size:13px; color:#f7e08a; font-weight:600; line-height:1.5; margin-bottom: 12px;" id="resStep2">
+        Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous sur Square et valider votre code !
       </p>
-      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-now-btn">
-        Continuer vers la réservation / Continue to Book →
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-now-btn" id="btnBookNow">
+        Continuer vers la réservation →
       </a>
       <div class="footer-link">
-        <a href="https://www.tuinailspa.ca">← Retour à l'accueil / Back to Home</a>
+        <a href="https://www.tuinailspa.ca" id="backHomeLink">← Retour à l'accueil</a>
       </div>
     </div>
   </div>
 
   <script>
+    let currentLang = 'fr';
+
+    const translations = {
+      fr: {
+        toggleBtn: 'EN',
+        title: 'Boîte Cadeau Mystère',
+        subtitle: 'Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.',
+        stepNotice: '📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite sur Square.',
+        promoPeriod: 'Valide : Déc 1 – Déc 31, 2026',
+        bagText: 'OUVRIR',
+        bagPrefix: 'SAC #',
+        lblName: 'Nom complet *',
+        lblEmail: 'Courriel * (Pour recevoir votre bon)',
+        lblPhone: 'Téléphone *',
+        lblCasl: "J'accepte de recevoir des courriels promotionnels et des bons cadeaux de Tui Nail Spa (Conforme LCAP/CASL). Vous pouvez vous désabonner à tout moment.",
+        submit: 'Réclamer mon cadeau & Continuer',
+        loading: 'Traitement de votre cadeau en cours... Veuillez patienter.',
+        resBadge: '🎉 Félicitations !',
+        resLabel: 'Votre Cadeau Gagné',
+        resSub: 'Présentez ce code ou l' + "'" + 'e-mail de confirmation lors de votre visite :',
+        resStep2: 'Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous sur Square et valider votre code !',
+        btnBook: 'Continuer vers la réservation →',
+        backHome: '← Retour à l' + "'" + 'accueil'
+      },
+      en: {
+        toggleBtn: 'FR',
+        title: 'Mystery Gift Box',
+        subtitle: 'Step 1: Choose a mystery bag below to reveal your holiday reward.',
+        stepNotice: '📌 1. Open your gift here first • 2. Book your appointment on Square next.',
+        promoPeriod: 'Valid: Dec 1 – Dec 31, 2026',
+        bagText: 'OPEN',
+        bagPrefix: 'BAG #',
+        lblName: 'Full Name *',
+        lblEmail: 'Email Address * (To receive voucher)',
+        lblPhone: 'Phone Number *',
+        lblCasl: 'I agree to receive promotional emails and gift vouchers from Tui Nail Spa (CASL compliant). You can unsubscribe at any time.',
+        submit: 'Claim Gift & Continue',
+        loading: 'Processing your reward... Please wait.',
+        resBadge: '🎉 Congratulations!',
+        resLabel: 'Your Unboxed Reward',
+        resSub: 'Present this code or confirmation email at your visit:',
+        resStep2: 'Step 2: Click below to book your appointment on Square and validate your code!',
+        btnBook: 'Continue to Book →',
+        backHome: '← Back to Home'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      updateTexts();
+    }
+
+    function updateTexts() {
+      const t = translations[currentLang];
+      document.getElementById('langToggleBtn').textContent = t.toggleBtn;
+      document.getElementById('txtTitle').textContent = t.title;
+      document.getElementById('txtSubtitle').textContent = t.subtitle;
+      document.getElementById('txtStepNotice').textContent = t.stepNotice;
+      document.getElementById('txtPromoPeriod').textContent = t.promoPeriod;
+
+      document.getElementById('lblClientName').textContent = t.lblName;
+      document.getElementById('lblClientEmail').textContent = t.lblEmail;
+      document.getElementById('lblClientPhone').textContent = t.lblPhone;
+      document.getElementById('lblCasl').textContent = t.lblCasl;
+      document.getElementById('submitBtn').textContent = t.submit;
+      document.getElementById('loadingText').innerHTML = t.loading;
+
+      document.getElementById('resBadge').textContent = t.resBadge;
+      document.getElementById('resLabel').textContent = t.resLabel;
+      document.getElementById('resSub').textContent = t.resSub;
+      document.getElementById('resStep2').textContent = t.resStep2;
+      document.getElementById('btnBookNow').textContent = t.btnBook;
+      document.getElementById('backHomeLink').textContent = t.backHome;
+
+      initBags();
+    }
+
     const prizes = [
       { name: "Sweet Candy Treat", code: "TUI-CANDY", weight: 40 },
       { name: "2-Finger Nail Art", code: "TUI-ART2", weight: 15 },
@@ -253,14 +352,16 @@
     const submitBtn = document.getElementById('submitBtn');
 
     function initBags() {
+      const t = translations[currentLang];
       bagsGrid.innerHTML = '';
       for (let i = 1; i <= 10; i++) {
         const btn = document.createElement('button');
         btn.className = 'bag-btn';
+        const numStr = i < 10 ? '0' + i : i;
         btn.innerHTML = `
-          <span class="bag-num">SAC #${i < 10 ? '0' + i : i}</span>
+          <span class="bag-num">${t.bagPrefix}${numStr}</span>
           <span class="bag-icon">🎁</span>
-          <span class="bag-text">OUVRIR<br>OPEN</span>
+          <span class="bag-text">${t.bagText}</span>
         `;
         btn.onclick = () => pickBag(btn);
         bagsGrid.appendChild(btn);
