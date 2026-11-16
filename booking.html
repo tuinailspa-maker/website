@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="pageTitle">Cadeau Mystère & Réservation | Tui La beauté des ongles</title>
+  <title>Cadeau Mystère & Réservation | Tui - La beauté des ongles</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,11 +28,24 @@
       text-align: center;
       position: relative;
     }
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
+    .skip-top-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #d1d5db;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .skip-top-btn:hover {
+      border-color: var(--gold-primary, #d4af37);
+      color: #f7e08a;
     }
     .badge {
       display: inline-block;
@@ -45,32 +58,18 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       border: 1px solid #d4af37;
-    }
-    .lang-toggle {
-      background: #272012;
-      border: 1px solid #d4af37;
-      color: #f7e08a;
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-toggle:hover {
-      background: #d4af37;
-      color: #09090b;
+      margin-bottom: 12px;
     }
     h1 {
       font-family: Georgia, serif;
-      font-size: 26px;
+      font-size: 24px;
       background: linear-gradient(90deg, #f9e29c 0%, #d4af37 50%, #f5d77f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 8px;
     }
     .subtitle {
-      font-size: 14px;
+      font-size: 13.5px;
       color: #d1d5db;
       margin-bottom: 10px;
       line-height: 1.5;
@@ -79,15 +78,16 @@
       background: rgba(212, 175, 55, 0.1);
       border: 1px solid rgba(212, 175, 55, 0.4);
       color: #f7e08a;
-      font-size: 12.5px;
+      font-size: 12px;
       padding: 8px 14px;
       border-radius: 10px;
       margin-bottom: 18px;
       font-weight: 600;
+      line-height: 1.4;
     }
     .promo-period {
       display: inline-block;
-      font-size: 12px;
+      font-size: 11.5px;
       color: #09090b;
       background: #d4af37;
       padding: 5px 14px;
@@ -124,7 +124,7 @@
     .bag-btn:disabled { opacity: 0.4; cursor: not-allowed; }
     .bag-num { font-size: 11px; font-weight: 800; color: #d4af37; letter-spacing: 1px; }
     .bag-icon { font-size: 32px; }
-    .bag-text { font-size: 11px; font-weight: 700; color: #ffffff; }
+    .bag-text { font-size: 10.5px; font-weight: 700; color: #ffffff; line-height: 1.2; }
     
     .form-container { display: none; margin-top: 15px; text-align: left; }
     .form-group { margin-bottom: 12px; }
@@ -143,7 +143,7 @@
     .submit-btn {
       width: 100%; background: linear-gradient(135deg, #f7e08a 0%, #d4af37 100%);
       color: #09090b; border: none; padding: 13px; border-radius: 12px;
-      font-size: 15px; font-weight: 800; cursor: pointer; text-transform: uppercase;
+      font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase;
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); transition: opacity 0.2s;
     }
     .submit-btn:hover { opacity: 0.9; }
@@ -166,7 +166,7 @@
       text-decoration: none;
       padding: 15px 18px;
       border-radius: 12px;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       text-transform: uppercase;
       margin-top: 16px;
@@ -185,18 +185,22 @@
 </head>
 <body>
   <div class="card">
-    <div class="top-bar">
-      <div class="badge">✨ Tui La beauté des ongles</div>
-      <button class="lang-toggle" id="langToggleBtn" onclick="toggleLanguage()">EN</button>
-    </div>
+    <!-- Nút Bỏ qua / Skip chơi minigame -->
+    <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="skip-top-btn">
+      Pass / Skip →
+    </a>
 
-    <h1 id="txtTitle">Ouvrez votre Cadeau Mystère</h1>
-    <div class="subtitle" id="txtSubtitle">
-      Étape 1 : Choisissez un sac mystère ci-dessous pour révéler votre récompense.<br>
-      Étape 2 : Complétez votre réservation en ligne pour activer votre bon !
+    <div class="badge">✨ Tui La beauté des ongles</div>
+    <h1>Boîte Cadeau Mystère<br><span style="font-size: 18px; font-weight: normal; color: #d4c5a1;">Mystery Gift Unbox</span></h1>
+    <div class="subtitle">
+      Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.<br>
+      <span style="font-size: 12.5px; color: #9ca3af;">Step 1: Choose a mystery bag to reveal your holiday reward.</span>
     </div>
-    <div class="step-notice" id="txtStepNotice">📌 Valide avec un rendez-vous en ligne • Limite 1 cadeau par client (Déc 2026).</div>
-    <div class="promo-period" id="txtPromoPeriod">Échangeable : 1er déc. – 31 déc. 2026</div>
+    <div class="step-notice">
+      📌 Ouvrez le cadeau ici ou cliquez sur "Pass" en haut pour réserver directement.<br>
+      <em>Open your gift here or click "Skip" above to book directly.</em>
+    </div>
+    <div class="promo-period">Valide : Déc 2026 / Valid: Dec 2026</div>
 
     <!-- Màn hình chọn túi mù -->
     <div id="selection-screen">
@@ -210,130 +214,47 @@
         <input type="hidden" id="selectedPrize" />
         <input type="hidden" id="selectedCode" />
         <div class="form-group">
-          <label id="lblClientName">Nom complet *</label>
+          <label>Nom complet / Full Name *</label>
           <input type="text" id="clientName" required placeholder="ex. Sarah Johnson" />
         </div>
         <div class="form-group">
-          <label id="lblClientEmail">Courriel * (Pour recevoir votre bon)</label>
+          <label>Courriel / Email Address *</label>
           <input type="email" id="clientEmail" required placeholder="sarah@example.com" />
         </div>
         <div class="form-group">
-          <label id="lblClientPhone">Téléphone *</label>
+          <label>Téléphone / Phone Number *</label>
           <input type="tel" id="clientPhone" required placeholder="514-000-0000" />
         </div>
         <div class="checkbox-group">
           <input type="checkbox" id="caslConsent" required />
-          <label for="caslConsent" id="lblCasl" style="display:inline; font-weight:normal; font-size:11.5px; color:#cbd5e1;">
-            J'accepte de recevoir des courriels promotionnels et des bons cadeaux de Tui Nail Spa (Conforme LCAP/CASL). Vous pouvez vous désabonner à tout moment.
+          <label for="caslConsent" style="display:inline; font-weight:normal; font-size:11px; color:#cbd5e1;">
+            J'accepte de recevoir des courriels promotionnels de Tui Nail Spa (LCAP/CASL).
           </label>
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn">Réclamer mon cadeau & Continuer</button>
-        <div class="loading" id="loadingText" id="txtLoading">Traitement de votre cadeau en cours... Veuillez patienter.</div>
+        <button type="submit" class="submit-btn" id="submitBtn">Réclamer & Continuer / Claim & Continue</button>
+        <div class="loading" id="loadingText">Traitement en cours... / Processing...</div>
       </form>
     </div>
 
-    <!-- Màn hình kết quả trúng thưởng + Nút chuyển sang đặt lịch Square -->
+    <!-- Màn hình kết quả trúng thưởng -->
     <div id="result-screen" class="result-box">
-      <div class="badge" id="resBadge">🎉 Félicitations !</div>
+      <div class="badge">🎉 Félicitations / Congratulations!</div>
       <div class="result-prize">
-        <p style="font-size:12px; text-transform:uppercase; color:#d4af37; font-weight:bold;" id="resLabel">Votre Cadeau Gagné</p>
+        <p style="font-size:11.5px; text-transform:uppercase; color:#d4af37; font-weight:bold;">Votre Cadeau / Your Reward</p>
         <h3 id="wonPrizeName"></h3>
-        <p style="font-size:12px; color:#d1d5db;" id="resSub">Présentez ce code ou l'e-mail de confirmation lors de votre visite en décembre :</p>
+        <p style="font-size:11.5px; color:#d1d5db;">Présentez ce code lors de votre visite : / Present this code:</p>
         <div class="code-tag" id="wonCodeTag"></div>
       </div>
-      <p style="font-size:13px; color:#f7e08a; font-weight:600; line-height:1.5;" id="resStep2">
-        Dernière étape : Réservez votre rendez-vous dès maintenant pour activer votre récompense !
-      </p>
-      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-now-btn" id="btnBookNow">
-        Continuer vers la réservation →
+      <a href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services" class="book-now-btn">
+        Continuer vers la réservation / Continue to Book →
       </a>
       <div class="footer-link">
-        <a href="https://www.tuinailspa.ca" id="backHomeLink">← Retour à l'accueil Tui Nail Spa</a>
+        <a href="https://www.tuinailspa.ca">← Retour à l'accueil / Back to Home</a>
       </div>
     </div>
   </div>
 
   <script>
-    let currentLang = 'fr';
-
-    const translations = {
-      fr: {
-        toggleBtn: 'EN',
-        pageTitle: 'Cadeau Mystère & Réservation | Tui La beauté des ongles',
-        title: 'Ouvrez votre Cadeau Mystère',
-        subtitle: 'Étape 1 : Choisissez un sac mystère ci-dessous pour révéler votre récompense.<br>Étape 2 : Complétez votre réservation en ligne pour activer votre bon !',
-        stepNotice: '📌 Valide avec un rendez-vous en ligne • Limite 1 cadeau par client (Déc 2026).',
-        promoPeriod: 'Échangeable : 1er déc. – 31 déc. 2026',
-        bagText: 'OUVRIR',
-        bagPrefix: 'SAC #',
-        lblName: 'Nom complet *',
-        lblEmail: 'Courriel * (Pour recevoir votre bon)',
-        lblPhone: 'Téléphone *',
-        lblCasl: "J'accepte de recevoir des courriels promotionnels et des bons cadeaux de Tui Nail Spa (Conforme LCAP/CASL). Vous pouvez vous désabonner à tout moment.",
-        submit: 'Réclamer mon cadeau & Continuer',
-        loading: 'Traitement de votre cadeau en cours... Veuillez patienter.',
-        resBadge: '🎉 Félicitations !',
-        resLabel: 'Votre Cadeau Gagné',
-        resSub: "Présentez ce code ou l'e-mail de confirmation lors de votre visite en décembre :",
-        resStep2: 'Dernière étape : Réservez votre rendez-vous dès maintenant pour activer votre récompense !',
-        btnBook: 'Continuer vers la réservation →',
-        backHome: "← Retour à l'accueil Tui Nail Spa"
-      },
-      en: {
-        toggleBtn: 'FR',
-        pageTitle: 'Mystery Gift & Booking | Tui La beauté des ongles',
-        title: 'Unbox Your Mystery Gift',
-        subtitle: 'Step 1: Choose a mystery bag below to reveal your holiday reward.<br>Step 2: Complete your appointment booking to activate your voucher!',
-        stepNotice: '📌 Valid with an online appointment • Limit 1 gift per client (Dec 2026).',
-        promoPeriod: 'Redeemable: Dec 1 – Dec 31, 2026',
-        bagText: 'OPEN',
-        bagPrefix: 'BAG #',
-        lblName: 'Full Name *',
-        lblEmail: 'Email Address * (To receive your voucher)',
-        lblPhone: 'Phone Number *',
-        lblCasl: 'I agree to receive promotional emails and gift vouchers from Tui Nail Spa (CASL compliance). You can unsubscribe anytime.',
-        submit: 'Claim My Gift & Continue',
-        loading: 'Processing your reward & sending email... Please wait.',
-        resBadge: '🎉 Congratulations!',
-        resLabel: 'Your Unboxed Reward',
-        resSub: 'Present this code or confirmation email at your December visit:',
-        resStep2: 'Final Step: Book your appointment now to activate your reward!',
-        btnBook: 'Continue to Book Appointment →',
-        backHome: '← Back to Tui Nail Spa Home'
-      }
-    };
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      updateTexts();
-    }
-
-    function updateTexts() {
-      const t = translations[currentLang];
-      document.getElementById('langToggleBtn').textContent = t.toggleBtn;
-      document.getElementById('pageTitle').textContent = t.pageTitle;
-      document.getElementById('txtTitle').textContent = t.title;
-      document.getElementById('txtSubtitle').innerHTML = t.subtitle;
-      document.getElementById('txtStepNotice').textContent = t.stepNotice;
-      document.getElementById('txtPromoPeriod').textContent = t.promoPeriod;
-
-      document.getElementById('lblClientName').textContent = t.lblName;
-      document.getElementById('lblClientEmail').textContent = t.lblEmail;
-      document.getElementById('lblClientPhone').textContent = t.lblPhone;
-      document.getElementById('lblCasl').textContent = t.lblCasl;
-      document.getElementById('submitBtn').textContent = t.submit;
-      document.getElementById('loadingText').textContent = t.loading;
-
-      document.getElementById('resBadge').textContent = t.resBadge;
-      document.getElementById('resLabel').textContent = t.resLabel;
-      document.getElementById('resSub').textContent = t.resSub;
-      document.getElementById('resStep2').textContent = t.resStep2;
-      document.getElementById('btnBookNow').textContent = t.btnBook;
-      document.getElementById('backHomeLink').textContent = t.backHome;
-
-      initBags();
-    }
-
     const prizes = [
       { name: "Sweet Candy Treat", code: "TUI-CANDY", weight: 40 },
       { name: "2-Finger Nail Art", code: "TUI-ART2", weight: 15 },
@@ -353,16 +274,14 @@
     const submitBtn = document.getElementById('submitBtn');
 
     function initBags() {
-      const t = translations[currentLang];
       bagsGrid.innerHTML = '';
       for (let i = 1; i <= 10; i++) {
         const btn = document.createElement('button');
         btn.className = 'bag-btn';
-        const numStr = i < 10 ? '0' + i : i;
         btn.innerHTML = `
-          <span class="bag-num">${t.bagPrefix}${numStr}</span>
+          <span class="bag-num">SAC #${i < 10 ? '0' + i : i}</span>
           <span class="bag-icon">🎁</span>
-          <span class="bag-text">${t.bagText}</span>
+          <span class="bag-text">OUVRIR<br>OPEN</span>
         `;
         btn.onclick = () => pickBag(btn);
         bagsGrid.appendChild(btn);
@@ -421,25 +340,19 @@
         });
 
         const data = await res.json();
-
-        if (!res.ok) {
-          throw new Error(data.error || 'Something went wrong. Please try again.');
-        }
+        if (!res.ok) throw new Error(data.error || "Erreur de traitement.");
 
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-
         document.getElementById('wonPrizeName').textContent = payload.prize;
         document.getElementById('wonCodeTag').textContent = payload.code;
 
         formScreen.style.display = 'none';
         resultScreen.style.display = 'block';
-
       } catch (err) {
         errorMsg.textContent = err.message;
         errorMsg.style.display = 'block';
         submitBtn.disabled = false;
         loadingText.style.display = 'none';
-        
         const allBtns = document.querySelectorAll('.bag-btn');
         allBtns.forEach(b => b.disabled = false);
       }
