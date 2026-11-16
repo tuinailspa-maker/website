@@ -86,3 +86,496 @@
     .bag-btn:nth-child(odd) { background: linear-gradient(180deg, #ffe4e6 0%, #fecdd3 100%); }
     .bag-btn:nth-child(even) { background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%); border-color: #fcd34d; }
     .bag-btn:hover:not(:disabled) {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(159, 18, 57, 0.15);
+    }
+    .bag-btn.opening {
+      animation: shake 0.4s infinite;
+      box-shadow: 0 0 0 4px #fbbf24;
+      transform: scale(1.05);
+    }
+    .bag-btn.dimmed { opacity: 0.4; transform: scale(0.95); }
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg) scale(1.05); }
+      25% { transform: rotate(-4deg) scale(1.05); }
+      75% { transform: rotate(4deg) scale(1.05); }
+    }
+    .bag-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      font-weight: 700;
+      color: #881337;
+      border-bottom: 1px dashed rgba(136, 19, 55, 0.4);
+      padding-bottom: 4px;
+    }
+    .bag-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .bag-title { font-family: Georgia, serif; font-weight: 700; font-size: 12px; color: #111827; }
+    .bag-cta {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 4px 0;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #881337;
+    }
+    .box {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: left;
+    }
+    .neutral-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .box-header { text-align: center; margin-bottom: 16px; }
+    .rarity-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .secret-badge {
+      background: #881337;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+      font-size: 10px;
+    }
+    .prize-name { font-size: 22px; font-weight: 800; color: #111827; }
+    .redeem-note {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #9f1239;
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px dashed #fda4af;
+    }
+    .input-group { margin-bottom: 10px; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus { border-color: #be123c; }
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: #4b5563;
+      margin: 10px 0 14px;
+      line-height: 1.4;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #881337;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-primary:disabled { background: #fda4af; }
+    .claimed-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .code-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 2px dashed #34d399;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+    .code-text { font-family: monospace; font-size: 18px; font-weight: 800; letter-spacing: 1px; }
+    .copy-btn {
+      background: #d1fae5;
+      color: #065f46;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .book-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: #111827;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 12px;
+      margin-top: 14px;
+    }
+    .hidden { display: none; }
+    .error { color: #dc2626; font-size: 12px; margin-bottom: 10px; word-break: break-word; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">✨ Tui Nail Spa Holiday Blind Bag</div>
+    <h1>Unbox Your Mystery Nail Gift</h1>
+    <p class="subtitle" id="subtitleText">
+      Play now to lock in your surprise gift! All vouchers are valid to redeem in-salon starting December 2026.
+    </p>
+    <div class="promo-period">🗓️ Gift Redemption Period: Dec 1 – Dec 31, 2026</div>
+
+    <!-- Màn hình thông báo hết hạn chơi (sau 31/12/2026) -->
+    <div id="stepClosed" class="neutral-box hidden">
+      <div style="font-size: 38px; margin-bottom: 10px;">⏳</div>
+      <div class="prize-name" id="closedTitle" style="font-size: 20px; margin-bottom: 8px;">Event Ended</div>
+      <p id="closedDesc" style="font-size: 13px; color: #4b5563; line-height: 1.5;">
+        This mystery bag event has ended. Stay tuned for our next special event at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book Appointment on Square Now
+      </a>
+    </div>
+
+    <!-- Bước 1: Lưới 10 túi mù -->
+    <div id="stepPick" class="bags-grid"></div>
+
+    <!-- Bước 2A: Trúng quà -> Điền thông tin nhận Voucher -->
+    <div id="stepClaim" class="box hidden">
+      <div class="box-header">
+        <div class="rarity-tag" id="bagRevealTag">🎉 Bag Revealed</div>
+        <div class="prize-name" id="wonPrizeLabel"></div>
+        <div class="redeem-note">Valid for appointments: Dec 1 – Dec 31, 2026</div>
+        <p style="font-size: 12px; color: #4b5563; margin-top: 8px;">
+          Enter your details below to send this voucher to your email & lock it in:
+        </p>
+      </div>
+      <form id="claimForm">
+        <div class="input-group">
+          <input type="text" id="custName" required placeholder="Your Full Name *" />
+        </div>
+        <div class="input-group">
+          <input type="email" id="custEmail" required placeholder="Your Email (to receive voucher) *" />
+        </div>
+        <div class="input-group">
+          <input type="tel" id="custPhone" required placeholder="Phone Number (e.g., 514-555-0199) *" />
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="caslConsent" checked style="margin-top: 2px;" />
+          <span>Send my reward voucher to my email and keep me updated on special offers from Tui Nail Spa (Canada). Unsubscribe anytime.</span>
+        </label>
+        <div id="errorMsg" class="error hidden"></div>
+        <button type="submit" id="submitBtn" class="btn-primary">
+          Save Voucher & Book for December →
+        </button>
+      </form>
+    </div>
+
+    <!-- Bước 2B: Bóc trúng túi Chúc bạn may mắn lần sau -->
+    <div id="stepNoWin" class="neutral-box hidden">
+      <div style="font-size: 40px; margin-bottom: 10px;">🍀</div>
+      <div class="rarity-tag" id="noWinBagTag" style="background: #e5e7eb; color: #374151;">Bag Revealed</div>
+      <div class="prize-name" style="margin-bottom: 8px;">Better Luck Next Time!</div>
+      <p style="font-size: 13px; color: #4b5563; line-height: 1.5;">
+        So close! This bag didn't contain a gift voucher, but we'd still love to pamper you this holiday season at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book Appointment on Square Now
+      </a>
+    </div>
+
+    <!-- Bước 3: Đã nhận Voucher thành công -->
+    <div id="stepClaimed" class="claimed-box hidden">
+      <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase; margin-bottom: 4px;" id="sentEmailText">
+        ✓ Voucher Sent!
+      </div>
+      <div class="prize-name" id="finalPrizeLabel"></div>
+      <div class="code-row">
+        <span class="code-text" id="finalCodeText"></span>
+        <button type="button" class="copy-btn" id="copyBtn">Copy Code</button>
+      </div>
+      <p style="font-size: 12px; color: #374151; line-height: 1.5;">
+        <strong>Next step:</strong> Book your <strong>December 2026</strong> appointment on Square below. Show the email we just sent you when you arrive at Tui Nail Spa!
+      </p>
+      <a
+        href="https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="book-btn"
+      >
+        📅 Book December Appointment on Square
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // CÀI ĐẶT THỜI HẠN CHƠI & NHẬN QUÀ
+    // =========================================================================
+    const CAMPAIGN_CONFIG = {
+      campaignId: '2026-12-holiday',
+      playStartDate: '2026-11-15T00:00:00', // Mở cho khách bóc túi ngay từ 15/11/2026
+      playEndDate:   '2026-12-31T23:59:59', // Đóng minigame vào hết ngày 31/12/2026
+      totalBags: 10
+    };
+
+    // Cơ cấu giải thưởng & tỷ lệ (%) - Tổng weight = 100
+    const PRIZES = [
+      { label: 'Complimentary Sweet Candy Treat', code: 'TUI-CANDY', weight: 40, rarity: 'Common', isWin: true },
+      { label: 'Free 2-Finger Nail Art', code: 'TUI-ART2', weight: 15, rarity: 'Common', isWin: true },
+      { label: 'Free Paraffin Hand Wax', code: 'TUI-WAX', weight: 10, rarity: 'Common', isWin: true },
+      { label: 'Free Gel Polish Removal', code: 'TUI-GEL', weight: 10, rarity: 'Common', isWin: true },
+      { label: 'Free Oxygen Fragrance Hand Cream', code: 'TUI-HANDCREAM', weight: 10, rarity: 'Secret', isWin: true },
+      { label: '$5 Off Your Service', code: 'TUI-5OFF', weight: 5, rarity: 'Rare', isWin: true },
+      { label: 'Better Luck Next Time', code: 'NO-WIN', weight: 10, rarity: 'TryAgain', isWin: false }
+    ];
+
+    const STORAGE_KEY = 'tuinailspa_blindbag_' + CAMPAIGN_CONFIG.campaignId;
+    let selectedBagIdx = null;
+    let wonPrize = null;
+    let isOpening = false;
+
+    const stepPick = document.getElementById('stepPick');
+    const stepClaim = document.getElementById('stepClaim');
+    const stepNoWin = document.getElementById('stepNoWin');
+    const stepClaimed = document.getElementById('stepClaimed');
+    const stepClosed = document.getElementById('stepClosed');
+    const subtitleText = document.getElementById('subtitleText');
+
+    function checkCampaignActive() {
+      const now = new Date();
+      const start = new Date(CAMPAIGN_CONFIG.playStartDate);
+      const end = new Date(CAMPAIGN_CONFIG.playEndDate);
+
+      if (now < start || now > end) {
+        stepPick.classList.add('hidden');
+        stepClosed.classList.remove('hidden');
+        subtitleText.textContent = 'This limited-time Mystery Bag event has closed.';
+        document.getElementById('closedTitle').textContent = 'Holiday Event Ended';
+        document.getElementById('closedDesc').textContent = 'Thank you for playing! Follow Tui Nail Spa to catch our next Mystery Bag drop.';
+        return false;
+      }
+      return true;
+    }
+
+    function pickWeightedPrize() {
+      const total = PRIZES.reduce((sum, p) => sum + p.weight, 0);
+      let r = Math.random() * total;
+      for (const p of PRIZES) {
+        if (r < p.weight) return p;
+        r -= p.weight;
+      }
+      return PRIZES[0];
+    }
+
+    function renderBags() {
+      stepPick.innerHTML = '';
+      for (let i = 0; i < CAMPAIGN_CONFIG.totalBags; i++) {
+        const bagNum = i + 1 < 10 ? `0${i + 1}` : `${i + 1}`;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'bag-btn';
+        btn.innerHTML = `
+          <div class="bag-top"><span>BAG #${bagNum}</span><span>✂️ TEAR</span></div>
+          <div style="margin: auto 0; text-align: center;">
+            <div class="bag-icon">🎁</div>
+            <div class="bag-title">Mystery Bag</div>
+          </div>
+          <div class="bag-cta">Tap to Open</div>
+        `;
+        btn.onclick = () => handleOpenBag(i);
+        stepPick.appendChild(btn);
+      }
+    }
+
+    function handleOpenBag(index) {
+      if (isOpening) return;
+      isOpening = true;
+      selectedBagIdx = index;
+
+      const buttons = stepPick.querySelectorAll('.bag-btn');
+      buttons.forEach((b, idx) => {
+        b.disabled = true;
+        if (idx === index) {
+          b.classList.add('opening');
+          b.querySelector('.bag-icon').textContent = '✨';
+          b.querySelector('.bag-title').textContent = 'Opening...';
+        } else {
+          b.classList.add('dimmed');
+        }
+      });
+
+      wonPrize = pickWeightedPrize();
+
+      setTimeout(() => {
+        if (wonPrize.isWin) {
+          if (typeof confetti === 'function') {
+            confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: false }));
+          showClaimStep();
+        } else {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ prize: wonPrize, bagIndex: index, claimed: true }));
+          showNoWinStep();
+        }
+      }, 1500);
+    }
+
+    function showClaimStep() {
+      stepPick.classList.add('hidden');
+      stepClaim.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your December gift voucher below.';
+      const bagNum = (selectedBagIdx ?? 0) + 1;
+      const bagStr = bagNum < 10 ? `0${bagNum}` : `${bagNum}`;
+      const secretHtml = wonPrize.rarity === 'Secret' ? '<span class="secret-badge">SECRET</span>' : '';
+      document.getElementById('bagRevealTag').innerHTML = `🎉 Bag #${bagStr} Revealed ${secretHtml}`;
+      document.getElementById('wonPrizeLabel').textContent = wonPrize.label;
+    }
+
+    function showNoWinStep() {
+      stepPick.classList.add('hidden');
+      stepNoWin.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed!';
+      const bagNum = (selectedBagIdx ?? 0) + 1;
+      const bagStr = bagNum < 10 ? `0${bagNum}` : `${bagNum}`;
+      document.getElementById('noWinBagTag').textContent = `Bag #${bagStr} Revealed`;
+    }
+
+    function showClaimedStep(email) {
+      stepPick.classList.add('hidden');
+      stepClaim.classList.add('hidden');
+      stepClaimed.classList.remove('hidden');
+      subtitleText.textContent = 'Your mystery bag has been unboxed! Save your December gift voucher below.';
+      document.getElementById('sentEmailText').textContent = `✓ Voucher Sent to ${email}!`;
+      document.getElementById('finalPrizeLabel').textContent = wonPrize.label;
+      document.getElementById('finalCodeText').textContent = wonPrize.code;
+    }
+
+    document.getElementById('claimForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const caslConsent = document.getElementById('caslConsent').checked;
+      const submitBtn = document.getElementById('submitBtn');
+      const errorMsg = document.getElementById('errorMsg');
+
+      errorMsg.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving Your Voucher...';
+
+      try {
+        const timestamp = new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto' });
+        const res = await fetch('/api/spin-reward', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            prize: wonPrize.label,
+            code: wonPrize.code,
+            caslConsent,
+            timestamp,
+          }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.error || 'Server error (' + res.status + ')');
+        }
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ prize: wonPrize, bagIndex: selectedBagIdx, email, claimed: true })
+        );
+        showClaimedStep(email);
+      } catch (err) {
+        errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
+        errorMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Save Voucher & Book for December →';
+      }
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(wonPrize.code);
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => (btn.textContent = 'Copy Code'), 2500);
+    });
+
+    if (checkCampaignActive()) {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.prize) {
+            wonPrize = parsed.prize;
+            selectedBagIdx = parsed.bagIndex ?? 0;
+            if (!wonPrize.isWin) {
+              showNoWinStep();
+            } else if (parsed.claimed) {
+              showClaimedStep(parsed.email || 'your email');
+            } else {
+              showClaimStep();
+            }
+          } else {
+            renderBags();
+          }
+        } catch {
+          renderBags();
+        }
+      } else {
+        renderBags();
+      }
+    }
+  </script>
+</body>
+</html>
