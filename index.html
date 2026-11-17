@@ -252,32 +252,45 @@
       transform: translateY(-1px);
     }
 
-    /* --- 3. VIDÉO ("SEE IT IN ACTION") - KHUNG DỌC 9:16 CHO YOUTUBE SHORTS --- */
-    .action-section {
-      padding: 72px 24px 64px;
-      max-width: 960px;
+    /* --- 3. BỐ CỤC 2/3 NỘI DUNG & 1/3 VIDEO SHORTS --- */
+    .action-section-split {
+      padding: 72px 24px;
+      max-width: 1140px;
       margin: 0 auto;
-      text-align: center;
+      border-top: 1px solid var(--border-gold);
     }
 
-    .action-section h2 {
+    .split-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr; /* 2 phần bên trái (2/3), 1 phần bên phải (1/3) */
+      gap: 48px;
+      align-items: center;
+    }
+
+    .split-content {
+      text-align: left;
+    }
+
+    .split-content h2 {
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       font-weight: 500;
       color: var(--gold-champagne);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
 
-    .action-section .subtitle {
+    .split-content p {
       font-size: 14.5px;
       color: var(--text-muted);
-      margin-bottom: 32px;
+      line-height: 1.7;
+      margin-bottom: 22px;
     }
 
-    .video-frame-wrapper {
+    .split-video-wrapper {
       position: relative;
       width: 100%;
-      max-width: 380px;
+      max-width: 320px;
       aspect-ratio: 9 / 16;
       margin: 0 auto;
       border-radius: 14px;
@@ -287,7 +300,7 @@
       background: #000;
     }
 
-    .video-frame-wrapper iframe {
+    .split-video-wrapper iframe {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -900,7 +913,6 @@
       font-weight: 600;
     }
 
-    /* KHỐI NÚT ỨNG TUYỂN TRANG CARRIÈRES */
     .career-cta-box {
       background-color: #0d0d0d;
       border: 1px solid var(--gold-champagne);
@@ -964,7 +976,7 @@
       background-color: rgba(212, 197, 161, 0.15);
     }
 
-    /* --- 9. FOOTER ĐƠN GIẢN --- */
+    /* --- 9. FOOTER --- */
     footer {
       background-color: #0d0d0d;
       color: #ffffff;
@@ -1058,8 +1070,15 @@
         display: inline-block;
       }
       .location-grid,
-      .contact-grid {
+      .contact-grid,
+      .split-grid {
         grid-template-columns: 1fr;
+      }
+      .split-content {
+        text-align: center;
+      }
+      .split-video-wrapper {
+        margin: 20px auto 0;
       }
     }
 
@@ -1096,6 +1115,7 @@
         align-items: flex-start;
       }
     } 
+
     /* --- NÚT CHUYỂN ĐỔI NGÔN NGỮ (FR / EN) --- */
     .lang-switcher {
       display: inline-flex;
@@ -1127,15 +1147,13 @@
     }
   </style>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KXK6FKNY9">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KXK6FKNY9');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KXK6FKNY9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0KXK6FKNY9');
+  </script>
 </head>
 <body>
 
@@ -1210,12 +1228,49 @@
       </div>
     </section>
 
-    <!-- Vidéo YouTube Shorts -->
-    <section class="action-section">
-      <h2>Découvrez nos soins en action</h2>
-      <p class="subtitle">Un premier aperçu de nos traitements et du savoir-faire de notre équipe</p>
-      <div class="video-frame-wrapper">
-        <iframe src="https://www.youtube.com/embed/TSQE1YEKtqA" title="Tui Nail Spa - Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- SECTION CHIA CỘT: 2/3 NỘI DUNG & 1/3 VIDEO SHORTS -->
+    <section class="action-section-split">
+      <div class="split-grid">
+        
+        <!-- 2/3 BÊN TRÁI: THÔNG TIN GIỚI THIỆU & LỐI TẮT DỊCH VỤ -->
+        <div class="split-content">
+          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); color: var(--gold-champagne); border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 14px;">
+            <span>★ Privilège du Mois : -5$ sur Combos Shellac</span>
+          </div>
+
+          <h2>L'excellence de la beauté des ongles à Montréal</h2>
+          
+          <p>
+            Situé au <strong>1570 Rue Saint-Timothée</strong>, <strong>Tui Nail Spa</strong> vous propose des soins haut de gamme dans une atmosphère relaxante. Experts en pose <strong>Gel-X</strong>, soins anti-crevasses et manucures fortifiantes au calcium.
+          </p>
+
+          <!-- Lối tắt danh mục dịch vụ -->
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px;">
+            <a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: var(--gold-champagne); text-decoration: none; transition: 0.2s;">
+              ★ Offres Spéciales
+            </a>
+            <a href="#pedicure" onclick="openServicePage('pedicure')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              🦶 Pédicure & Talons
+            </a>
+            <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              ✨ Gel-X & Acrylique
+            </a>
+            <a href="#combos" onclick="openServicePage('combos')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              💅 Combos Mani-Pédi
+            </a>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <a href="booking.html" class="btn-hero" style="padding: 12px 28px; font-size: 14px;">Prendre rendez-vous (Dès 8h)</a>
+            <a href="tel:4387777043" class="btn-outline" style="padding: 12px 22px; font-size: 14px;">📞 (438) 777-7043</a>
+          </div>
+        </div>
+
+        <!-- 1/3 BÊN PHẢI: KHUNG VIDEO YOUTUBE SHORTS DỌC -->
+        <div class="split-video-wrapper">
+          <iframe src="https://www.youtube.com/embed/TSQE1YEKtqA" title="Tui Nail Spa - Shorts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
       </div>
     </section>
 
@@ -1292,43 +1347,35 @@
         </div>
       </div>
 
-      <!-- Lưới ảnh Instagram: Tự động nhận file nail1.jpg -> nail8.jpg bạn tải lên GitHub -->
       <div class="ig-track" id="igFeedTrack">
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 1">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 2">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 3">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80';" alt="Tui Nail Spa Instagram 4">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail5.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 5">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail6.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 6">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail7.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 7">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
         </a>
-
         <a href="https://www.instagram.com/tuinailspa/" target="_blank" rel="noopener" class="ig-card">
           <img src="nail8.jpg" onerror="this.parentElement.style.display='none';" alt="Tui Nail Spa Instagram 8">
           <span class="ig-badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
@@ -1363,7 +1410,6 @@
       <p>6 ans d'expérience • Prix compétitifs • Service garanti • Réservation en ligne dès 8h</p>
     </div>
 
-    <!-- 1. SOINS DES PIEDS SPÉCIALISÉS -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Soins des Pieds Spécialisés</h3>
@@ -1406,7 +1452,6 @@
       </table>
     </div>
 
-    <!-- 2. SOINS DES MAINS -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Soins des Mains</h3>
@@ -1422,9 +1467,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Manucure + Vernis Gel</span>
-            </td>
+            <td class="service-col"><span class="item-title">Manucure + Vernis Gel</span></td>
             <td class="price-old">40$</td>
             <td class="price-special">35$</td>
           </tr>
@@ -1440,7 +1483,6 @@
       </table>
     </div>
 
-    <!-- 3. NAIL ENHANCEMENT — POSE D'ONGLES -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Nail Enhancement — Pose d'ongles</h3>
@@ -1488,10 +1530,6 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       6 TRANG CON DỊCH VỤ DẠNG TABLE MATRIX
-       ========================================================= -->
-
   <!-- TRANG 1: PÉDICURE -->
   <section id="page-pedicure" class="service-subpage">
     <div class="subpage-breadcrumb">
@@ -1537,9 +1575,7 @@
             <td class="price-col">50$</td>
           </tr>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Application de vernis — Les pieds</span>
-            </td>
+            <td class="service-col"><span class="item-title">Application de vernis — Les pieds</span></td>
             <td class="muted-dash">—</td>
             <td class="price-col">22$</td>
             <td class="price-col">32$</td>
@@ -1616,9 +1652,7 @@
             <td class="price-col">40$</td>
           </tr>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Application de vernis — Les mains</span>
-            </td>
+            <td class="service-col"><span class="item-title">Application de vernis — Les mains</span></td>
             <td class="muted-dash">—</td>
             <td class="price-col">18$</td>
             <td class="price-col">30$</td>
@@ -1676,30 +1710,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Acrylique</span></td>
-            <td class="price-col">48$</td>
-            <td class="price-col">55$</td>
-            <td class="price-col">65$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Bio Gel</span></td>
-            <td class="price-col">48$</td>
-            <td class="price-col">55$</td>
-            <td class="price-col">65$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Après Gel X</span></td>
-            <td class="price-col">48$</td>
-            <td class="price-col">55$</td>
-            <td class="price-col">65$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Recouvrement sur ongles naturels</span></td>
-            <td class="price-col">48$</td>
-            <td class="price-col">55$</td>
-            <td class="price-col">65$+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Acrylique</span></td><td class="price-col">48$</td><td class="price-col">55$</td><td class="price-col">65$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bio Gel</span></td><td class="price-col">48$</td><td class="price-col">55$</td><td class="price-col">65$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Après Gel X</span></td><td class="price-col">48$</td><td class="price-col">55$</td><td class="price-col">65$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Recouvrement sur ongles naturels</span></td><td class="price-col">48$</td><td class="price-col">55$</td><td class="price-col">65$+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1719,24 +1733,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Acrylique</span></td>
-            <td class="price-col">40$</td>
-            <td class="price-col">47$</td>
-            <td class="price-col">60$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Bio Gel</span></td>
-            <td class="price-col">40$</td>
-            <td class="price-col">47$</td>
-            <td class="price-col">60$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Après Gel X</span></td>
-            <td class="price-col">40$</td>
-            <td class="price-col">47$</td>
-            <td class="price-col">60$+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Acrylique</span></td><td class="price-col">40$</td><td class="price-col">47$</td><td class="price-col">60$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bio Gel</span></td><td class="price-col">40$</td><td class="price-col">47$</td><td class="price-col">60$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Après Gel X</span></td><td class="price-col">40$</td><td class="price-col">47$</td><td class="price-col">60$+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1755,16 +1754,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Sans pointes d'ongles</span></td>
-            <td class="price-col">50$</td>
-            <td class="price-col">60$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Avec pointes d'ongles</span></td>
-            <td class="price-col">55$</td>
-            <td class="price-col">65$+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Sans pointes d'ongles</span></td><td class="price-col">50$</td><td class="price-col">60$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Avec pointes d'ongles</span></td><td class="price-col">55$</td><td class="price-col">65$+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1807,18 +1798,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Mani-Pédi sans vernis</span></td>
-            <td class="price-col">55$</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Mani-Pédi avec vernis régulier</span></td>
-            <td class="price-col">65$</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Mani-Pédi Shellac</span></td>
-            <td class="price-col">80$</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Mani-Pédi sans vernis</span></td><td class="price-col">55$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Mani-Pédi avec vernis régulier</span></td><td class="price-col">65$</td></tr>
+          <tr><td class="service-col"><span class="item-title">Mani-Pédi Shellac</span></td><td class="price-col">80$</td></tr>
           <tr>
             <td class="service-col">
               <span class="item-title">Mani-Pédi Shellac (avec calcium gel en base)</span>
@@ -1902,14 +1884,14 @@
           <tr>
             <td class="service-col">
               <span class="item-title">Traitement Paraffine (Les mains / Les pieds)</span>
-              <span class="item-desc">Paraffine dorlote vos pieds, vos mains et leur redonne confort, hydratation et souplesse. Paraffine chaude et liquide est mise dans un sac individuel pour chaque pied ou main.</span>
+              <span class="item-desc">Paraffine dorlote vos pieds, vos mains et leur redonne confort, hydratation et souplesse.</span>
             </td>
             <td class="price-col">12$ / 15$</td>
           </tr>
           <tr>
             <td class="service-col">
               <span class="item-title">Traitement au Collagène</span>
-              <span class="item-desc">Enrichi de collagène, d'huile d'olive et d'huile d'argan, la crème hydratante ultra-nutritionnelle pénètre rapidement pour protéger, nourrir et hydrater les pieds et les mains.</span>
+              <span class="item-desc">Enrichi de collagène, d'huile d'olive et d'huile d'argan, la crème hydratante pénètre rapidement.</span>
             </td>
             <td class="price-col">10$</td>
           </tr>
@@ -1927,14 +1909,8 @@
             </td>
             <td class="price-col">20$</td>
           </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Réparation de l'ongle</span></td>
-            <td class="price-col">10$+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Option française</span></td>
-            <td class="price-col">10$+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Réparation de l'ongle</span></td><td class="price-col">10$+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Option française</span></td><td class="price-col">10$+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1998,10 +1974,6 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       2 TRANG THÔNG TIN TIỆM: POLITIQUES & CARRIÈRES
-       ========================================================= -->
-
   <!-- TRANG 7: POLITIQUES DU SALON -->
   <section id="page-politiques" class="service-subpage">
     <div class="subpage-breadcrumb">
@@ -2014,11 +1986,10 @@
 
     <div class="subpage-header">
       <h2>Politiques du Salon</h2>
-      <p>Afin d’offrir à chaque client(e) une expérience relaxante et ponctuelle, merci de prendre connaissance de nos règles avant votre visite.</p>
+      <p>Afin d’offrir à chaque client(e) une expérience relaxante et ponctuelle, merci de prendre connaissance de nos règles.</p>
     </div>
 
     <div class="policy-grid">
-      <!-- 01. ANNULATIONS & ABSENCES -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">01</span>
@@ -2027,14 +1998,13 @@
         <div class="policy-body">
           <ul>
             <li><strong>Modification / Annulation :</strong> Sans frais jusqu’à <strong>24 heures</strong> avant votre rendez-vous.</li>
-            <li><strong>Annulation tardive (&lt; 24 h) :</strong> Des frais équivalents à <strong>40 %</strong> du montant des services réservés s’appliquent.</li>
-            <li><strong>Absence (No-Show) :</strong> En cas de non-présentation sans préavis, <strong>100 %</strong> du coût des services réservés sera facturé avant toute nouvelle réservation.</li>
-            <li><strong>Carte de crédit :</strong> Une carte valide est requise au dossier lors de la réservation en ligne pour garantir votre place.</li>
+            <li><strong>Annulation tardive (&lt; 24 h) :</strong> <strong>40 %</strong> du montant des services réservés.</li>
+            <li><strong>Absence (No-Show) :</strong> <strong>100 %</strong> du coût des services réservés sera facturé avant toute nouvelle réservation.</li>
+            <li><strong>Carte de crédit :</strong> Requise au dossier lors de la réservation en ligne.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 02. RETARDS & PONCTUALITÉ -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">02</span>
@@ -2042,14 +2012,13 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Préavis :</strong> Merci de nous contacter par téléphone (<strong>438-777-7043</strong>) ou courriel si vous prévoyez un retard.</li>
-            <li><strong>Délai de grâce de 15 minutes :</strong> Passé 15 minutes sans nouvelles, le rendez-vous est considéré comme une absence et votre place pourra être attribuée à un autre client.</li>
-            <li><strong>Ajustement du soin :</strong> En cas de retard accepté, la prestation pourra être écourtée pour respecter l’horaire suivant, au tarif initial réservé.</li>
+            <li><strong>Préavis :</strong> Contactez-nous par téléphone (<strong>438-777-7043</strong>).</li>
+            <li><strong>Délai de grâce de 15 minutes :</strong> Passé ce délai, le rendez-vous est considéré comme une absence.</li>
+            <li><strong>Ajustement du soin :</strong> La prestation pourra être écourtée pour respecter l’horaire suivant.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 03. CONFORT & ACCOMPAGNATEURS -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">03</span>
@@ -2057,13 +2026,12 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Venez seul(e) :</strong> Afin de préserver une atmosphère calme et sécuritaire, merci de ne pas amener d’accompagnateurs (enfants ou animaux inclus), sauf accord préalable du salon.</li>
-            <li><strong>Dossier client :</strong> Des coordonnées complètes (nom, téléphone, courriel) sont demandées lors de l’inscription pour le suivi de vos rendez-vous.</li>
+            <li><strong>Venez seul(e) :</strong> Afin de préserver une atmosphère calme, merci de ne pas amener d'accompagnateurs.</li>
+            <li><strong>Dossier client :</strong> Coordonnées complètes demandées pour le suivi.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 04. TARIFS & PROMOTIONS -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">04</span>
@@ -2071,31 +2039,25 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Révision des prix :</strong> Tous nos tarifs sont sujets à changement sans préavis.</li>
-            <li><strong>Offres spéciales :</strong> Les promotions et rabais ne sont pas jumelables. Le report d’un rendez-vous promotionnel hors période valide entraîne la perte du tarif réduit.</li>
-            <li><strong>Technicien(ne)s Seniors :</strong> Les prestations réalisées par nos spécialistes seniors sont exclues des offres promotionnelles, sauf mention contraire.</li>
+            <li><strong>Révision des prix :</strong> Sujets à changement sans préavis.</li>
+            <li><strong>Offres spéciales :</strong> Non jumelables.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 05. GARANTIE & REMBOURSEMENTS -->
       <div class="policy-card policy-card-full">
         <div class="policy-title-bar">
           <span class="policy-num">05</span>
-          <h3>GARANTIE DE SERVICE &amp; RETOURS DE PRODUITS</h3>
+          <h3>GARANTIE DE SERVICE &amp; RETOURS</h3>
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Services (Garantie 7 jours) :</strong> Aucun remboursement monétaire n’est effectué sur les prestations rendues. Si vous constatez un souci avec votre pose ou votre vernis, contactez-nous dans les <strong>7 jours</strong> suivant votre visite : nous effectuerons une retouche avec plaisir.</li>
-            <li><strong>Produits :</strong> Les articles utilisés ne sont ni repris ni remboursés. Seuls les produits défectueux ou endommagés à l’achat peuvent être échangés ou convertis en crédit salon.</li>
+            <li><strong>Services (Garantie 7 jours) :</strong> Aucun remboursement monétaire. Si souci constaté dans les <strong>7 jours</strong>, retouche gratuite.</li>
+            <li><strong>Produits :</strong> Non repris ni remboursés, sauf produits défectueux à l'achat.</li>
           </ul>
         </div>
       </div>
     </div>
-
-    <p style="text-align: center; margin-top: 32px; font-style: italic; color: #a3a3a3; font-size: 14px;">
-      Merci de votre confiance et de votre compréhension. — L’équipe Tui - La beauté des ongles
-    </p>
   </section>
 
   <!-- TRANG 8: CARRIÈRES / RECRUTEMENT -->
@@ -2110,11 +2072,10 @@
 
     <div class="subpage-header">
       <h2>Carrières chez Tui</h2>
-      <p>Rejoignez une équipe passionnée et bienveillante au cœur de Montréal. Nous recherchons des artistes des ongles créatifs et minutieux.</p>
+      <p>Rejoignez une équipe passionnée et bienveillante au cœur de Montréal.</p>
     </div>
 
     <div class="policy-grid">
-      <!-- 01. POSTES RECHERCHÉS -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">01</span>
@@ -2122,67 +2083,33 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Technicien(ne) en pose d’ongles :</strong> Maîtrise du Shellac, gel UV, Gel-X, biab ou résine et poudre.</li>
-            <li><strong>Spécialiste Manucure &amp; Pédicure :</strong> Soins esthétiques complets, vernis régulier/gel et soins spa.</li>
-            <li><strong>Horaires flexibles :</strong> Postes à temps plein ou à temps partiel disponibles selon vos disponibilités.</li>
+            <li><strong>Technicien(ne) en pose d’ongles :</strong> Maîtrise Shellac, gel UV, Gel-X, biab.</li>
+            <li><strong>Spécialiste Manucure &amp; Pédicure :</strong> Soins esthétiques complets.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 02. POURQUOI NOUS REJOINDRE -->
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">02</span>
-          <h3>POURQUOI CHOISIR TUI NAIL SPA ?</h3>
+          <h3>POURQUOI CHOISIR TUI ?</h3>
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Rémunération compétitive :</strong> Salaire attractif + commissions avantageuses + 100 % des pourboires.</li>
-            <li><strong>Clientèle fidèle et établie :</strong> Salon situé au 1570 Rue Saint-Timothée (Ville-Marie) avec un flux constant de rendez-vous.</li>
-            <li><strong>Environnement haut de gamme :</strong> Équipements modernes, normes d’hygiène strictes et ambiance chaleureuse.</li>
+            <li><strong>Rémunération compétitive :</strong> Salaire attractif + commissions + 100% pourboires.</li>
+            <li><strong>Clientèle fidèle :</strong> Salon situé au 1570 Rue Saint-Timothée.</li>
           </ul>
         </div>
       </div>
 
-      <!-- 03. PROFIL RECHERCHÉ -->
-      <div class="policy-card">
-        <div class="policy-title-bar">
-          <span class="policy-num">03</span>
-          <h3>PROFIL RECHERCHÉ</h3>
-        </div>
-        <div class="policy-body">
-          <ul>
-            <li><strong>Savoir-faire :</strong> Souci du détail, propreté irréprochable et passion pour l’esthétique des ongles.</li>
-            <li><strong>Service à la clientèle :</strong> Attitude accueillante, ponctualité et esprit d’équipe.</li>
-            <li><strong>Langues :</strong> Français et/ou anglais fonctionnel (un atout apprécié).</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 04. COMMENT POSTULER -->
-      <div class="policy-card">
-        <div class="policy-title-bar">
-          <span class="policy-num">04</span>
-          <h3>COMMENT POSTULER ?</h3>
-        </div>
-        <div class="policy-body">
-          <ul>
-            <li><strong>En ligne (Rapide) :</strong> Remplissez votre candidature en 2 minutes via notre portail StaffedUp.</li>
-            <li><strong>Par courriel :</strong> Envoyez votre CV ou quelques photos de vos réalisations à <strong>tuinailspa@gmail.com</strong>.</li>
-            <li><strong>Par téléphone :</strong> Contactez-nous directement au <strong>438-777-7043</strong> pour planifier une rencontre.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 05. KHUNG HÀNH ĐỘNG (CTA) NỔI BẬT -->
       <div class="career-cta-box policy-card-full">
         <h3>Prêt(e) à faire partie de l’aventure Tui ?</h3>
-        <p>Postulez directement en ligne ou envoyez-nous votre dossier par courriel dès aujourd’hui.</p>
+        <p>Postulez directement en ligne ou envoyez-nous votre dossier par courriel.</p>
         <div class="career-btn-group">
           <a href="https://staffedup.com/tuinailspa/?src=social" target="_blank" rel="noopener" class="career-btn-gold">
             Postuler en ligne (StaffedUp)
           </a>
-          <a href="mailto:tuinailspa@gmail.com?subject=Candidature%20-%20Technicien(ne)%20en%20ongles%20|%20Tui%20Nail%20Spa" class="career-btn-outline-light">
+          <a href="mailto:tuinailspa@gmail.com?subject=Candidature%20-%20Technicien(ne)" class="career-btn-outline-light">
             Envoyer mon CV par courriel
           </a>
         </div>
@@ -2190,9 +2117,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       FOOTER ĐƠN GIẢN
-       ========================================================= -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-top">
@@ -2235,6 +2160,7 @@
     </div>
   </footer>
 
+  <!-- JAVASCRIPT CONTROLLER -->
   <script>
     const validPages = [
       'offres-speciales',
@@ -2353,14 +2279,14 @@
         bouton.textContent = 'Envoyer';
       }
     } 
+
     function switchLang(targetFile) {
       const currentHash = window.location.hash || '';
       window.location.href = targetFile + currentHash;
     }
-  </script> 
-  <!-- =========================================================
-       KHỐI POP-UP THÔNG BÁO (KHUYẾN MÃI / NGHỈ LỄ) - BẢN TIẾNG PHÁP
-       ========================================================= -->
+  </script>
+
+  <!-- POP-UP THÔNG BÁO -->
   <style>
     .tui-popup-overlay {
       position: fixed;
@@ -2479,7 +2405,7 @@
     }
   </style>
 
-  <!-- POP-UP 1: THÔNG BÁO NGHỈ LỄ -->
+  <!-- POP-UP 1: HÔRAIRE DES FÊTES -->
   <div id="tuiPopup1" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup1()">
     <div class="tui-popup-box">
       <button class="tui-popup-close" onclick="fermerPopup1()" aria-label="Fermer">✕</button>
@@ -2490,15 +2416,13 @@
         Ouvert aux heures habituelles tous les autres jours. Réservez à l'avance !
       </p>
       <div class="tui-popup-actions">
-        <a href="booking.html" class="tui-popup-btn-primary" onclick="fermerPopup1();">
-          Prendre rendez-vous
-        </a>
+        <a href="booking.html" class="tui-popup-btn-primary" onclick="fermerPopup1();">Prendre rendez-vous</a>
         <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup1()">Fermer</button>
       </div>
     </div>
   </div>
 
-  <!-- POP-UP 2: GOM 2 ƯU ĐÃI (COMBOS SHELLAC & GIFT CARD) -->
+  <!-- POP-UP 2: OFFRES SPÉCIALES -->
   <div id="tuiPopup2" class="tui-popup-overlay" onclick="if(event.target === this) fermerPopup2()">
     <div class="tui-popup-box">
       <button class="tui-popup-close" onclick="fermerPopup2()" aria-label="Fermer">✕</button>
@@ -2509,23 +2433,20 @@
         • <strong>Traitement à la Paraffine GRATUIT</strong> (mains ou pieds) à l'achat d'une <strong>Carte-Cadeau de 100$ CAD</strong> ou plus.
       </p>
       <div class="tui-popup-actions">
-        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">
-          Voir les Combos
-        </a>
+        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">Voir les Combos</a>
         <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup2()">Fermer</button>
       </div>
     </div>
   </div>
 
   <script>
-    const BAT_POPUP_LE = true;      // Bật/tắt thông báo nghỉ lễ
-    const BAT_POPUP_PROMO = true;   // Bật/tắt thông báo khuyến mãi
+    const BAT_POPUP_LE = true;      
+    const BAT_POPUP_PROMO = true;   
 
     let timerShow = null;
     let timerHide = null;
 
     function lancerTuiPopup() {
-      // Chỉ hiện 1 lần trong mỗi phiên truy cập để khách không bị khó chịu khi chuyển trang
       if (sessionStorage.getItem('tui_popups_done')) return;
 
       if (BAT_POPUP_LE) {
@@ -2533,9 +2454,9 @@
           const p1 = document.getElementById('tuiPopup1');
           if (p1) {
             p1.classList.add('show');
-            timerHide = setTimeout(fermerPopup1, 7000); // Tự tắt sau 7 giây
+            timerHide = setTimeout(fermerPopup1, 7000); 
           }
-        }, 1500); // Chờ 1.5 giây sau khi vào trang
+        }, 1500); 
       } else if (BAT_POPUP_PROMO) {
         timerShow = setTimeout(ouvrirPopup2, 1500);
       }
@@ -2548,7 +2469,7 @@
       if (p1) p1.classList.remove('show');
 
       if (BAT_POPUP_PROMO) {
-        timerShow = setTimeout(ouvrirPopup2, 3000); // Cho khách nghỉ 3 giây rồi mới hiện bảng ưu đãi
+        timerShow = setTimeout(ouvrirPopup2, 3000); 
       } else {
         sessionStorage.setItem('tui_popups_done', '1');
       }
@@ -2558,7 +2479,7 @@
       const p2 = document.getElementById('tuiPopup2');
       if (p2) {
         p2.classList.add('show');
-        timerHide = setTimeout(fermerPopup2, 8000); // Tự tắt sau 8 giây
+        timerHide = setTimeout(fermerPopup2, 8000); 
       }
     }
 
@@ -2572,8 +2493,5 @@
 
     window.addEventListener('DOMContentLoaded', lancerTuiPopup);
   </script>
-  <a href="booking.html" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;background:linear-gradient(135deg,#881337,#be123c);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 10px 25px rgba(136,19,55,0.35);border:1px solid #fecdd3;">
-    🎁 Cadeau Mystère / Mystery Gift
-  </a>
 </body>
 </html>
