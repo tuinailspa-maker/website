@@ -252,32 +252,45 @@
       transform: translateY(-1px);
     }
 
-    /* --- 3. VIDEO SHORTS FRAME (9:16) --- */
-    .action-section {
-      padding: 72px 24px 64px;
-      max-width: 960px;
+    /* --- 3. BỐ CỤC 2/3 NỘI DUNG & 1/3 VIDEO SHORTS --- */
+    .action-section-split {
+      padding: 72px 24px;
+      max-width: 1140px;
       margin: 0 auto;
-      text-align: center;
+      border-top: 1px solid var(--border-gold);
     }
 
-    .action-section h2 {
+    .split-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .split-content {
+      text-align: left;
+    }
+
+    .split-content h2 {
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       font-weight: 500;
       color: var(--gold-champagne);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
 
-    .action-section .subtitle {
+    .split-content p {
       font-size: 14.5px;
       color: var(--text-muted);
-      margin-bottom: 32px;
+      line-height: 1.7;
+      margin-bottom: 22px;
     }
 
-    .video-frame-wrapper {
+    .split-video-wrapper {
       position: relative;
       width: 100%;
-      max-width: 380px;
+      max-width: 320px;
       aspect-ratio: 9 / 16;
       margin: 0 auto;
       border-radius: 14px;
@@ -287,7 +300,7 @@
       background: #000;
     }
 
-    .video-frame-wrapper iframe {
+    .split-video-wrapper iframe {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -1048,6 +1061,7 @@
       letter-spacing: 0.2px;
     }
 
+    /* --- RESPONSIVE MOBILE --- */
     @media (max-width: 920px) {
       .nav-links {
         display: none;
@@ -1056,8 +1070,15 @@
         display: inline-block;
       }
       .location-grid,
-      .contact-grid {
+      .contact-grid,
+      .split-grid {
         grid-template-columns: 1fr;
+      }
+      .split-content {
+        text-align: center;
+      }
+      .split-video-wrapper {
+        margin: 20px auto 0;
       }
     }
 
@@ -1154,7 +1175,7 @@
             <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a></li>
             <li><a href="#combos" onclick="openServicePage('combos')">Combos</a></li>
             <li><a href="#add-on-services" onclick="openServicePage('add-on-services')">Add-on Services</a></li>
-            <li><a href="#epilation" onclick="openServicePage('epilation')">Waxing / Hair Removal</a></li>
+            <li><a href="#epilation" onclick="openServicePage('epilation')">Waxing</a></li>
           </ul>
         </li>
         <li><a href="#location" onclick="goHomeSection('location')">Location & Hours</a></li>
@@ -1207,12 +1228,49 @@
       </div>
     </section>
 
-    <!-- Video Shorts Section -->
-    <section class="action-section">
-      <h2>See Our Treatments in Action</h2>
-      <p class="subtitle">A first look at our treatments and our team's professional expertise</p>
-      <div class="video-frame-wrapper">
-        <iframe src="https://www.youtube.com/embed/TSQE1YEKtqA" title="Tui Nail Spa - Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- SECTION CHIA CỘT: 2/3 NỘI DUNG & 1/3 VIDEO SHORTS -->
+    <section class="action-section-split">
+      <div class="split-grid">
+        
+        <!-- 2/3 BÊN TRÁI: THÔNG TIN GIỚI THIỆU & LỐI TẮT DỊCH VỤ -->
+        <div class="split-content">
+          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); color: var(--gold-champagne); border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 14px;">
+            <span>★ Monthly Privilege: $5 OFF Shellac Combos</span>
+          </div>
+
+          <h2>Excellence in Nail Care & Beauty in Montreal</h2>
+          
+          <p>
+            Located at <strong>1570 Rue Saint-Timothée</strong>, <strong>Tui Nail Spa</strong> offers high-end treatments in a relaxing atmosphere. Experts in <strong>Gel-X</strong> extensions, crack-heel foot care, and calcium-strengthening manicures.
+          </p>
+
+          <!-- Quick Navigation Pills -->
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px;">
+            <a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: var(--gold-champagne); text-decoration: none; transition: 0.2s;">
+              ★ Special Offers
+            </a>
+            <a href="#pedicure" onclick="openServicePage('pedicure')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              🦶 Pedicure & Heels
+            </a>
+            <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              ✨ Gel-X & Acrylic
+            </a>
+            <a href="#combos" onclick="openServicePage('combos')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+              💅 Mani-Pedi Combos
+            </a>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <a href="booking.html" class="btn-hero" style="padding: 12px 28px; font-size: 14px;">Book Appointment (From 8 AM)</a>
+            <a href="tel:4387777043" class="btn-outline" style="padding: 12px 22px; font-size: 14px;">📞 (438) 777-7043</a>
+          </div>
+        </div>
+
+        <!-- 1/3 BÊN PHẢI: KHUNG VIDEO YOUTUBE SHORTS DỌC -->
+        <div class="split-video-wrapper">
+          <iframe src="https://www.youtube.com/embed/TSQE1YEKtqA" title="Tui Nail Spa - Shorts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
       </div>
     </section>
 
@@ -1352,7 +1410,6 @@
       <p>6 years of experience • Competitive pricing • Guaranteed service • Online booking from 8 AM</p>
     </div>
 
-    <!-- 1. SPECIALIZED FOOT CARE -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Specialized Foot Care</h3>
@@ -1395,7 +1452,6 @@
       </table>
     </div>
 
-    <!-- 2. HAND CARE -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Hand Care</h3>
@@ -1411,9 +1467,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Manicure + Gel Polish</span>
-            </td>
+            <td class="service-col"><span class="item-title">Manicure + Gel Polish</span></td>
             <td class="price-old">$40</td>
             <td class="price-special">$35</td>
           </tr>
@@ -1429,7 +1483,6 @@
       </table>
     </div>
 
-    <!-- 3. NAIL ENHANCEMENT -->
     <div class="table-card">
       <div class="table-card-banner">
         <h3>Nail Enhancements</h3>
@@ -1477,9 +1530,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       PEDICURE SUBPAGE
-       ========================================================= -->
+  <!-- PEDICURE SUBPAGE -->
   <section id="page-pedicure" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1524,9 +1575,7 @@
             <td class="price-col">$50</td>
           </tr>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Polish Application — Feet</span>
-            </td>
+            <td class="service-col"><span class="item-title">Polish Application — Feet</span></td>
             <td class="muted-dash">—</td>
             <td class="price-col">$22</td>
             <td class="price-col">$32</td>
@@ -1549,9 +1598,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       MANICURE SUBPAGE
-       ========================================================= -->
+  <!-- MANICURE SUBPAGE -->
   <section id="page-manucure" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1605,9 +1652,7 @@
             <td class="price-col">$40</td>
           </tr>
           <tr>
-            <td class="service-col">
-              <span class="item-title">Polish Application — Hands</span>
-            </td>
+            <td class="service-col"><span class="item-title">Polish Application — Hands</span></td>
             <td class="muted-dash">—</td>
             <td class="price-col">$18</td>
             <td class="price-col">$30</td>
@@ -1630,9 +1675,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       NAIL ENHANCEMENT SUBPAGE
-       ========================================================= -->
+  <!-- NAIL ENHANCEMENT SUBPAGE -->
   <section id="page-nail-enhancement" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1667,30 +1710,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Acrylic</span></td>
-            <td class="price-col">$48</td>
-            <td class="price-col">$55</td>
-            <td class="price-col">$65+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Bio Gel</span></td>
-            <td class="price-col">$48</td>
-            <td class="price-col">$55</td>
-            <td class="price-col">$65+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Gel-X</span></td>
-            <td class="price-col">$48</td>
-            <td class="price-col">$55</td>
-            <td class="price-col">$65+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Natural Nail Overlay</span></td>
-            <td class="price-col">$48</td>
-            <td class="price-col">$55</td>
-            <td class="price-col">$65+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Acrylic</span></td><td class="price-col">$48</td><td class="price-col">$55</td><td class="price-col">$65+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bio Gel</span></td><td class="price-col">$48</td><td class="price-col">$55</td><td class="price-col">$65+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Gel-X</span></td><td class="price-col">$48</td><td class="price-col">$55</td><td class="price-col">$65+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Natural Nail Overlay</span></td><td class="price-col">$48</td><td class="price-col">$55</td><td class="price-col">$65+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1710,24 +1733,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Acrylic Refill</span></td>
-            <td class="price-col">$40</td>
-            <td class="price-col">$47</td>
-            <td class="price-col">$60+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Bio Gel Refill</span></td>
-            <td class="price-col">$40</td>
-            <td class="price-col">$47</td>
-            <td class="price-col">$60+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Gel-X Refill</span></td>
-            <td class="price-col">$40</td>
-            <td class="price-col">$47</td>
-            <td class="price-col">$60+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Acrylic Refill</span></td><td class="price-col">$40</td><td class="price-col">$47</td><td class="price-col">$60+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Bio Gel Refill</span></td><td class="price-col">$40</td><td class="price-col">$47</td><td class="price-col">$60+</td></tr>
+          <tr><td class="service-col"><span class="item-title">Gel-X Refill</span></td><td class="price-col">$40</td><td class="price-col">$47</td><td class="price-col">$60+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1746,16 +1754,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Without Tips</span></td>
-            <td class="price-col">$50</td>
-            <td class="price-col">$60+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">With Tips</span></td>
-            <td class="price-col">$55</td>
-            <td class="price-col">$65+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Without Tips</span></td><td class="price-col">$50</td><td class="price-col">$60+</td></tr>
+          <tr><td class="service-col"><span class="item-title">With Tips</span></td><td class="price-col">$55</td><td class="price-col">$65+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1765,9 +1765,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       COMBOS SUBPAGE
-       ========================================================= -->
+  <!-- COMBOS SUBPAGE -->
   <section id="page-combos" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1800,18 +1798,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="service-col"><span class="item-title">Plain Mani-Pedi (No polish)</span></td>
-            <td class="price-col">$55</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Regular Polish Mani-Pedi</span></td>
-            <td class="price-col">$65</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Shellac Mani-Pedi</span></td>
-            <td class="price-col">$80</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Plain Mani-Pedi (No polish)</span></td><td class="price-col">$55</td></tr>
+          <tr><td class="service-col"><span class="item-title">Regular Polish Mani-Pedi</span></td><td class="price-col">$65</td></tr>
+          <tr><td class="service-col"><span class="item-title">Shellac Mani-Pedi</span></td><td class="price-col">$80</td></tr>
           <tr>
             <td class="service-col">
               <span class="item-title">Shellac Mani-Pedi (with calcium gel base)</span>
@@ -1828,9 +1817,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       ADD-ON SERVICES SUBPAGE
-       ========================================================= -->
+  <!-- ADD-ON SERVICES SUBPAGE -->
   <section id="page-add-on-services" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1904,7 +1891,7 @@
           <tr>
             <td class="service-col">
               <span class="item-title">Collagen Treatment</span>
-              <span class="item-desc">Enriched with collagen, olive oil, and argan oil, this ultra-nutritive moisturizer penetrates quickly to protect and nourish.</span>
+              <span class="item-desc">Enriched with collagen, olive oil, and argan oil to nourish and protect.</span>
             </td>
             <td class="price-col">$10</td>
           </tr>
@@ -1922,14 +1909,8 @@
             </td>
             <td class="price-col">$20</td>
           </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">Nail Repair</span></td>
-            <td class="price-col">$10+</td>
-          </tr>
-          <tr>
-            <td class="service-col"><span class="item-title">French Tip Option</span></td>
-            <td class="price-col">$10+</td>
-          </tr>
+          <tr><td class="service-col"><span class="item-title">Nail Repair</span></td><td class="price-col">$10+</td></tr>
+          <tr><td class="service-col"><span class="item-title">French Tip Option</span></td><td class="price-col">$10+</td></tr>
         </tbody>
       </table>
     </div>
@@ -1939,9 +1920,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       WAXING / EPILATION SUBPAGE
-       ========================================================= -->
+  <!-- WAXING SUBPAGE -->
   <section id="page-epilation" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -1995,9 +1974,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       POLICIES SUBPAGE
-       ========================================================= -->
+  <!-- POLICIES SUBPAGE -->
   <section id="page-politiques" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -2009,7 +1986,7 @@
 
     <div class="subpage-header">
       <h2>Salon Policies</h2>
-      <p>To ensure a relaxing and punctual experience for every client, please review our salon guidelines prior to your visit.</p>
+      <p>To ensure a relaxing and punctual experience for every client, please review our salon guidelines.</p>
     </div>
 
     <div class="policy-grid">
@@ -2020,10 +1997,10 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Rescheduling / Cancellation:</strong> Free of charge up to <strong>24 hours</strong> before your appointment.</li>
-            <li><strong>Late Cancellation (&lt; 24h):</strong> A fee equivalent to <strong>40%</strong> of the booked services applies.</li>
-            <li><strong>No-Show:</strong> In case of a no-show without prior notice, <strong>100%</strong> of the booked service cost will be charged before any new booking.</li>
-            <li><strong>Credit Card:</strong> A valid credit card is required on file during online booking to secure your spot.</li>
+            <li><strong>Rescheduling / Cancellation:</strong> Free up to <strong>24 hours</strong> before your appointment.</li>
+            <li><strong>Late Cancellation (&lt; 24h):</strong> <strong>40%</strong> of booked services.</li>
+            <li><strong>No-Show:</strong> <strong>100%</strong> of booked service cost charged before any new booking.</li>
+            <li><strong>Credit Card:</strong> Required on file during online booking.</li>
           </ul>
         </div>
       </div>
@@ -2035,9 +2012,9 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Notice:</strong> Please contact us by phone (<strong>438-777-7043</strong>) or email if you anticipate running late.</li>
-            <li><strong>15-Minute Grace Period:</strong> After 15 minutes without notice, the appointment is considered a no-show and your spot may be given to another client.</li>
-            <li><strong>Service Adjustment:</strong> In case of an accepted delay, your service may be shortened to respect the schedule of the following client, at the full original price.</li>
+            <li><strong>Notice:</strong> Contact us by phone (<strong>438-777-7043</strong>).</li>
+            <li><strong>15-Minute Grace Period:</strong> After 15 minutes, the appointment is considered a no-show.</li>
+            <li><strong>Service Adjustment:</strong> Your service may be shortened to respect the next client's schedule.</li>
           </ul>
         </div>
       </div>
@@ -2049,8 +2026,8 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Come Alone:</strong> To maintain a calm and safe environment, please avoid bringing guests (including children or pets) unless prior arrangement is made with the salon.</li>
-            <li><strong>Client Record:</strong> Complete contact information (name, phone, email) is required upon registration for appointment tracking.</li>
+            <li><strong>Come Alone:</strong> To maintain a calm atmosphere, please avoid bringing guests.</li>
+            <li><strong>Client Record:</strong> Complete contact info required for tracking.</li>
           </ul>
         </div>
       </div>
@@ -2062,9 +2039,8 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Price Revision:</strong> All prices are subject to change without notice.</li>
-            <li><strong>Special Offers:</strong> Promotions and discounts cannot be combined. Rescheduling a promotional appointment outside valid dates results in losing the discount.</li>
-            <li><strong>Senior Technicians:</strong> Services performed by our senior specialists are excluded from promotional offers unless specified otherwise.</li>
+            <li><strong>Price Revision:</strong> Subject to change without notice.</li>
+            <li><strong>Special Offers:</strong> Cannot be combined.</li>
           </ul>
         </div>
       </div>
@@ -2072,25 +2048,19 @@
       <div class="policy-card policy-card-full">
         <div class="policy-title-bar">
           <span class="policy-num">05</span>
-          <h3>SERVICE GUARANTEE &amp; PRODUCT RETURNS</h3>
+          <h3>SERVICE GUARANTEE &amp; RETURNS</h3>
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Services (7-Day Guarantee):</strong> No monetary refunds are issued on rendered services. If you notice any issue with your set or polish, contact us within <strong>7 days</strong> of your visit: we will gladly perform a touch-up.</li>
-            <li><strong>Products:</strong> Used items cannot be returned or refunded. Only defective or damaged products upon purchase may be exchanged or converted into salon credit.</li>
+            <li><strong>Services (7-Day Guarantee):</strong> No monetary refunds. If issues arise within <strong>7 days</strong>, free touch-up provided.</li>
+            <li><strong>Products:</strong> Final sale, except for defective items upon purchase.</li>
           </ul>
         </div>
       </div>
     </div>
-
-    <p style="text-align: center; margin-top: 32px; font-style: italic; color: #a3a3a3; font-size: 14px;">
-      Thank you for your trust and understanding. — Tui Nail Spa Team
-    </p>
   </section>
 
-  <!-- =========================================================
-       CAREERS SUBPAGE
-       ========================================================= -->
+  <!-- CAREERS SUBPAGE -->
   <section id="page-carrieres" class="service-subpage">
     <div class="subpage-breadcrumb">
       <button class="back-home-btn" onclick="goHome()">← Back to Home</button>
@@ -2102,7 +2072,7 @@
 
     <div class="subpage-header">
       <h2>Careers at Tui</h2>
-      <p>Join a passionate and caring team in the heart of Montreal. We are looking for creative and meticulous nail artists.</p>
+      <p>Join a passionate and caring team in the heart of Montreal.</p>
     </div>
 
     <div class="policy-grid">
@@ -2113,9 +2083,8 @@
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Nail Technician:</strong> Expertise in Shellac, UV gel, Gel-X, BIAB, or dip powder.</li>
-            <li><strong>Manicure &amp; Pedicure Specialist:</strong> Complete aesthetic care, regular/gel polish, and spa treatments.</li>
-            <li><strong>Flexible Hours:</strong> Full-time or part-time positions available based on your availability.</li>
+            <li><strong>Nail Technician:</strong> Expertise in Shellac, UV gel, Gel-X, BIAB.</li>
+            <li><strong>Manicure &amp; Pedicure Specialist:</strong> Complete aesthetic care.</li>
           </ul>
         </div>
       </div>
@@ -2123,53 +2092,24 @@
       <div class="policy-card">
         <div class="policy-title-bar">
           <span class="policy-num">02</span>
-          <h3>WHY JOIN TUI NAIL SPA?</h3>
+          <h3>WHY JOIN TUI?</h3>
         </div>
         <div class="policy-body">
           <ul>
-            <li><strong>Competitive Compensation:</strong> Attractive salary + generous commissions + 100% of tips.</li>
-            <li><strong>Established Clientele:</strong> Located at 1570 Rue Saint-Timothée (Ville-Marie) with a steady flow of bookings.</li>
-            <li><strong>Upscale Environment:</strong> Modern equipment, strict hygiene standards, and a warm atmosphere.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="policy-card">
-        <div class="policy-title-bar">
-          <span class="policy-num">03</span>
-          <h3>IDEAL PROFILE</h3>
-        </div>
-        <div class="policy-body">
-          <ul>
-            <li><strong>Skillset:</strong> Attention to detail, impeccable cleanliness, and passion for nail aesthetics.</li>
-            <li><strong>Customer Service:</strong> Welcoming attitude, punctuality, and team spirit.</li>
-            <li><strong>Languages:</strong> Functional French and/or English (an appreciated asset).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="policy-card">
-        <div class="policy-title-bar">
-          <span class="policy-num">04</span>
-          <h3>HOW TO APPLY?</h3>
-        </div>
-        <div class="policy-body">
-          <ul>
-            <li><strong>Online (Fast):</strong> Apply in 2 minutes via our StaffedUp portal.</li>
-            <li><strong>By Email:</strong> Send your resume or portfolio photos to <strong>tuinailspa@gmail.com</strong>.</li>
-            <li><strong>By Phone:</strong> Contact us directly at <strong>438-777-7043</strong> to schedule a meeting.</li>
+            <li><strong>Competitive Compensation:</strong> Attractive salary + commissions + 100% tips.</li>
+            <li><strong>Established Clientele:</strong> Located at 1570 Rue Saint-Timothée.</li>
           </ul>
         </div>
       </div>
 
       <div class="career-cta-box policy-card-full">
         <h3>Ready to be part of the Tui adventure?</h3>
-        <p>Apply directly online or send us your resume by email today.</p>
+        <p>Apply directly online or send us your resume by email.</p>
         <div class="career-btn-group">
           <a href="https://staffedup.com/tuinailspa/?src=social" target="_blank" rel="noopener" class="career-btn-gold">
             Apply Online (StaffedUp)
           </a>
-          <a href="mailto:tuinailspa@gmail.com?subject=Application%20-%20Nail%20Technician%20|%20Tui%20Nail%20Spa" class="career-btn-outline-light">
+          <a href="mailto:tuinailspa@gmail.com?subject=Application%20-%20Nail%20Technician" class="career-btn-outline-light">
             Send Resume by Email
           </a>
         </div>
@@ -2177,9 +2117,7 @@
     </div>
   </section>
 
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-top">
@@ -2348,9 +2286,7 @@
     }
   </script>
 
-  <!-- =========================================================
-       POP-UP NOTIFICATIONS (ENGLISH)
-       ========================================================= -->
+  <!-- POP-UP NOTIFICATIONS -->
   <style>
     .tui-popup-overlay {
       position: fixed;
@@ -2480,9 +2416,7 @@
         Open regular hours all other days. Book in advance!
       </p>
       <div class="tui-popup-actions">
-        <a href="booking.html" class="tui-popup-btn-primary" onclick="fermerPopup1();">
-          Book Appointment
-        </a>
+        <a href="booking.html" class="tui-popup-btn-primary" onclick="fermerPopup1();">Book Appointment</a>
         <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup1()">Close</button>
       </div>
     </div>
@@ -2499,9 +2433,7 @@
         • <strong>FREE Paraffin Treatment</strong> (hands or feet) with the purchase of a <strong>$100 CAD Gift Card</strong> or more.
       </p>
       <div class="tui-popup-actions">
-        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">
-          View Combos
-        </a>
+        <a href="#combos" class="tui-popup-btn-primary" onclick="fermerPopup2(); openServicePage('combos');">View Combos</a>
         <button type="button" class="tui-popup-btn-secondary" onclick="fermerPopup2()">Close</button>
       </div>
     </div>
