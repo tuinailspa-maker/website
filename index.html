@@ -227,7 +227,17 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.85;
+      opacity: 0.88;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 115px;
+      background: linear-gradient(to top, rgba(18, 18, 18, 0.88) 0%, rgba(18, 18, 18, 0.35) 55%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero-overlay {
@@ -235,12 +245,12 @@
       z-index: 2;
       text-align: center;
       width: 100%;
-      padding-bottom: 145px;
+      padding-bottom: 28px;
     }
 
     .btn-hero {
-      padding: 13px 32px;
-      background-color: #0d0d0d;
+      padding: 13px 34px;
+      background-color: rgba(13, 13, 13, 0.92);
       color: var(--gold-champagne);
       border: 1px solid var(--gold-primary);
       border-radius: 999px;
@@ -250,7 +260,8 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.45);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.65);
       transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     }
 
@@ -1124,6 +1135,9 @@
     @media (max-width: 640px) {
       .hero-banner {
         height: 360px;
+      }
+      .hero-overlay {
+        padding-bottom: 22px;
       }
       .location-columns {
         grid-template-columns: 1fr;
