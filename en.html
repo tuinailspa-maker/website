@@ -8,17 +8,17 @@
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #121212;
       --header-bg: #161616;
-      --card-dark: #030303;
-      --text-light: #ffffff;
-      --text-muted: #a3a3a3;
-      --gold-primary: #d4af37;
-      --gold-champagne: #d4c5a1;
-      --border-gold: rgba(212, 175, 55, 0.35);
+      --card-dark: #060606;
+      --text-light: #E8E3DC;
+      --text-muted: #B2ACA3;
+      --gold-primary: #D4B46A;
+      --gold-champagne: #DFC99B;
+      --border-gold: rgba(212, 180, 106, 0.32);
       --link-blue: #60a5fa;
     }
 
@@ -35,10 +35,14 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      font-size: 15.5px;
+      line-height: 1.75;
+      letter-spacing: 0.015em;
       background-color: var(--bg-dark);
       color: var(--text-light);
-      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* --- 1. HEADER & DROPDOWN MENU --- */
@@ -78,7 +82,7 @@
       list-style: none;
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 26px;
     }
 
     .nav-links > li {
@@ -87,9 +91,10 @@
 
     .nav-links a {
       text-decoration: none;
-      color: #e5e5e5;
+      color: var(--text-light);
       font-size: 14px;
       font-weight: 500;
+      letter-spacing: 0.02em;
       padding: 8px 0;
       display: inline-flex;
       align-items: center;
@@ -106,10 +111,10 @@
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 245px;
+      min-width: 250px;
       background: #1a1a1a;
       border: 1px solid var(--border-gold);
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.65);
       padding: 6px 0;
       list-style: none;
@@ -122,9 +127,10 @@
 
     .dropdown-menu li a {
       display: block;
-      padding: 10px 18px;
+      padding: 11px 18px;
       font-size: 13.5px;
-      color: #e5e5e5;
+      font-weight: 400;
+      color: var(--text-light);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -145,13 +151,14 @@
     }
 
     .btn-outline {
-      padding: 9px 22px;
+      padding: 10px 24px;
       border: 1px solid var(--gold-primary);
       border-radius: 999px;
       background: transparent;
-      color: var(--gold-primary);
+      color: var(--gold-champagne);
       font-size: 13.5px;
       font-weight: 500;
+      letter-spacing: 0.025em;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -187,8 +194,8 @@
 
     .mobile-drawer a {
       display: block;
-      padding: 9px 0;
-      color: #e5e5e5;
+      padding: 10px 0;
+      color: var(--text-light);
       text-decoration: none;
       font-size: 14.5px;
       border-bottom: 1px dashed rgba(255,255,255,0.1);
@@ -238,7 +245,8 @@
       border: 1px solid var(--gold-primary);
       border-radius: 999px;
       font-size: 14.5px;
-      font-weight: 600;
+      font-weight: 500;
+      letter-spacing: 0.03em;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
@@ -254,7 +262,7 @@
 
     /* --- 3. BỐ CỤC 2/3 NỘI DUNG & 1/3 VIDEO SHORTS --- */
     .action-section-split {
-      padding: 72px 24px;
+      padding: 80px 24px;
       max-width: 1140px;
       margin: 0 auto;
       border-top: 1px solid var(--border-gold);
@@ -263,7 +271,7 @@
     .split-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 48px;
+      gap: 52px;
       align-items: center;
     }
 
@@ -272,19 +280,26 @@
     }
 
     .split-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px;
       font-weight: 500;
       color: var(--gold-champagne);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-bottom: 16px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
     }
 
     .split-content p {
-      font-size: 14.5px;
+      font-size: 15.5px;
+      font-weight: 300;
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 22px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+
+    .split-content p strong {
+      font-weight: 500;
+      color: var(--text-light);
     }
 
     .split-video-wrapper {
@@ -310,7 +325,7 @@
 
     /* --- 4. LOCATION & HOURS --- */
     .location-section {
-      padding: 72px 24px;
+      padding: 80px 24px;
       max-width: 1140px;
       margin: 0 auto;
       border-top: 1px solid var(--border-gold);
@@ -326,7 +341,7 @@
     .map-wrapper {
       width: 100%;
       height: 360px;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border-gold);
       background-color: #1c1c1c;
@@ -339,8 +354,8 @@
     }
 
     .location-details h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
       font-weight: 500;
       color: var(--gold-champagne);
       margin-bottom: 24px;
@@ -349,19 +364,19 @@
     .location-columns {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
-      gap: 24px;
+      gap: 28px;
     }
 
     .location-info-text {
-      font-size: 13.5px;
-      line-height: 1.7;
-      color: #e5e5e5;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-light);
     }
 
     .location-info-text .business-name {
       font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 4px;
+      color: #F3EFEA;
+      margin-bottom: 6px;
     }
 
     .location-info-text a {
@@ -377,13 +392,13 @@
 
     .hours-table {
       width: 100%;
-      font-size: 13px;
+      font-size: 13.5px;
       border-collapse: collapse;
     }
 
     .hours-table td {
-      padding: 4px 0;
-      color: #e5e5e5;
+      padding: 6px 0;
+      color: var(--text-light);
     }
 
     .hours-table td:last-child {
@@ -393,7 +408,7 @@
 
     /* --- 5. CONTACT US --- */
     .contact-section {
-      padding: 72px 24px;
+      padding: 80px 24px;
       max-width: 1140px;
       margin: 0 auto;
       border-top: 1px solid var(--border-gold);
@@ -407,15 +422,17 @@
     }
 
     .contact-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
       font-weight: 500;
       color: var(--gold-champagne);
       margin-bottom: 12px;
     }
 
     .contact-text p {
-      font-size: 14px;
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.75;
       color: var(--text-muted);
       max-width: 360px;
     }
@@ -430,12 +447,12 @@
     .contact-form textarea {
       width: 100%;
       padding: 13px 16px;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      border: 1px solid var(--border-gold);
       border-radius: 6px;
       background: #080808;
       font-family: inherit;
-      font-size: 14px;
-      color: #ffffff;
+      font-size: 14.5px;
+      color: var(--text-light);
     }
 
     .contact-form input:focus,
@@ -455,9 +472,10 @@
       border-radius: 999px;
       border: 1px solid var(--gold-primary);
       background: transparent;
-      color: var(--gold-primary);
+      color: var(--gold-champagne);
       font-size: 13.5px;
-      font-weight: 600;
+      font-weight: 500;
+      letter-spacing: 0.025em;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -469,7 +487,7 @@
 
     /* --- 6. INSTAGRAM FEED --- */
     .instagram-section {
-      padding: 68px 24px 80px;
+      padding: 72px 24px 84px;
       max-width: 1140px;
       margin: 0 auto;
       border-top: 1px solid var(--border-gold);
@@ -483,15 +501,15 @@
     }
 
     .ig-title-group h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
       font-weight: 500;
       color: var(--gold-champagne);
       margin-bottom: 4px;
     }
 
     .ig-handle {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--gold-primary);
       text-decoration: none;
     }
@@ -578,7 +596,7 @@
 
     .ig-cta-wrap {
       text-align: center;
-      margin-top: 32px;
+      margin-top: 34px;
     }
 
     /* --- 7. SERVICE SUBPAGES --- */
@@ -588,7 +606,7 @@
       overflow: hidden;
       background-color: #0c0c0c;
       border-radius: 14px;
-      padding: 56px 24px 88px;
+      padding: 60px 28px 92px;
       max-width: 1020px;
       margin: 24px auto;
       min-height: 65vh;
@@ -607,7 +625,7 @@
       left: -140px;
       width: 480px;
       height: 280px;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(184, 134, 11, 0.12) 50%, transparent 100%);
+      background: linear-gradient(135deg, rgba(212, 180, 106, 0.3) 0%, rgba(184, 134, 11, 0.1) 50%, transparent 100%);
       transform: rotate(-15deg);
       filter: blur(45px);
       pointer-events: none;
@@ -621,7 +639,7 @@
       right: -120px;
       width: 520px;
       height: 320px;
-      background: linear-gradient(315deg, rgba(212, 175, 55, 0.3) 0%, rgba(184, 134, 11, 0.1) 45%, transparent 100%);
+      background: linear-gradient(315deg, rgba(212, 180, 106, 0.25) 0%, rgba(184, 134, 11, 0.08) 45%, transparent 100%);
       transform: rotate(-12deg);
       filter: blur(55px);
       pointer-events: none;
@@ -639,15 +657,16 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 32px;
-      padding-bottom: 16px;
+      margin-bottom: 34px;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--border-gold);
     }
 
     .back-home-btn {
       background: none;
       border: none;
-      color: #e5e5e5;
+      color: var(--text-light);
+      font-family: inherit;
       font-size: 13.5px;
       font-weight: 500;
       cursor: pointer;
@@ -662,16 +681,18 @@
     .subpage-quick-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
     }
 
     .subpage-pill {
-      padding: 6px 14px;
+      padding: 7px 16px;
       border: 1px solid var(--border-gold);
       border-radius: 999px;
-      font-size: 12.5px;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
       text-decoration: none;
-      color: #e5e5e5;
+      color: var(--text-light);
       transition: all 0.2s;
     }
 
@@ -685,34 +706,36 @@
 
     .subpage-header {
       text-align: center;
-      margin-bottom: 34px;
+      margin-bottom: 38px;
     }
 
     .subpage-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px;
       font-weight: 500;
-      color: var(--gold-primary);
+      color: var(--gold-champagne);
       margin-bottom: 8px;
     }
 
     .subpage-header p {
-      font-size: 14px;
-      color: #d4d4d4;
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
     }
 
     .table-card {
       background-color: var(--card-dark);
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-radius: 8px;
+      border: 1px solid var(--border-gold);
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
-      margin-bottom: 28px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      margin-bottom: 30px;
     }
 
     .table-card-banner {
       background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
-      padding: 16px 24px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border-gold);
       display: flex;
       justify-content: space-between;
@@ -722,16 +745,16 @@
     }
 
     .table-card-banner h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px;
-      font-weight: 600;
-      color: #ffffff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: #F3EFEA;
     }
 
     .table-card-banner span {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--gold-champagne);
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .menu-table {
@@ -742,12 +765,12 @@
 
     .menu-table thead th {
       background-color: #0d0d0d;
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.08em;
       color: var(--gold-champagne);
-      padding: 13px 20px;
+      padding: 14px 22px;
       text-align: right;
       border-bottom: 1px solid var(--border-gold);
       white-space: nowrap;
@@ -764,7 +787,7 @@
     }
 
     .menu-table tbody tr:nth-child(even) {
-      background-color: #090909;
+      background-color: #0a0a0a;
     }
 
     .menu-table tbody tr:last-child {
@@ -776,28 +799,28 @@
     }
 
     .menu-table tbody td {
-      padding: 15px 20px;
+      padding: 17px 22px;
       font-size: 14.5px;
       vertical-align: middle;
     }
 
     .menu-table tbody td.service-col {
       text-align: left;
-      width: 54%;
+      width: 56%;
     }
 
     .menu-table tbody td.price-col,
     .menu-table tbody td.price-special {
       text-align: right;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 15.5px;
-      color: var(--gold-primary);
+      color: var(--gold-champagne);
       white-space: nowrap;
     }
 
     .menu-table tbody td.price-old {
       text-align: right;
-      color: #888888;
+      color: #88847E;
       text-decoration: line-through;
       font-weight: 400;
       white-space: nowrap;
@@ -810,35 +833,37 @@
     }
 
     .item-title {
-      font-weight: 600;
-      color: #ffffff;
+      font-weight: 500;
+      color: #F3EFEA;
       display: block;
       font-size: 15px;
+      letter-spacing: 0.015em;
     }
 
     .item-desc {
       display: block;
-      font-size: 12.5px;
+      font-size: 13.5px;
+      font-weight: 300;
       color: var(--text-muted);
-      margin-top: 4px;
-      line-height: 1.45;
+      margin-top: 5px;
+      line-height: 1.65;
     }
 
     .subpage-cta {
       text-align: center;
-      margin-top: 36px;
+      margin-top: 38px;
     }
 
     /* --- 8. POLICIES & CAREERS --- */
     .policy-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 26px;
     }
 
     .policy-card {
       background-color: var(--card-dark);
-      border: 1px solid rgba(212, 175, 55, 0.45);
+      border: 1px solid var(--border-gold);
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
@@ -852,8 +877,8 @@
 
     .policy-title-bar {
       background: linear-gradient(90deg, #18140d 0%, #0a0a0a 100%);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
-      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-gold);
+      padding: 15px 22px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -862,7 +887,7 @@
     .policy-num {
       background-color: var(--gold-champagne);
       color: #0d0d0d;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 12px;
       padding: 3px 8px;
       border-radius: 4px;
@@ -870,15 +895,16 @@
     }
 
     .policy-title-bar h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--gold-champagne);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       margin: 0;
     }
 
     .policy-body {
-      padding: 20px 22px;
+      padding: 24px 24px;
       background-color: var(--card-dark);
       flex: 1;
     }
@@ -889,15 +915,16 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .policy-body li {
       position: relative;
-      padding-left: 16px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: #d4d4d4;
+      padding-left: 18px;
+      font-size: 14.5px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-light);
     }
 
     .policy-body li::before {
@@ -909,30 +936,32 @@
     }
 
     .policy-body strong {
-      color: #ffffff;
-      font-weight: 600;
+      color: #F3EFEA;
+      font-weight: 500;
     }
 
     .career-cta-box {
       background-color: #0d0d0d;
-      border: 1px solid var(--gold-champagne);
+      border: 1px solid var(--border-gold);
       border-radius: 10px;
-      padding: 34px 24px;
+      padding: 36px 26px;
       text-align: center;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     }
 
     .career-cta-box h3 {
       color: var(--gold-champagne);
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 22px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 500;
       margin-bottom: 8px;
     }
 
     .career-cta-box p {
-      color: rgba(255, 255, 255, 0.85);
+      color: var(--text-muted);
       font-size: 14.5px;
-      margin-bottom: 22px;
+      font-weight: 300;
+      margin-bottom: 24px;
     }
 
     .career-btn-group {
@@ -948,7 +977,7 @@
       color: #0d0d0d !important;
       padding: 12px 26px;
       border-radius: 6px;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 14px;
       text-decoration: none;
       border: 1px solid var(--gold-champagne);
@@ -965,7 +994,7 @@
       color: var(--gold-champagne) !important;
       padding: 12px 26px;
       border-radius: 6px;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 14px;
       text-decoration: none;
       border: 1px solid var(--gold-champagne);
@@ -979,9 +1008,9 @@
     /* --- 9. FOOTER --- */
     footer {
       background-color: #0d0d0d;
-      color: #ffffff;
+      color: var(--text-light);
       padding: 48px 24px 36px;
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-top: 1px solid rgba(212, 180, 106, 0.25);
     }
 
     .footer-container {
@@ -991,7 +1020,7 @@
 
     .footer-top {
       padding-bottom: 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     .footer-logo {
@@ -1057,8 +1086,9 @@
 
     .footer-tagline {
       font-size: 13.5px;
-      color: rgba(255, 255, 255, 0.92);
-      letter-spacing: 0.2px;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
     }
 
     /* --- RESPONSIVE MOBILE --- */
@@ -1100,12 +1130,12 @@
       }
       .menu-table thead th,
       .menu-table tbody td {
-        padding: 11px 10px;
-        font-size: 13px;
+        padding: 13px 12px;
+        font-size: 13.5px;
       }
       .menu-table tbody td.price-col,
       .menu-table tbody td.price-special {
-        font-size: 13.5px;
+        font-size: 14px;
       }
       .footer-bottom {
         flex-direction: column;
@@ -1154,51 +1184,6 @@
     gtag('js', new Date());
     gtag('config', 'G-0KXK6FKNY9');
   </script>
-  <!-- Font chữ & khoảng cách dịu mắt cho nền tối -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
-    font-weight: 400 !important;
-    font-size: 15.5px !important;
-    line-height: 1.75 !important;
-    letter-spacing: 0.02em !important;
-    color: #E5E0D8 !important;
-  }
-
-  h1, h2, h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    letter-spacing: 0.01em !important;
-    line-height: 1.3 !important;
-  }
-
-  p, li, td, span {
-    font-weight: 400 !important;
-  }
-
-  p, li {
-    color: #D8D3CA !important;
-    margin-bottom: 0.65rem;
-  }
-
-  small, .subtitle, .description {
-    color: #B5AFA6 !important;
-    font-weight: 300 !important;
-  }
-
-  button, a.btn, .pill, [class*="btn"], [class*="badge"] {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.03em !important;
-  }
-
-  table td, table th {
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-  }
-</style>
 </head>
 <body>
 
@@ -1214,7 +1199,7 @@
         <li>
           <a href="#offres-speciales" onclick="openServicePage('offres-speciales')">Services ▾</a>
           <ul class="dropdown-menu">
-            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: #d4af37;">★ Special Offers & Care</a></li>
+            <li><a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="font-weight: 600; color: var(--gold-champagne);">★ Special Offers & Care</a></li>
             <li><a href="#pedicure" onclick="openServicePage('pedicure')">Pedicure</a></li>
             <li><a href="#manucure" onclick="openServicePage('manucure')">Manicure</a></li>
             <li><a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')">Nail Enhancement</a></li>
@@ -1246,7 +1231,7 @@
       <a href="#" onclick="goHome(); toggleMobileMenu();">Home</a>
       <div style="padding: 8px 0 4px; font-weight: 600; font-size: 13px; color: var(--text-muted);">Services :</div>
       <div class="mobile-sub-links">
-        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: #d4af37;">★ Special Offers & Care</a>
+        <a href="#offres-speciales" onclick="openServicePage('offres-speciales'); toggleMobileMenu();" style="font-weight: 600; color: var(--gold-champagne);">★ Special Offers & Care</a>
         <a href="#pedicure" onclick="openServicePage('pedicure'); toggleMobileMenu();">Pedicure</a>
         <a href="#manucure" onclick="openServicePage('manucure'); toggleMobileMenu();">Manicure</a>
         <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement'); toggleMobileMenu();">Nail Enhancement</a>
@@ -1279,7 +1264,7 @@
         
         <!-- 2/3 BÊN TRÁI: THÔNG TIN GIỚI THIỆU & LỐI TẮT DỊCH VỤ -->
         <div class="split-content">
-          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); color: var(--gold-champagne); border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 14px;">
+          <div style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; background: rgba(212,180,106,0.12); border: 1px solid var(--gold-primary); color: var(--gold-champagne); border-radius: 999px; font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; margin-bottom: 16px;">
             <span>★ Monthly Privilege: $5 OFF Shellac Combos</span>
           </div>
 
@@ -1290,22 +1275,22 @@
           </p>
 
           <!-- Quick Navigation Pills -->
-          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px;">
-            <a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: var(--gold-champagne); text-decoration: none; transition: 0.2s;">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px;">
+            <a href="#offres-speciales" onclick="openServicePage('offres-speciales')" style="padding: 8px 16px; background: #181818; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 13px; color: var(--gold-champagne); text-decoration: none; transition: 0.2s;">
               ★ Special Offers
             </a>
-            <a href="#pedicure" onclick="openServicePage('pedicure')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+            <a href="#pedicure" onclick="openServicePage('pedicure')" style="padding: 8px 16px; background: #181818; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 13px; color: var(--text-light); text-decoration: none; transition: 0.2s;">
               🦶 Pedicure & Heels
             </a>
-            <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+            <a href="#nail-enhancement" onclick="openServicePage('nail-enhancement')" style="padding: 8px 16px; background: #181818; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 13px; color: var(--text-light); text-decoration: none; transition: 0.2s;">
               ✨ Gel-X & Acrylic
             </a>
-            <a href="#combos" onclick="openServicePage('combos')" style="padding: 6px 14px; background: #1a1a1a; border: 1px solid var(--border-gold); border-radius: 6px; font-size: 12.5px; color: #e5e5e5; text-decoration: none; transition: 0.2s;">
+            <a href="#combos" onclick="openServicePage('combos')" style="padding: 8px 16px; background: #181818; border: 1px solid var(--border-gold); border-radius: 8px; font-size: 13px; color: var(--text-light); text-decoration: none; transition: 0.2s;">
               💅 Mani-Pedi Combos
             </a>
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
             <a href="booking.html" class="btn-hero" style="padding: 12px 28px; font-size: 14px;">Book Appointment (From 8 AM)</a>
             <a href="tel:4387777043" class="btn-outline" style="padding: 12px 22px; font-size: 14px;">📞 (438) 777-7043</a>
           </div>
@@ -1370,7 +1355,7 @@
           <input type="email" id="courrielContact" name="Email" placeholder="Email Address" required>
           <input type="tel" id="telephoneContact" name="Phone" placeholder="Phone Number" required>
           <textarea id="messageContact" name="Message" placeholder="Your Message" required></textarea>
-          <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.45; margin: 2px 0 4px;">
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: 2px 0 4px;">
             This form is protected by reCAPTCHA; Google Privacy Policy and Terms of Service apply.
           </p>
           <button type="submit" id="boutonEnvoyerContact">Send Message</button>
@@ -2357,14 +2342,14 @@
       width: 92%;
       padding: 40px 44px 36px;
       text-align: center;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 28px rgba(212, 175, 55, 0.18);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 28px rgba(212, 180, 106, 0.16);
     }
     .tui-popup-close {
       position: absolute;
       top: 12px;
       right: 14px;
       background: transparent;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      border: 1px solid var(--border-gold);
       color: var(--gold-champagne);
       width: 32px;
       height: 32px;
@@ -2381,31 +2366,34 @@
     .tui-popup-badge {
       display: inline-block;
       padding: 5px 14px;
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(212, 180, 106, 0.14);
       border: 1px solid var(--gold-primary);
-      color: var(--gold-primary);
+      color: var(--gold-champagne);
       border-radius: 999px;
       font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 14px;
     }
     .tui-popup-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      color: #ffffff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: #F3EFEA;
       margin-bottom: 12px;
       line-height: 1.3;
     }
     .tui-popup-box p {
       font-size: 14.5px;
-      color: #d4d4d4;
-      line-height: 1.65;
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.75;
       margin-bottom: 24px;
     }
     .tui-popup-box p strong {
       color: var(--gold-champagne);
+      font-weight: 500;
     }
     .tui-popup-actions {
       display: flex;
@@ -2417,7 +2405,7 @@
       padding: 11px 26px;
       background: var(--gold-primary);
       color: #050505;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 13.5px;
       border-radius: 999px;
       text-decoration: none;
@@ -2432,7 +2420,7 @@
     .tui-popup-btn-secondary {
       padding: 11px 22px;
       background: transparent;
-      color: #e5e5e5;
+      color: var(--text-light);
       font-weight: 500;
       font-size: 13.5px;
       border-radius: 999px;
