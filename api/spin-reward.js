@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
 
   const webhookUrl = (process.env.SPIN_WEBHOOK_URL || '').trim();
   const SQUARE_BOOKING_URL =
-    'https://book.squareup.com/appointments/3861otg2sucy9o/location/R73A64VPAR34X/services';
+    'https://book.tuinailspa.ca';
 
   // =========================================================================
   // 1. XỬ LÝ KHI THỢ BẤM NÚT "STAFF: TAP TO REDEEM" TRONG EMAIL (GET)
