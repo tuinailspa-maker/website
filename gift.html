@@ -126,7 +126,7 @@
     .bag-num { font-size: 11px; font-weight: 800; color: #d4af37; letter-spacing: 1px; }
     .bag-icon { font-size: 32px; }
     .bag-text { font-size: 10.5px; font-weight: 700; color: #ffffff; line-height: 1.2; }
-    
+
     .form-container { display: none; margin-top: 15px; text-align: left; }
     .form-group { margin-bottom: 12px; }
     label { display: block; font-size: 12px; font-weight: 700; color: #f7e08a; margin-bottom: 4px; }
@@ -196,16 +196,14 @@
       Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.
     </div>
     <div class="step-notice" id="txtStepNotice">
-      📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite sur Square.
+      📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite.
     </div>
     <div class="promo-period" id="txtPromoPeriod">Valide : Déc 1 – Déc 31, 2026</div>
 
-    <!-- Màn hình chọn túi mù -->
     <div id="selection-screen">
       <div class="bags-grid" id="bagsGrid"></div>
     </div>
 
-    <!-- Màn hình nhập thông tin -->
     <div id="form-screen" class="form-container">
       <div class="error-msg" id="errorMsg"></div>
       <form id="rewardForm">
@@ -234,7 +232,6 @@
       </form>
     </div>
 
-    <!-- Màn hình kết quả trúng thưởng -->
     <div id="result-screen" class="result-box">
       <div class="badge" id="resBadge">🎉 Félicitations !</div>
       <div class="result-prize">
@@ -244,7 +241,7 @@
         <div class="code-tag" id="wonCodeTag"></div>
       </div>
       <p style="font-size:13px; color:#f7e08a; font-weight:600; line-height:1.5; margin-bottom: 12px;" id="resStep2">
-        Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous sur Square et valider votre code !
+        Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous et valider votre code !
       </p>
       <a href="https://book.tuinailspa.ca" class="book-now-btn" id="btnBookNow">
         Continuer vers la réservation →
@@ -257,13 +254,24 @@
 
   <script>
     let currentLang = 'fr';
+    let lastChosenPrize = null;
+
+    const prizes = [
+      { nameEn: "Sweet Candy Treat", nameFr: "Friandise sucrée", code: "TUI-CANDY", weight: 40 },
+      { nameEn: "2-Finger Nail Art", nameFr: "Nail art 2 ongles", code: "TUI-ART2", weight: 15 },
+      { nameEn: "Collagen", nameFr: "Collagène", code: "TUI-WAX", weight: 10 },
+      { nameEn: "Gel Polish Removal", nameFr: "Retrait vernis gel", code: "TUI-GEL", weight: 10 },
+      { nameEn: "Fragrance Hand Cream", nameFr: "Crème parfumée pour les mains", code: "TUI-HANDCREAM", weight: 10 },
+      { nameEn: "$5 Off Your Service", nameFr: "5 $ de rabais sur votre service", code: "TUI-5OFF", weight: 5 },
+      { nameEn: "Surprise Holiday Treat", nameFr: "Gâterie surprise des Fêtes", code: "TUI-BONUS", weight: 10 }
+    ];
 
     const translations = {
       fr: {
         toggleBtn: 'EN',
         title: 'Boîte Cadeau Mystère',
         subtitle: 'Étape 1 : Choisissez un sac mystère pour révéler votre cadeau.',
-        stepNotice: '📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite sur Square.',
+        stepNotice: '📌 1. Ouvrez le cadeau ici d’abord • 2. Réservez ensuite.',
         promoPeriod: 'Valide : Déc 1 – Déc 31, 2026',
         bagText: 'OUVRIR',
         bagPrefix: 'SAC #',
@@ -275,16 +283,16 @@
         loading: 'Traitement de votre cadeau en cours... Veuillez patienter.',
         resBadge: '🎉 Félicitations !',
         resLabel: 'Votre Cadeau Gagné',
-        resSub: 'Présentez ce code ou l' + "'" + 'e-mail de confirmation lors de votre visite :',
-        resStep2: 'Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous sur Square et valider votre code !',
+        resSub: "Présentez ce code ou l'e-mail de confirmation lors de votre visite :",
+        resStep2: 'Étape 2 : Cliquez ci-dessous pour réserver votre rendez-vous et valider votre code !',
         btnBook: 'Continuer vers la réservation →',
-        backHome: '← Retour à l' + "'" + 'accueil'
+        backHome: "← Retour à l'accueil"
       },
       en: {
         toggleBtn: 'FR',
         title: 'Mystery Gift Box',
         subtitle: 'Step 1: Choose a mystery bag below to reveal your holiday reward.',
-        stepNotice: '📌 1. Open your gift here first • 2. Book your appointment on Square next.',
+        stepNotice: '📌 1. Open your gift here first • 2. Book your appointment next.',
         promoPeriod: 'Valid: Dec 1 – Dec 31, 2026',
         bagText: 'OPEN',
         bagPrefix: 'BAG #',
@@ -297,11 +305,16 @@
         resBadge: '🎉 Congratulations!',
         resLabel: 'Your Unboxed Reward',
         resSub: 'Present this code or confirmation email at your visit:',
-        resStep2: 'Step 2: Click below to book your appointment on Square and validate your code!',
+        resStep2: 'Step 2: Click below to book your appointment and validate your code!',
         btnBook: 'Continue to Book →',
         backHome: '← Back to Home'
       }
     };
+
+    function getPrizeLabel(prize) {
+      if (!prize) return '';
+      return currentLang === 'fr' ? (prize.nameFr || prize.nameEn) : (prize.nameEn || prize.nameFr);
+    }
 
     function toggleLanguage() {
       currentLang = currentLang === 'fr' ? 'en' : 'fr';
@@ -330,18 +343,14 @@
       document.getElementById('btnBookNow').textContent = t.btnBook;
       document.getElementById('backHomeLink').textContent = t.backHome;
 
+      if (lastChosenPrize) {
+        const displayName = getPrizeLabel(lastChosenPrize);
+        document.getElementById('selectedPrize').value = displayName;
+        document.getElementById('wonPrizeName').textContent = displayName;
+      }
+
       initBags();
     }
-
-    const prizes = [
-      { name: "Sweet Candy Treat", code: "TUI-CANDY", weight: 40 },
-      { name: "2-Finger Nail Art", code: "TUI-ART2", weight: 15 },
-      { name: "Paraffin Hand Wax", code: "TUI-WAX", weight: 10 },
-      { name: "Gel Polish Removal", code: "TUI-GEL", weight: 10 },
-      { name: "Fragrance Hand Cream", code: "TUI-HANDCREAM", weight: 10 },
-      { name: "$5 Off Your Service", code: "TUI-5OFF", weight: 5 },
-      { name: "Surprise Holiday Treat", code: "TUI-BONUS", weight: 10 }
-    ];
 
     const bagsGrid = document.getElementById('bagsGrid');
     const selectionScreen = document.getElementById('selection-screen');
@@ -374,12 +383,12 @@
       btn.style.borderColor = '#f9e29c';
       btn.style.background = '#272012';
 
-      let totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
-      let randomVal = Math.random() * totalWeight;
+      const totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
+      const randomVal = Math.random() * totalWeight;
       let cumulative = 0;
       let chosen = prizes[0];
 
-      for (let p of prizes) {
+      for (const p of prizes) {
         cumulative += p.weight;
         if (randomVal <= cumulative) {
           chosen = p;
@@ -387,7 +396,8 @@
         }
       }
 
-      document.getElementById('selectedPrize').value = chosen.name;
+      lastChosenPrize = chosen;
+      document.getElementById('selectedPrize').value = getPrizeLabel(chosen);
       document.getElementById('selectedCode').value = chosen.code;
 
       setTimeout(() => {
@@ -432,13 +442,12 @@
 
         formScreen.style.display = 'none';
         resultScreen.style.display = 'block';
-
       } catch (err) {
         errorMsg.textContent = err.message;
         errorMsg.style.display = 'block';
         submitBtn.disabled = false;
         loadingText.style.display = 'none';
-        
+
         const allBtns = document.querySelectorAll('.bag-btn');
         allBtns.forEach(b => b.disabled = false);
       }
