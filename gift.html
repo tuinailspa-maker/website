@@ -257,13 +257,15 @@
     let lastChosenPrize = null;
 
     const prizes = [
-      { nameEn: "Sweet Candy Treat", nameFr: "Friandise sucrée", code: "TUI-CANDY", weight: 40 },
-      { nameEn: "2-Finger Nail Art", nameFr: "Nail art 2 ongles", code: "TUI-ART2", weight: 15 },
-      { nameEn: "Collagen", nameFr: "Collagène", code: "TUI-WAX", weight: 10 },
-      { nameEn: "Gel Polish Removal", nameFr: "Retrait vernis gel", code: "TUI-GEL", weight: 10 },
-      { nameEn: "Fragrance Hand Cream", nameFr: "Crème parfumée pour les mains", code: "TUI-HANDCREAM", weight: 10 },
-      { nameEn: "$5 Off Your Service", nameFr: "5 $ de rabais sur votre service", code: "TUI-5OFF", weight: 5 },
-      { nameEn: "Surprise Holiday Treat", nameFr: "Gâterie surprise des Fêtes", code: "TUI-BONUS", weight: 10 }
+      { nameEn: "Cuticle Oil Pen", nameFr: "Stylo huile à cuticules", code: "TUI-CUTICLE-PEN", weight: 40 },
+      { nameEn: "2-Finger Nail Art", nameFr: "Nail art 2 ongles", code: "TUI-2FINGER-ART", weight: 15 },
+      { nameEn: "Collagen", nameFr: "Collagène", code: "TUI-COLLAGEN", weight: 10 },
+      { nameEn: "Gel Polish Removal", nameFr: "Retrait vernis gel", code: "TUI-GEL-REMOVAL", weight: 10 },
+      { nameEn: "Fragrance Hand Cream", nameFr: "Crème parfumée pour les mains", code: "TUI-HAND-CREAM", weight: 15 },
+      { nameEn: "$5 Off Your Service", nameFr: "5 $ de rabais sur votre service", code: "TUI-5OFF-SERVICE", weight: 5 },
+      { nameEn: "Surprise Holiday Treat #1", nameFr: "Gâterie surprise des Fêtes #1", code: "TUI-HOLIDAY-TREAT-1", weight: 2 },
+      { nameEn: "Surprise Holiday Treat #2", nameFr: "Gâterie surprise des Fêtes #2", code: "TUI-HOLIDAY-TREAT-2", weight: 2 },
+      { nameEn: "Surprise Holiday Treat #3", nameFr: "Gâterie surprise des Fêtes #3", code: "TUI-HOLIDAY-TREAT-3", weight: 1 }
     ];
 
     const translations = {
@@ -437,8 +439,8 @@
 
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
 
-        document.getElementById('wonPrizeName').textContent = payload.prize;
-        document.getElementById('wonCodeTag').textContent = payload.code;
+        document.getElementById('wonPrizeName').textContent = data.prize || payload.prize;
+        document.getElementById('wonCodeTag').textContent = data.code || payload.code;
 
         formScreen.style.display = 'none';
         resultScreen.style.display = 'block';
